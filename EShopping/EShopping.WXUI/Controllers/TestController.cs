@@ -12,6 +12,8 @@ namespace EShopping.WXUI.Controllers
         // GET: /Test/
         public ActionResult Index()
         {
+            //test commit
+            string s = "ss";
             return View();
         }
 	}

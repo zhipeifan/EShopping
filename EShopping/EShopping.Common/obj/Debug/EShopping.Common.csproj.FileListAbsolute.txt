@@ -70,3 +70,12 @@ D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Common\bin\Debug\
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Common\obj\Debug\EShopping.Common.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Common\obj\Debug\EShopping.Common.dll
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Common\obj\Debug\EShopping.Common.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\bin\Debug\EShopping.Common.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\bin\Debug\EShopping.Common.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\bin\Debug\EShopping.Entity.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\bin\Debug\Newtonsoft.Json.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\bin\Debug\EShopping.Entity.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\bin\Debug\Newtonsoft.Json.xml
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\obj\Debug\EShopping.Common.csprojResolveAssemblyReference.cache
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\obj\Debug\EShopping.Common.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Common\obj\Debug\EShopping.Common.pdb

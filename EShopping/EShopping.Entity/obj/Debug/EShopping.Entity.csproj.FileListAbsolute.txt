@@ -34,3 +34,8 @@ D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\bin\Debug\
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\bin\Debug\EShopping.Entity.pdb
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Debug\EShopping.Entity.dll
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Debug\EShopping.Entity.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\EShopping.Entity.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\EShopping.Entity.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.csprojResolveAssemblyReference.cache
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.pdb
