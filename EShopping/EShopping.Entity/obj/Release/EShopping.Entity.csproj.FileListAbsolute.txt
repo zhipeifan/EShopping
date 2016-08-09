@@ -1,0 +1,5 @@
+D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\bin\Release\EShopping.Entity.dll
+D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\bin\Release\EShopping.Entity.pdb
+D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Release\EShopping.Entity.csprojResolveAssemblyReference.cache
+D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Release\EShopping.Entity.dll
+D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Release\EShopping.Entity.pdb

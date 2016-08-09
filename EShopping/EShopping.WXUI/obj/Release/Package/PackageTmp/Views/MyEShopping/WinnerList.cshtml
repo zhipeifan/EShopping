@@ -1,0 +1,48 @@
+﻿@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model List<WinnerProductDTO>
+
+
+
+<header id="header" class="shopcar-top">
+    <a class="backs" href="javascript:;" title="返回"></a>
+    <h2>中奖记录</h2>
+    <a class="newsAdd" href="javascript:;" title="积分奖励">积分奖励</a>
+</header>
+<section id="page-content" class="shopcar-content">
+    <div class="g_tabs_list">
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach(var item in Model)
+            { 
+            <div class="secret_pro">
+                <div class="secret_img">
+                    <a class="pro_img" href="javascript:;" title=""><img src="@item.productImg1" width="100%" /></a>
+                    <h4 class="pro_name">@item.productName</h4>
+                    @*<p class="pro_color" style="padding-bottom:1rem;">（粉色 黑色 白色）</p>*@
+                    <p class="pro_money" style="font-size:1.2rem">￥@item.productPrice</p>
+                    <div class="inpcu">
+                        <ul>
+                            <li>本期参与：<span>@item.allBuyCount</span>人次</li>
+                        </ul>
+                    </div>
+                    <div class="pcu_info">
+                        <ul>
+                            <li>获奖号码：<span style="color:#B70000">@item.winnerCode</span></li>
+                            <li>揭晓日期:<i>@item.winnerTime.ConvertToPublicDate()</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="part_btns">
+                   @if(!item.isShareInfo){
+                        <a href="javascript:;" title="">晒单</a>
+                   }
+                    <a href="@Url.Action("BuyProductHistoryList", "ShareOrder", new { spellbuyproductId =item.spellbuyproductId})" title="">参团记录</a>
+                    <a href="javascript:;" title="">继续邀请</a>
+                </div>
+            </div>
+            }
+        }
+    </div>
+</section>

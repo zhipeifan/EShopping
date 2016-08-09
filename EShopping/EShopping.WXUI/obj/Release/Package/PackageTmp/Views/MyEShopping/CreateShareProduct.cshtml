@@ -1,0 +1,36 @@
+﻿@using  EShopping.Entity.UIDTO
+
+@model ShareProductDTO
+
+
+            <header id="header" class="shopcar-top">
+                <h2>我的晒单</h2>
+            </header>
+            <div class="share">
+                <div class="share_list">
+                    <div class="share_title">
+                        <div class="share_padd">
+                            <a class="sh_photo" href="javascript:;" title=""><img src="@Model.FaceImg" /></a>
+                            <ul class="sh_tit_inner">
+                                <li class="namecol"><a href="javascript:;" style="color:#333; font-size:1.2rem;">@Model.shareTitle</a></li>
+                            </ul>
+                            @*<p class="info">Apple iPhone6s plus 16G颜色随机</p>*@
+                        </div>
+                    </div>
+                    <div class="share_mes">
+                        <ul class="share_pro_list">
+                            <li class="first_li"><a href="javascript:;" title=""><img src="images/click_photoo.jpg" width="100%" height="100%" /></a></li>
+                            <li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+                            <li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+                            <li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+                        </ul>
+                    </div>
+                    <div class="lr-pad shareMeTxt">
+                        @Html.TextAreaFor(c => c.shareContent, new { placeholder = "请输入内容" })
+                    </div>
+                    <div class="lr-pad">
+                        <input class="smSub" type="submit" value="提交" />
+                    </div>
+                </div>
+            </div>
+       

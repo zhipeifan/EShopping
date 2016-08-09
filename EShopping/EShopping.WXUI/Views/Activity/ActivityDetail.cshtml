@@ -1,0 +1,53 @@
+﻿@using EShopping.Entity.Response.DTO
+
+@model ActivityDTO
+
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,//'auto'
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+        slidesOffsetBefore: 10
+    })
+</script>
+
+<header id="header">
+    <h2>活动详情</h2>
+</header>
+<div class="activ_content">
+    <div class="activ_pro">
+        <p>@Model.content</p>
+        <img src="@Model.imagePath" width="100%" />
+    </div>
+</div>
+<div id="active">
+    <h3 class="act_tit">你可能感兴趣的商品</h3>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            @if (ViewBag.RecommandProducs != null)
+            {
+                var products = (List<RecommedProduct>)ViewBag.RecommandProducs;
+                if (products != null && products.Count > 0)
+                {
+                    foreach (var item in products)
+                    {
+                        <div class="swiper-slide" style="width:153px">
+                            <div class="activ_list">
+                                <a href="javascript:;">
+                                    <em>小编推荐</em>
+                                    @if (item.Product != null)
+                                    { <img src="@item.Product.coverImg1"  width="100%" />
+                                        <span>(第@(item.Product.licensingCode)期)@item.Product.productName</span>
+                                    }
+
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+

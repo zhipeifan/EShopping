@@ -1,0 +1,19 @@
+﻿.sub, .cancel{
+	width:100%; height:50px;
+	border:0px;
+	color:#fff;
+	border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px;
+	font-size:14px;
+}
+.sub{
+	background:#B70000;
+}
+.cancel{
+	background:#999;
+}
+
+
+.redColor {
+    color:red;
+    background-color:red !important;
+}

@@ -1,0 +1,92 @@
+﻿@using EShopping.Entity.UIDTO
+
+@model List<ShoppingCarDTO>
+
+
+
+@{
+
+    decimal price = 0;
+    int totalCount = 0;
+}
+
+<script type="text/javascript">
+    var ourl = "@Url.Action("CreateShoppingOrder", "ShoppingCar")";
+</script>
+
+@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post)) 
+{
+    <header id="header" class="shopcar-top">
+        <h2>购物车</h2>
+    </header>
+    <section id="page-content" class="shopcar-content">
+        <div class="car-inner">
+            @if (Model != null && Model.Count > 0)
+            {
+                totalCount = Model.Count;
+                <div class="car-inner-list">
+
+
+                    @for (var i = 0; i < Model.Count; i++)
+                    {
+                        price += Model[i].TotalPrice;
+                                        <!-- list -->
+                        <div class="car-inner-item">
+                            <div class="item-title">
+                                <div class="lr-pad">
+                                    @*<span class="select"></span>*@
+                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "select" })
+                                    @Html.HiddenFor(c => Model[i].product.Id)
+                                    @Html.HiddenFor(c => Model[i].product.spellbuyproductId)
+                                    <h4>@Model[i].product.productName</h4>
+                                    <a class="del" href="javascript:;" title="删除" num="0" id="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId"></a>
+                                </div>
+                            </div>
+                            <div class="item-inner">
+                                <a class="carlist-img" href="javascript:;" title=""><img width="100%" src="@Model[i].product.coverImg1" /></a>
+                                <ul class="carlist-inners">
+                                    <li class="tit">剩余数量<em>888</em></li>
+                                    <li class="num">
+                                        <span>购买数量</span>
+                                        <span class="pans">
+                                            <em num="-1" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">-</em>                                          
+                                            @Html.TextBoxFor(c => Model[i].BuyNum,new {id="carCount" ,@class="buyNum"})
+                                            <em num="1" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">+</em>
+                                        </span>
+                                        <span class="carend" class="isbuyAll">包尾</span>
+                                        @Html.HiddenFor(c => Model[i].IsBuyAll)
+                                    </li>
+                                    <li class="mon">
+                                        <span class="@(Model[i].BuyNum == 10 ? "curr" : "")" num="10" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">10</span>
+                                        <span class="@(Model[i].BuyNum == 30 ? "curr" : "")" num="30" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">30</span>
+                                        <span class="@(Model[i].BuyNum == 50 ? "curr" : "")" num="50" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">50</span>
+                                        <span class="@(Model[i].BuyNum == 100 ? "curr" : "")" num="100" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">100</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+                <div class="settle">
+                    <p>共@(totalCount)件商品，总计：<em>@(price)</em>易购币</p>
+                    <input type="submit" value="结算" style="border-color:red;"/>
+                    <a href="javascript:;" title="" class="orderSave">结算</a>
+
+                    <input type="submit" value="结算" />
+                </div>
+            }
+            else
+            {
+
+                <div class="settle">
+                    <p>快去挑选几件期待已久的宝贝吧！</p><p>医院就可以实现你的愿望~</p>
+                    <a href="javascript:;" title="">立即夺宝</a>
+                </div>
+            }
+        </div>
+    </section>
+
+        }

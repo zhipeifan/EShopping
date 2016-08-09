@@ -1,0 +1,58 @@
+﻿@using  EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model UserDTO
+
+
+
+
+
+            <div id="persDeta">
+                <div class="datainner">
+                    <div class="viptop">
+                        <a class="back" href="javascript:;" title="返回"></a>
+                        <ul class="vippro">
+                            <li><a href="javascript:;" title="设置"></a></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="pre-content">
+                        <a class="pre-photo" href="javascript:;" title=""><img src="@Model.faceImg" height="100%" /></a>
+                        <ul>
+                            <li>@Model.nickName</li>
+                            <li>钱包：@Model.CurrentWalletOfAll</li>
+                        </ul>
+                        <a class="pre-rech" href="javascript:;" title="充值">充值</a>
+                    </div>
+                </div>
+                <div class="vipinner">
+                    <h4>VIP@(Model.Level)</h4>
+                    <ul>
+                        <li class="viplogo"><a href="javascript:;" title=""><img width="100%" src="images/viplogo.png" /></a></li>
+                        <li class="vipbars"><span style="width:@(ExtendUtility.ConvertProductspeed(Model.Experience,Model.nextLevelNeedExpense))"></span></li>
+                    </ul>
+                    <p>VIP积分信息 以及距离领红包还差@(Model.nextLevelNeedExpense)积分</p>
+                </div>
+            </div>
+            <div class="pre-list">
+                <div class="pre-list-inner">
+                    <ul>
+                        <li><a class="qiandao" href="@Url.Action("Registering", "MyEShopping")" title="签到">签到</a></li>
+                        <li><a class="mhongbao" href="@Url.Action("MyRed", "MyEShopping")" title="我的红包">我的红包</a></li>
+                        <li><a class="goujilu" href="@Url.Action("ShoppingHistoryList", "MyEShopping")" title="购买记录">购买记录</a></li>
+                    </ul>
+                    <ul>
+                        <li><a class="zhongjilu" href="@Url.Action("ShoppingWinnedList", "MyEShopping")" title="中奖记录">中奖记录</a></li>
+                        <li><a class="qhongbao" href="@Url.Action("RobReb", "MyEShopping")" title="抢红包">抢红包</a></li>
+                        <li><a class="jingpaihang" href="@Url.Action("GoldList", "MyEShopping")" title="金榜排行">金榜排行</a></li>
+                    </ul>
+                    <ul>
+                        <li><a class="jidfan" href="@Url.Action("MyRed", "MyEShopping")" title="积分兑换">积分兑换</a></li>
+                        <li><a class="mshaidan" href="@Url.Action("MyRed", "MyEShopping")" title="我的晒单">我的晒单</a></li>
+                        <li><a class="mimituan" href="@Url.Action("Index", "Secret")" title="秘密团">秘密团</a></li>
+                    </ul>
+                    <ul>
+                        <li><a class="sdizhi" href="@Url.Action("AddressList", "MyEShopping")" title="收货地址">收货地址</a></li>
+                    </ul>
+                </div>
+            </div>

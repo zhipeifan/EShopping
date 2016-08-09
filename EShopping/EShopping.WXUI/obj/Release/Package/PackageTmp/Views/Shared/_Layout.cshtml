@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>易购SHOPPING</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+    <link rel="stylesheet" href="/css/master.css" />
+    <link rel="stylesheet" href="/css/swiper.min.css" />
+    <link rel="stylesheet" href="/css/esshopping.css" />
+    <link rel="stylesheet" href="/css/me.css" />
+    <link rel="stylesheet" href="/css/btn.css" />
+
+    <script src="@Url.Content("~/js/libs/jquery-1.11.1.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/libs/swiper.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/libs/html5shiv.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/page.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js")"></script>
+
+    <script type="text/javascript">
+
+        var addurl = "@Url.Action("AddProductToCar", "Home")";        
+        var shppoingUrl="@Url.Action("AddProductNum", "ShoppingCar")";
+    </script>
+
+    
+    @{
+
+        int selectEnum = (int)ViewBag.SelectEnum;
+        int count = (int)ViewBag.ShoppingCarCount;
+    }
+
+</head>
+<body>
+    <div id="wrapper">
+        <div class="container">
+            @RenderBody()
+
+            <footer id="footer">
+                <ul>
+                    <li class="@(selectEnum == 1 ? "curr" : "")"><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>
+                    <li class="@(selectEnum == 2 ? "curr" : "")"><a href="@Url.Action("List", "Product")" title="">全部商品</a></li>
+                    <li class ="@(selectEnum == 3 ? "curr" : "")"><a href="@Url.Action("List", "NewPublic")" title=" ">最新揭晓</a></li>
+                        <li class ="@(selectEnum == 4 ? "curr" : "")"><a href="@Url.Action("ShoppingList", "ShoppingCar")" title="">购物车</a><i id="carCount">@count</i></li>
+                            <li class="@(selectEnum == 5 ? "curr" : "")"><a href="@Url.Action("Index", "MyEShopping")" title="">我的易购</a></li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

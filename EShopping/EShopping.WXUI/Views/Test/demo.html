@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>上传图片</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="jquery.js"></script>
+<script src="jpeg_encoder.js"></script>
+<script src="localUI.js"></script>
+<body>
+
+<hr/>
+
+<div class="left">
+<div class="pull-left"></div>
+<img id='img' alt="">
+</div>
+
+<br/>
+<script>
+var ok = function (stop, data) {
+	data.original.size = (data.original.size / 1024).toFixed(2);
+	$('#img').attr('src',data.base64);
+	setTimeout(function () {stop();}, 1000);
+}
+var init = new LocalResize($('.pull-left'),{rWidth: 100,quality: 1,success:ok});
+init.change(function(n) {
+	"function" == typeof this.defaults.change ? this.defaults.change(n) : void 0;
+}).success(function(n, t) {
+	"function" == typeof this.defaults.success ? this.defaults.success(n, t) : void 0;
+}).reset = function() {
+	init.UI.reset();
+	"function" == typeof this.defaults.reset&&this.defaults.reset();
+}
+</script>
+</body>
+</html>

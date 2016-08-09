@@ -1,0 +1,33 @@
+﻿@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+
+@model  List<WalletDTO>
+
+
+<header id="header" class="shopcar-top">
+
+    <h2>我的红包</h2>
+</header>
+<section id="page-content" class="shopcar-content">
+    <div id="redlist">
+
+
+        @if (Model != null && Model.Count > 0)
+        {
+
+            foreach (var item in Model)
+            {
+                <div class="redItem">
+                    <div class="lr-pad">
+                        <div class="redpad">
+                            <span class="rd @(item.status==0?"rd_curr":"")"></span>
+                            <h4>$@item.moeny</h4><p class="txt_curr">@(item.startTime.ConvertToPublicDateFormat("yyyy-MM-dd"))至@(item.endTime.ConvertToPublicDateFormat("yyyy-MM-dd"))</p>
+                            <span class="un @(item.status == 0 ? "un_curr" : "")"></span>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>

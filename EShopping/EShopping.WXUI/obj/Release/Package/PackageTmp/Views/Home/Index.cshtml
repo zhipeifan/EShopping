@@ -1,0 +1,135 @@
+﻿@using EShopping.Entity.Response.DTO;
+@using EShopping.Common;
+@using EShopping.Common.Enums;
+
+@model ResponseData
+
+@{
+    var winnerList=(List<WinnerProductDTO>) ViewBag.WinnerList ;
+    
+}
+
+
+<header id="header">
+    <a class="searchtop" href="javascript:;" title="搜索"></a>
+    <a class="friendtop" href="javascript:;" title="搜索"></a>
+    <h2>易购SHOPPING</h2>
+</header>
+
+
+<div class="swiper-container" id="banner" style="font-size:0px;">
+    <div class="swiper-wrapper">
+        @if (Model.IndexImgVOs != null)
+        {
+            foreach (var item in Model.IndexImgVOs)
+            {
+                <div class="swiper-slide"><a href="javascript:;" title="@item.title"><img width="100%" src="@item.proImg" /></a></div>
+            }
+        }
+    </div>
+    <!-- 分页器 -->
+    <div class="swiper-pagination"></div>
+    <div id="msg">
+
+        @if(winnerList!=null&&winnerList.Count>0)
+        {
+            foreach(var item in winnerList)
+            {
+              <p class="first">
+            <a class="photo" href="javascript:;" title=""><img src="images/photo.jpg" /></a>
+            <span>恭喜<em>“@item.winnerUserName”</em> 获得 @item.productName</span>
+        </p>  
+            }
+              
+        }
+      
+     
+    </div>
+</div>
+<div id="menu">
+    <ul>
+        <li class="nav01"><a href="@Url.Action("List", "Product", new { categoryId = 1})" title="">新手专区</a></li>
+        <li class="nav02"><a href="@Url.Action("List", "Product", new { categoryId = 2})" title="">大众专区</a></li>
+        <li class="nav03"><a href="@Url.Action("List", "Product", new { categoryId = 3})" title="">土豪专区</a></li>
+        <li class="nav04"><a href="@Url.Action("List", "Product", new { categoryId = 4})" title="">限购专区</a></li>
+        <li class="nav05"><a href="@Url.Action("Index", "ShareOrder")" title="">发现专区</a></li>
+
+    </ul>
+</div>
+<div class="products-list">
+    <div class="product-title">
+        <h2 class="tnews">最新揭晓</h2>
+        <a class="prod-more" href="javascript:;" title=""></a>
+    </div>
+    <ul class="products">
+        @if(Model.ProductVOs!=null)
+        {
+            foreach(var item in Model.ProductVOs)
+            {
+                  <li>
+                @if(item.winnerStatus==1)
+                {
+                    <a href="javascript:;" title="">
+                        <img src="@item.coverImg1" />
+                        <span class="prodtitle">@item.productName</span>
+                        <span class="newprodinfo">期号：<em>@item.licensingCode</em></span>
+                        <span class="newprodinfo">获奖者：<em class="blue">@item.winnerUserName</em></span>
+                        <span class="newprodinfo">参与人次：<em>@item.currentUserBuyCount</em></span>
+                        <span class="newprodinfo">幸运号：<em class="red">@item.winnerBuyCode</em></span>
+                        <span class="newprodinfo">揭晓时间：<em>@item.winnerTime.ConvertToPublicDate()</em></span>
+                    </a>
+
+                }
+                else
+                {
+                  
+                        <a href="@Url.Action("Detail", "Product", new { id = @item.Id, spellBuyProductId =@item.spellbuyproductId})" title="@item.productTitle">
+                            <img src="@item.coverImg1" />
+                            <span class="prodtitle">@item.productName</span>
+                            <span class="prodnum">期号:<em>@item.licensingCode</em></span>
+                            <span class="prodtime">即将揭晓</span>
+                            <span class="prodtime">即将揭晓</span>
+                            <ul class="andtime">
+                                <li class="hour">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Hour))</li>
+                                <li class="minu">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Minutes))</li>
+                                <li class="sero">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Second))</li>
+                            </ul>
+                        </a>
+                        }
+                    </li>
+            }
+        }
+
+</ul>
+</div>
+    <div class="products-list">
+        <div class="product-title">
+            <h2 class="trec">推荐商品</h2>
+            <a class="prod-more" href="javascript:;" title=""></a>
+        </div>
+        <ul class="products">
+
+            @if (Model.RecommedVOs != null && Model.RecommedVOs.Count > 0)
+        {
+
+            foreach (var item in Model.RecommedVOs)
+            {
+                if (item.Product != null)
+                {
+                    <li>
+                        <a href="@Url.Action("Detail", "Product", new { id = @item.Id, spellBuyProductId = @item.Product.spellbuyproductId })" title="@item.Product.productTitle">
+                            <img src="@item.Product.coverImg1" />
+                            <span class="prodtitle">@item.Product.productName</span>
+                            @*<span class="prodcate">16G颜色随机</span>*@
+                            <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(item.Product.productLimit, item.Product.spellbuyCount))</em></span>
+                            <span class="pacet"><em style="width: @(ExtendUtility.ConvertProductspeed(item.Product.productLimit, item.Product.spellbuyCount))"></em></span>
+                            <a class="iaddcar" pid="@item.Id" spellbuyproductid="@item.Product.spellbuyproductId"></a>
+                        </a>
+                    </li>
+                }
+
+            }
+        }
+        </ul>
+    </div>
+

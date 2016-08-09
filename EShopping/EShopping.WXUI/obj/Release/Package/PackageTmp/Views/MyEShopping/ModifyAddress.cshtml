@@ -1,0 +1,47 @@
+﻿@using EShopping.Entity.Response.DTO
+
+@model AddressDTO
+
+
+@Html.BeginForm("ModifyAddress", "MyEShopping", FormMethod.Post)
+{
+<header id="header" class="shopcar-top">
+    <a class="backs" href="javascript:;" title="返回"></a>
+    @if (Model.id > 0)
+    {
+        <h2>编辑地址</h2>
+    }
+    else
+    {
+        <h2>新增地址</h2>
+    }
+</header>
+<section id="page-content" class="pad70">
+    @Html.HiddenFor(c => c.id)
+    <input type="hidden" value="@Model.id" />
+    <div id="address">
+        <div class="newadd">
+            <div class="lr-pad">
+                @Html.TextBoxFor(c => c.consignee, new { placeholder = "收货人姓名" })
+            </div>
+        </div>
+        <div class="newadd">
+            <div class="lr-pad">
+                @Html.TextBoxFor(c => c.phone, new { placeholder = "手机号" })
+            </div>
+        </div>
+        <div class="newadd">
+            <div class="lr-pad">
+                <p class="province">省、市、区</p>
+            </div>
+        </div>
+        <div class="newadd">
+            <div class="lr-pad">
+                @Html.TextBoxFor(c => c.address, new { placeholder = "详细地址" })
+            </div>
+        </div>
+        <div class="lr-pad" style="padding-top:20px;">
+            <input id="subAdd" class="subAdd" type="submit" value="保存" />
+        </div>
+    </div>
+</section>

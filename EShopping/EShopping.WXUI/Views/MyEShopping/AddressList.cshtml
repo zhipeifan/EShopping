@@ -1,0 +1,48 @@
+﻿@using EShopping.Entity.Response.DTO
+
+
+@model List<AddressDTO>
+
+
+
+
+            <header id="header" class="shopcar-top">
+                <a class="backs" href="javascript:;" title="返回"></a>
+                <h2>收货地址</h2>
+                <a class="newsAdd" href="@Url.Action("ModifyAddress", "MyEShopping")" title="新增">新增</a>
+            </header>
+            <section id="page-content" class="pad70">
+                <div id="address">
+
+
+
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                          <div class="address_list">
+                        <div class="lr-pad">
+                            <p class="nameinfo"><span class="">@item.consignee</span><span>@item.phone</span></p>
+                            <p class="add_name"><span>@item.address</span></p>
+                        </div>
+                        <div class="lr-pad border_top">
+                            <ul class="oper">
+                                <li class="@(item.isDefault?"addcurr curr":"")" ><a href="@Url.Action("SetDefaultAddress", "MyEShopping", new { Id = @item.id })">默认地址</a></li>
+                                
+                                <li class="del"><a href="@Url.Action("DeleteAddress", "MyEShopping", new { Id = @item.id })">删除</a></li>
+                                <li class="edi"><a href="@Url.Action("ModifyAddress", "MyEShopping", new { Id = @item.id })">编辑</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                        }
+                    }
+                    
+
+                  
+
+
+
+
+                </div>
+            </section>
+         

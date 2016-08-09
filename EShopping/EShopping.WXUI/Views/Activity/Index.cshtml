@@ -1,0 +1,34 @@
+﻿@using EShopping.Entity.Response.DTO;
+@using EShopping.Common;
+
+@model List<ActivityDTO>
+
+
+
+
+
+
+            <header id="header" class="shopcar-top">
+                <h2>最新活动</h2>
+            </header>
+            <div class="activ_content">
+                <div class="new_act_inner">
+                    <h3>最新活动</h3>
+                    <ul>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                     <li>
+                                         <span class="actimgs" ><img src="@item.coverImg" width="100%" /></span>
+
+                            <h4><a href="@Url.Action("ActivityDetail", "Activity", new { id=@item.id })" >@item.title</a></h4>
+                            <p>活动时间：@item.startTime.ConvertToPublicDate("yyyy/MM/dd")至 @item.endTime.ConvertToPublicDate("yyyy/MM/dd")</p>
+                        </li>
+                                
+                            }
+                        }
+                    
+                    </ul>
+                </div>
+            </div>

@@ -1,0 +1,99 @@
+﻿@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model SigDTO
+
+
+
+<meta charset='utf-8' />
+<link href="~/js/Calendar/fullcalendar.css" rel="stylesheet" />
+<link href="~/js/Calendar/fullcalendar.print.css" rel="stylesheet" />
+<script src="~/js/Calendar/lib/moment.min.js"></script>
+<script src="~/js/Calendar/jquery.min.js"></script>
+<script src="~/js/Calendar/fullcalendar.js"></script>
+<script src="~/js/Calendar/gcal.js"></script>
+<script>
+
+    var days = "";
+    @if(Model!=null&&Model.signHistoryVOs!=null&&Model.signHistoryVOs.Count>0)
+    {
+        
+    }
+
+    $(document).ready(function () {
+        $(".container").addClass("sign_bg");
+        $('#calendar').fullCalendar({
+
+            //   googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+
+            // US Holidays
+            events: [
+                 {
+                     title: 'All Day Event',
+                     start: '2016-08-01',
+                     nowTime: '2016-08-01'
+                 },
+                 {
+                     title: 'Long Event',
+                     start: '2016-08-10',
+                     end: '2016-08-10',
+                     nowTime: '2016-08-10'
+                 }
+            ],
+            monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            dayNames: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+            dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
+            eventClick: function (event) {
+                // opens events in a popup window
+                window.open(event.url, 'gcalevent', 'width=100%,height=100%');
+                return false;
+            },
+
+            loading: function (bool) {
+                $('#loading').toggle(bool);
+            }
+
+        });
+
+    });
+
+</script>
+<style>
+    #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+</style>
+
+
+
+            <header id="header" class="shopcar-top">
+                <a class="backs" href="javascript:;" title="返回"></a>
+                <h2>签到</h2>
+            </header>
+            <div class="sign_content">
+                <div class="sign_time" style="margin-bottom:2rem;">
+                    <div id='calendar'></div>
+                </div>
+                <div class="sign_info">
+                   
+                    <div class="inpcu">
+                        <a class="sign_info_tit" href="@Url.Action("CreateSign", "MyEShopping")" title="">立即签到</a>
+                        <ul>
+                            <li>本月签到：<span>@(Model.signCount)</span> 次</li>
+                            <li style="color:black;margin-left:11%;">最后签到时间 : <span>@(Model.signLastTime == 0 ? "暂无签到" : Model.signLastTime.ConvertToPublicDate("yyyy-MM-dd"))</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+    <div class="sign_info">
+      
+        <h3>签到规则</h3>
+        <p>1.首次签到获得@(Model.integralStart)积分奖励</p>
+        <p>2.连续签到每天累计增加@(Model.integralDelta)积分奖励，最高@(Model.integral)分每天</p>
+        <p>3.每连续签到@(Model.days)天及以上将一个1-5元的红包奖励</p>
+        <p>4.如果连续签到中断，将重新从@(Model.integralStart)分每天开始累计</p>
+    </div>
+</div>
+          

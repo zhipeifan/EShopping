@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81D3E9F0-5E1A-4F4E-A5F7-59786BE0C508}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EShopping.Entity</RootNamespace>
+    <AssemblyName>EShopping.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\AddSpellbuyproductRequest.cs" />
+    <Compile Include="Request\AddSignRequest.cs" />
+    <Compile Include="Request\CommonRequest.cs" />
+    <Compile Include="Request\HandleShoppingCartRequest.cs" />
+    <Compile Include="Request\QueryLevelConfigRequest.cs" />
+    <Compile Include="Request\QueryMyBuyListRequest.cs" />
+    <Compile Include="Request\QueryMyWinnersListRequest.cs" />
+    <Compile Include="Request\QueryNewsDetailRequest.cs" />
+    <Compile Include="Request\QueryNewsListRequest.cs" />
+    <Compile Include="Request\QueryProductListByPrivateRequest.cs" />
+    <Compile Include="Request\QueryProductListByTypeRequest.cs" />
+    <Compile Include="Request\QueryProductTypeRequest.cs" />
+    <Compile Include="Request\QueryPublishingListRequest.cs" />
+    <Compile Include="Request\QueryShareInfoListRequest.cs" />
+    <Compile Include="Request\QueryShoppingCartListReuqest.cs" />
+    <Compile Include="Request\QuerySignConfigRequest.cs" />
+    <Compile Include="Request\QuerySpellbuyrecordListRequest.cs" />
+    <Compile Include="Request\ProductDetailRequest.cs" />
+    <Compile Include="Request\QueryUserAddressListRequest.cs" />
+    <Compile Include="Request\QueryWalletRequest.cs" />
+    <Compile Include="Request\SendUpCountRequest.cs" />
+    <Compile Include="Request\SubmitOrderRequest.cs" />
+    <Compile Include="Request\UpdateSpellbuyproductRequest.cs" />
+    <Compile Include="Request\VerifyOtherLoginRequestDTO.cs" />
+    <Compile Include="Response\AddSpellbuyproductResponse.cs" />
+    <Compile Include="Response\AttendUserResponse.cs" />
+    <Compile Include="Response\CommonResponse.cs" />
+    <Compile Include="Response\DTO\ActivityDTO.cs" />
+    <Compile Include="Response\DTO\AddressDTO.cs" />
+    <Compile Include="Response\DTO\AttendUserDTO.cs" />
+    <Compile Include="Response\DTO\BuyProductDTO.cs" />
+    <Compile Include="Response\DTO\IndexImgVOs.cs" />
+    <Compile Include="Response\DTO\LiveConfigDTO.cs" />
+    <Compile Include="Response\DTO\PrivateLevelConfigDTO.cs" />
+    <Compile Include="Response\DTO\ProductDTO.cs" />
+    <Compile Include="Response\DTO\ProductTypeDTO.cs" />
+    <Compile Include="Response\DTO\ProductVOs.cs" />
+    <Compile Include="Response\DTO\SignHistoryDTO.cs" />
+    <Compile Include="Response\DTO\WalletDTO.cs" />
+    <Compile Include="Response\DTO\WinnerProductDTO.cs" />
+    <Compile Include="Response\QueryLevelConfigResponse.cs" />
+    <Compile Include="Response\QueryMyBuyListResponse.cs" />
+    <Compile Include="Response\QueryMyWinnersListResponse.cs" />
+    <Compile Include="Response\QueryNewsDetailResponse.cs" />
+    <Compile Include="Response\QueryProductListByPrivateResponse.cs" />
+    <Compile Include="Response\QueryRecommendListReponse.cs" />
+    <Compile Include="Response\QueryShareInfoListResponse.cs" />
+    <Compile Include="Response\DTO\RecommedVOs.cs" />
+    <Compile Include="Response\DTO\Response.cs" />
+    <Compile Include="Response\DTO\ResponseData.cs" />
+    <Compile Include="Response\DTO\ResponseStatus.cs" />
+    <Compile Include="Response\DTO\SayResponseDTO.cs" />
+    <Compile Include="Response\DTO\ShareDTO.cs" />
+    <Compile Include="Response\DTO\UserDTO.cs" />
+    <Compile Include="Response\ProductDetailResponse.cs" />
+    <Compile Include="Response\QueryNewsListResponse.cs" />
+    <Compile Include="Response\QueryProductListByTypeResponse.cs" />
+    <Compile Include="Response\QueryPublishingListResponse.cs" />
+    <Compile Include="Response\QueryShoppingCartListResponse.cs" />
+    <Compile Include="Response\QuerySignConfigResponse.cs" />
+    <Compile Include="Response\QuerySpellbuyrecordListResponse.cs" />
+    <Compile Include="Response\QueryUserAddressListResponse.cs" />
+    <Compile Include="Response\QueryUserByIntegralTopResponse.cs" />
+    <Compile Include="Response\QueryWalletResponse.cs" />
+    <Compile Include="Response\UploadImageResponse.cs" />
+    <Compile Include="Response\VerifyOtherLoginResponseDTO.cs" />
+    <Compile Include="UIDTO\Enum\BuyTypeEnum.cs" />
+    <Compile Include="UIDTO\ShareProductDTO.cs" />
+    <Compile Include="UIDTO\Enum\ShoppingOperatTypeEnum.cs" />
+    <Compile Include="UIDTO\NewPublicListDTO.cs" />
+    <Compile Include="UIDTO\SayDTO.cs" />
+    <Compile Include="UIDTO\SecretDTO.cs" />
+    <Compile Include="UIDTO\ShoppingCarDTO.cs" />
+    <Compile Include="UIDTO\ShoppingUIDTO.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

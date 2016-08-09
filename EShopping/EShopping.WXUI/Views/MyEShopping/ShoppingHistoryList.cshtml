@@ -1,0 +1,85 @@
+﻿@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model List<BuyProductDTO>
+
+
+   <header id="header" class="shopcar-top">
+                <a class="backs" href="javascript:;" title="返回"></a>
+                <h2>购买记录</h2>
+            </header>
+            <section id="page-content" class="shopcar-content">
+                <div class="secret_tabs" id="secretTab" style="margin:0px;">
+                    <ul>
+                        <li class="curr">全部<em></em></li>
+                        <li><a href="@Url.Action("ShoppingStartingList", "MyEShopping")">进行中</a><em></em></li>
+                        <li><a href="@Url.Action("ShoppingWinnedList", "MyEShopping")">已开奖</a><em></em></li>
+                    </ul>
+                </div>
+                <div class="swiper-container" id="secretContainar">
+                    <div class="swiper-wrapper">
+
+
+
+                        <div class="swiper-slide">
+                            <div class="content-slide">
+                                <div class="g_tabs_list">
+
+                                    @if(Model!=null&&Model.Count>0)
+                                    { 
+                                        foreach(var item in Model)
+                                        {
+                                            var with = ExtendUtility.ConvertProductspeed(item.spellbuyCount, item.spellbuyLimit);
+                                    <div class="secret_pro">
+                                        <div class="secret_img">
+                                            <a class="pro_img" href="javascript:;" title=""><img src="@item.coverImg1" width="100%" /></a>
+                                            <h4 class="pro_name">@item.productName</h4>
+                                            @*<p class="pro_color" style="padding-bottom:1rem;">（粉色 黑色 白色）</p>*@
+                                            <p class="pro_money" style="font-size:1rem;font-weight:normal;color:#999;">期号：@item.licensingCode
+                                            @if (item.spellbuyLimit - item.spellbuyCount > 0)
+                                            {
+                                            <a href="@Url.Action("ShoppingList", "ShoppingCar", new {id=@item.id, spellbuyProductId=@item.spellbuyproductId })" title="追加">追加</a>
+                                            }
+                                            else
+                                            {
+                                               
+                                                 <a href="@Url.Action("ShoppingList", "ShoppingCar", new {id=@item.id, spellbuyProductId=@item.spellbuyproductId })" title="追加">追加</a>
+                                            }
+                                            </p>
+                                            <ul class="pro_num">
+                                                <li class="pro_deg"><span>总计：@item.spellbuyLimit</span><span>剩余：<em>@(item.spellbuyLimit-item.spellbuyCount)</em></span></li>
+                                                <li class="num_line" title="@with"><span style="width:@(with)" title="@with"></span></li>
+                                            </ul>
+                                            <div class="inpcu">
+                                                <ul>
+                                                    <li>本期参与：<span>@item.currentUserBuyCount</span>人次</li>
+                                                    <li>查看我的号码:<span>@item.currentUserBuyCode</span></li>
+                                                </ul>
+                                            </div>
+
+                                            @if(item.winnerUserId>0)
+                                            {
+                                                  <div class="pcu_info">
+                                                <ul>
+                                                    <li>获奖者：<span>@item.winnerUserName</span></li>
+                                                    <li>获奖号码：<span>@item.winnerBuyCode</span></li>
+                                                    <li>揭晓日期:<i>@item.winnerTime.ConvertToPublicDate()</i></li>
+                                                </ul>
+                                            </div>
+                                            }
+                                          
+                                        </div>
+                                    </div>
+                                        }
+                                    } 
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    
+                    </div>
+                </div>
+            </section>
+          

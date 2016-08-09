@@ -1,0 +1,46 @@
+﻿.redbut {
+    border: 1px solid #fff;
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+
+.redlabel {
+   
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+
+.redlabel_font {
+    border: 1px solid #bf0000;
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    color: #bf0000;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+
+.publitime_back {
+    padding: 10px;
+    background: #fff;
+    box-sizing: content-box;
+}
+
+ .ulhengxiang ul li{ float:left; margin-left:20px; list-style-type:none;}
