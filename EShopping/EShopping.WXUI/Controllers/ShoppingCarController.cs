@@ -79,7 +79,6 @@ namespace EShopping.WXUI.Controllers
            return null;
         }
 
-        [HttpPost]
         public ActionResult AddProductNum(int id,int spellBuyProductId,int num)
         {
             var products = LoadShoppingCar();

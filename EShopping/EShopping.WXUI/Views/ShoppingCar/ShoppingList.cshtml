@@ -39,13 +39,13 @@
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)
                                     <h4>@Model[i].product.productName</h4>
-                                    <a class="del" href="javascript:;" title="删除" num="0" id="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId"></a>
+                                    <a class="orderDel" href="javascript:;" title="删除" num="0" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId"></a>
                                 </div>
                             </div>
                             <div class="item-inner">
                                 <a class="carlist-img" href="javascript:;" title=""><img width="100%" src="@Model[i].product.coverImg1" /></a>
                                 <ul class="carlist-inners">
-                                    <li class="tit">剩余数量<em>888</em></li>
+                                    <li class="tit">剩余数量<em>@((Model[i].product.productLimit - Model[i].product.spellbuyCount) < 0 ? 0 : Model[i].product.productLimit - Model[i].product.spellbuyCount)</em></li>
                                     <li class="num">
                                         <span>购买数量</span>
                                         <span class="pans">
@@ -53,7 +53,7 @@
                                             @Html.TextBoxFor(c => Model[i].BuyNum,new {id="carCount" ,@class="buyNum"})
                                             <em num="1" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">+</em>
                                         </span>
-                                        <span class="carend" class="isbuyAll">包尾</span>
+                                        <span class="carend" style="@(Model[i].IsBuyAll?"":"background:#999;")">包尾</span>
                                         @Html.HiddenFor(c => Model[i].IsBuyAll)
                                     </li>
                                     <li class="mon">
@@ -72,10 +72,7 @@
                 </div>
                 <div class="settle">
                     <p>共@(totalCount)件商品，总计：<em>@(price)</em>易购币</p>
-                    <input type="submit" value="结算" style="border-color:red;"/>
-                    <a href="javascript:;" title="" class="orderSave">结算</a>
-
-                    <input type="submit" value="结算" />
+                    <input type="submit" value="结算" class="orderSub" />
                 </div>
             }
             else

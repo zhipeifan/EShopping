@@ -9,3 +9,14 @@ D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.BusinessService\b
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.BusinessService\obj\Release\EShopping.BusinessService.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.BusinessService\obj\Release\EShopping.BusinessService.dll
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.BusinessService\obj\Release\EShopping.BusinessService.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\EShopping.BusinessService.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\EShopping.BusinessService.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\EShopping.Common.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\EShopping.Entity.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\Newtonsoft.Json.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\EShopping.Common.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\EShopping.Entity.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\bin\Release\Newtonsoft.Json.xml
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\obj\Release\EShopping.BusinessService.csprojResolveAssemblyReference.cache
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\obj\Release\EShopping.BusinessService.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.BusinessService\obj\Release\EShopping.BusinessService.pdb

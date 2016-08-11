@@ -1,6 +1,7 @@
 ﻿using EShopping.BusinessService.SelectProduct;
 using EShopping.BusinessService.ShoppingCar;
 using EShopping.Entity.Response.DTO;
+using EShopping.Entity.UIDTO;
 using EShopping.Entity.UIDTO.Enum;
 using System;
 using System.Collections.Generic;
@@ -160,8 +161,15 @@ namespace EShopping.WXUI.Controllers
         /// <returns></returns>
         public ActionResult CreateShareProduct(int id,int spellbuyId)
         {
+            ShareProductDTO dto = new ShareProductDTO();
+
             var product = ProductService.LoadProductDetail(id,spellbuyId,UserId);
-            return View(product);
+
+            if(product!=null)
+            {
+                dto.shareTitle = product.productTitle;
+            }
+            return View(dto);
         }
              
 
@@ -185,6 +193,15 @@ namespace EShopping.WXUI.Controllers
         {
             LoginService.AddSign(UserId);
             return RedirectToAction("Registering");
+        }
+
+        /// <summary>
+        /// 积分兑换
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Integral()
+        {
+            return View();
         }
 	}
 }

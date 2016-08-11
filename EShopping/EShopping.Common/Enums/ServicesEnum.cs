@@ -116,7 +116,11 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 赞一个
         /// </summary>
-        sendUpCount
+        sendUpCount,
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        queryUserInfo
 
 
     }

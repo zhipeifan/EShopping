@@ -25,16 +25,28 @@ $(function () {
 
     BaingClick();
 
-    $(".isbuyAll").click(function () {
-        fun_orderBuyAll(this);
-    });
-
 
     $(".orderSave").click(function () {
         createOrder();
     });
+
+    IsBuyAll();//包尾
 });
 
+function IsBuyAll()
+{
+    $(".carend").click(function () {
+        var _style = $(this).attr("style");
+        if (_style != "" && _style != undefined)
+        {
+            $(this).removeAttr("style");
+            $(this).next().val("true");
+        } else {
+            $(this).attr("style", "background:#999;");
+            $(this).next().val("false");
+        }
+    });
+}
 
 function BaingClick()
 {
@@ -46,8 +58,10 @@ function BaingClick()
         AddProductNum(this);
     });
 
-    $(".lr-pad .del").click(function () {
-        AddProductNum(this);
+    $(".orderDel").click(function () {
+        if (confirm("您确定要从购物车中删除该商品？")) {
+            AddProductNum(this);
+        }
     });
 }
 
@@ -55,24 +69,25 @@ function BaingClick()
 
 function AddProductNum(obj)
 {
-    var id = $(obj).attr("pid");
-    var spellBuyProductId = $(obj).attr("spellBuyProductId");
-    var num = $(obj).attr("num");
-    var data = {
-        id: id,
-        spellBuyProductId: spellBuyProductId,
-        num:num
-    };
+        var id = $(obj).attr("pid");
+        var spellBuyProductId = $(obj).attr("spellBuyProductId");
+        var num = $(obj).attr("num");
+        var data = {
+            id: id,
+            spellBuyProductId: spellBuyProductId,
+            num: num
+        };
 
-    $.ajax({
-        type: "post",
-        url: shppoingUrl,
-        data: data,
-        dataType: "text",
-        success: function (response) {
-           // $(obj).parents(".item-inner").find("#carCount").val(num);
-        }
-    });
+        $.ajax({
+            type: "post",
+            url: shppoingUrl,
+            data: data,
+            dataType: "text",
+            success: function (response) {
+                $(obj).parents(".item-inner").find("#carCount").val(num);
+            }
+        });
+  
 }
 
 
@@ -89,13 +104,6 @@ function fun_SecretStart()
 
 
 }
-
-
-function fun_orderBuyAll(obj)
-{
-    $(obj).next().val("true");
-}
-
 
 
 function createOrder()

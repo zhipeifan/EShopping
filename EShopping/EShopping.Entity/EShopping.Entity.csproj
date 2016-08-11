@@ -59,6 +59,7 @@
     <Compile Include="Request\QuerySpellbuyrecordListRequest.cs" />
     <Compile Include="Request\ProductDetailRequest.cs" />
     <Compile Include="Request\QueryUserAddressListRequest.cs" />
+    <Compile Include="Request\QueryUserInfoRequest.cs" />
     <Compile Include="Request\QueryWalletRequest.cs" />
     <Compile Include="Request\SendUpCountRequest.cs" />
     <Compile Include="Request\SubmitOrderRequest.cs" />

@@ -16,7 +16,8 @@ namespace EShopping.WXUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Base", action = "WeChatLogin", id = UrlParameter.Optional }
+             //   defaults: new { controller = "Base", action = "WeChatLogin", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

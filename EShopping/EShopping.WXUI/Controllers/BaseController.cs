@@ -150,12 +150,15 @@ namespace EShopping.WXUI.Controllers
                     ShoppingOperatType = ShoppingOperatTypeEnum.Delete
                 }, UserInfo == null ? "" : UserInfo.userName);
             }
-            ShoppingCarService.OperatShoppingProduct(new ShoppingUIDTO
+            if (ShoppingCar.ContainsKey(key))
             {
-                BuyCount = ShoppingCar[key].BuyNum,
-                SpellbuyproductId = spellBuyProductId,
-                ShoppingOperatType = ShoppingOperatTypeEnum.Add
-            }, UserInfo == null ? "" : UserInfo.userName);
+                ShoppingCarService.OperatShoppingProduct(new ShoppingUIDTO
+                {
+                    BuyCount = ShoppingCar[key].BuyNum,
+                    SpellbuyproductId = spellBuyProductId,
+                    ShoppingOperatType = ShoppingOperatTypeEnum.Add
+                }, UserInfo == null ? "" : UserInfo.userName);
+            }
         }
 
         /// <summary>
@@ -206,73 +209,37 @@ namespace EShopping.WXUI.Controllers
          [AllowAnonymous]
         public UserDTO LoadUserInfo()
         {
-            return new UserDTO();
-            //UserDTO userInfo = null;
-            ////var isLogin = User.Identity.IsAuthenticated;
-            ////ApplicationLog.DebugInfo("IsAuthenticated:"+isLogin);
-            ////if (!isLogin)
-            ////{
-            //    // GetWeChatUserName("","");
-            //    WeChatLogin("", "");
-            //    //string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
-            //    //userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
-            ////}
-            ////else
-            ////{
-            ////    string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
-            ////    userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
-            ////}
-
-          
-            //return userInfo;
+            //return new UserDTO();
+            UserDTO userInfo = null;
+            var isLogin = User.Identity.IsAuthenticated;
+            //ApplicationLog.DebugInfo("IsAuthenticated:" + isLogin);
+            if (!isLogin)
+            {
+              GetWeChatUserName("", "");
+               //  WeChatLogin("", "");
+                //string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
+                //userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
+            }
+            else
+            {
+                string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
+                userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
+            }
 
 
-            //string url = Request.Url.OriginalString;
-            //if (string.IsNullOrEmpty(code))
-            //    return Redirect(OAuthApi.GetAuthorizeUrl(appId, url, "LOGIN", OAuthScope.snsapi_userinfo));
+            return userInfo;
 
-            //var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
-            //var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
 
-            //var userinfo = new UserDTO
-            //{
-            //    weixinOpenId = wechatUser.openid,
-            //    faceImg = wechatUser.headimgurl,
-            //    sex = wechatUser.sex.ToString(),
-            //    nickName = wechatUser.nickname
-            //};
-
-            //var usre = LoginService.LoginUser(userinfo);
-            //string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);
-            //FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
-            //    (
-            //    1,
-            //    userinfo.userId.ToString(),
-            //    DateTime.Now,
-            //    DateTime.Now.AddMonths(1),
-            //    false,
-            //    _userInfo
-            //    );
-
-            //string enyTicket = FormsAuthentication.Encrypt(ticket);
-            //HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, enyTicket);
-            //cookie.HttpOnly = true;
-            //cookie.Domain = FormsAuthentication.CookieDomain;
-            //cookie.Path = FormsAuthentication.FormsCookiePath;
-
-            //System.Web.HttpContext.Current.Response.Cookies.Remove(cookie.Name);
-            //System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
-
-            //return RedirectToAction(url);
+      
         }
 
 
         [AllowAnonymous]
         public ActionResult WeChatLogin(string code, string state)
         {
-            string url = "www.eshop.com";
+            string url = Request.Url.OriginalString;
             if (string.IsNullOrEmpty(code))
-                return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://wx.mzjsh.com/WeChat/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
+                return Redirect(OAuthApi.GetAuthorizeUrl(appId, url, "LOGIN", OAuthScope.snsapi_userinfo));
 
             var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
             var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
@@ -296,7 +263,7 @@ namespace EShopping.WXUI.Controllers
                 false,
                 _userInfo
                 );
-
+            FormsAuthentication.SetAuthCookie(userinfo.userId.ToString(),true,FormsAuthentication.FormsCookiePath);
             string enyTicket = FormsAuthentication.Encrypt(ticket);
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, enyTicket);
             cookie.HttpOnly = true;
@@ -305,24 +272,27 @@ namespace EShopping.WXUI.Controllers
 
             System.Web.HttpContext.Current.Response.Cookies.Remove(cookie.Name);
             System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+           // System.Web.HttpContext.Current.Response.
 
             return RedirectToAction(url);
         }
 
-        public UserDTO GetWeChatUserName(string code, string state)
+        public ActionResult GetWeChatUserName(string code, string state)
         {
             UserDTO userinfo = new UserDTO
             {
                 userId = 14,
                 userName ="test1",
                 faceImg = "http://c.hiphotos.baidu.com/image/h%3D300/sign=9fbf2f521838534393cf8121a312b01f/e1fe9925bc315c609e3db7d185b1cb1349547760.jpg",
-                 weixinOpenId="666666"
+                 weixinOpenId="888888"
             };
 
              userinfo = LoginService.LoginUser(userinfo);
+          //  userinfo = LoginService.LoadUserInfo(14);
           // Session["LoginSession"] = usre;
 
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);
+         //   FormsAuthentication.SetAuthCookie(userinfo.userId.ToString(), true, FormsAuthentication.FormsCookiePath);
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
                 (
                 1,
@@ -330,19 +300,22 @@ namespace EShopping.WXUI.Controllers
                 DateTime.Now,
                 DateTime.Now.AddMonths(1),
                 false,
-                _userInfo
+                _userInfo,
+                FormsAuthentication.FormsCookiePath
                 );
 
+           // FormsIdentity identity = new FormsIdentity(ticket);
             string enyTicket = FormsAuthentication.Encrypt(ticket);
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, enyTicket);
             cookie.HttpOnly = true;
             cookie.Domain = FormsAuthentication.CookieDomain;
             cookie.Path = FormsAuthentication.FormsCookiePath;
+            cookie.Expires = ticket.Expiration;
 
             System.Web.HttpContext.Current.Response.Cookies.Remove(cookie.Name);
             System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
-            return userinfo;
+            return RedirectToAction(Request.Url.OriginalString);
         }
 
 

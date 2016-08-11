@@ -330,6 +330,7 @@
     <Content Include="Views\Activity\ActivityDetail.cshtml" />
     <Content Include="Views\MyEShopping\CreateShareProduct.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\MyEShopping\Integral.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

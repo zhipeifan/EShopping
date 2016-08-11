@@ -34,6 +34,28 @@ namespace EShopping.BusinessService.SelectProduct
        }
 
        /// <summary>
+       /// 查询个人信息
+       /// </summary>
+       /// <param name="userId"></param>
+       /// <returns></returns>
+       public static UserDTO LoadUserInfo(int userId)
+       {
+            QueryUserInfoRequest request = new QueryUserInfoRequest
+           {
+              userId=userId
+           };
+
+           var response = ServiceRequestClient.PostRquest(ServicesEnum.queryUserInfo, request.FormatRequest<QueryUserInfoRequest>());
+           if (response == null)
+               return null;
+           var data = response.ToEntity<VerifyOtherLoginResponseDTO>();
+           if (data.responseData == null)
+               return new UserDTO();
+
+           return data.responseData;
+       }
+
+       /// <summary>
        /// 收货地址列表
        /// </summary>
        /// <param name="userId"></param>

@@ -16,4 +16,29 @@
 .redColor {
     color:red;
     background-color:red !important;
-}
+}
+
+
+.orderSub {
+    float: right;
+    display: block;
+    width: 30%;
+    height: 100%;
+    background: #B70000;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+
+.orderDel {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../images/del.png) no-repeat center left;
+    background-size: contain;
+    position: absolute;
+    right: 0px;
+    top: 0.4rem;
+}

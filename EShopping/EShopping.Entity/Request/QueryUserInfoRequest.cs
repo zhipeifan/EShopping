@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace EShopping.Entity.Request
 {
-    /// <summary>
-    /// VIP等级规则
-    /// </summary>
-   public class QueryLevelConfigRequest
+    public class QueryUserInfoRequest
     {
-       public int userId { get; set; }
+        public int userId { get; set; }
     }
 }
