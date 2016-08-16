@@ -199,9 +199,33 @@ namespace EShopping.WXUI.Controllers
         /// 积分兑换
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public ActionResult Integral()
         {
-            return View();
+            var user = LoginService.LoadUserInfo(UserId);
+
+            IntegralUIDTO ieg = new IntegralUIDTO();
+            if(user!=null)
+            {
+                ieg.Integral = user.Integral;
+                ieg.UseIntegral = user.Integral;
+            }
+            return View(ieg);
+        }
+
+         [HttpPost]
+        public ActionResult Integral(IntegralUIDTO dto)
+        {
+            if (dto.UseIntegral > dto.Integral)
+                return View("Integral",dto);
+             if(dto.UseIntegral<1)
+             {
+                 return View("Integral", dto);
+             }
+
+            LoginService.ExchangeIntegral(UserId,dto.UseIntegral);
+
+            return RedirectToAction("Index");
         }
 	}
 }

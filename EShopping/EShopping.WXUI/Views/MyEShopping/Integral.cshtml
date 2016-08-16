@@ -1,19 +1,31 @@
-﻿ 
-            <header id="header" class="shopcar-top">
-                <a class="backs" href="javascript:;" title="返回"></a>
-                <h2>积分兑换</h2>
-            </header>
-            <section id="page-content" class="shopcar-content">
-                <div class="integral">
-                    <span>当前积分</span>
-                    <h4>40000</h4>
-                    <span>1000积分=1易购币</span>
-                </div>
-                <div class="inte_input">
-                    <label><span>最高可兑换</span><input type="text" placeholder="3000" /><span>积分</span></label>
-                </div>
-                <div class="lr-pad intebgfff">
-                    <input class="inteSub" type="submit" value="兑换" />
-                </div>
-            </section>
-           
+﻿@using EShopping.Entity.UIDTO
+
+@model IntegralUIDTO
+
+
+@using (Html.BeginForm("Integral", "MyEShopping"))
+{
+    <header id="header" class="shopcar-top">
+        <a class="backs" href="javascript:;" title="返回"></a>
+        <h2>积分兑换</h2>
+    </header>
+    <section id="page-content" class="shopcar-content">
+        <div class="integral">
+            <span>当前积分</span>
+            <h4>@Model.Integral</h4>
+            <span>1000积分=1易购币</span>
+        </div>
+        <div class="inte_input">
+            <label><span>最高可兑换</span>@Html.TextBoxFor(c => c.UseIntegral, new { placeholder = @Model.UseIntegral })<span>积分</span></label>
+        </div>
+        <div class="lr-pad intebgfff">
+            @if (Model.Integral > 0)
+            {
+                <input class="inteSub" type="submit" value="兑换" />
+            }
+        </div>
+    </section>
+    
+    @Html.HiddenFor(c=>c.Integral)
+}
+

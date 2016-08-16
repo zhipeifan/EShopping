@@ -120,7 +120,11 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 获取用户信息
         /// </summary>
-        queryUserInfo
+        queryUserInfo,
+        /// <summary>
+        /// 积分兑换
+        /// </summary>
+        exchangeIntegral
 
 
     }

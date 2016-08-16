@@ -3,114 +3,198 @@
 
 @{
     ViewBag.Title = "Detail";
+    Layout = "";
 }
 
 
 @model ProductDTO
 
 
-<div class="container">
-    <header id="header" class="shopcar-top">
-        <a class="backs" href="javascript:;" title="返回"></a>
-        <h2>商品详情</h2>
-        <ul class="prodback">
-            <li class="prodhome"><a href="@Url.Action("Index","Home")" title="首页"></a></li>
-            <li class="prodcar"><a href="javascript:;" title=""></a></li>
-        </ul>
-    </header>
-    <section id="page-content" class="shopcar-content">
-        <div class="swiper-container" id="banner" style="font-size:0px;">
-            <div class="swiper-wrapper">
-                @if (!string.IsNullOrWhiteSpace(Model.coverImg1))
-                {
-                    <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg1" /></a></div>
-                }
-                @if (!string.IsNullOrWhiteSpace(Model.coverImg2))
-                {
-                    <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg2" /></a></div>
-                }
-                @if (!string.IsNullOrWhiteSpace(Model.coverImg3))
-                {
-                    <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg3" /></a></div>
-                }
-                @if (!string.IsNullOrWhiteSpace(Model.coverImg4))
-                {
-                    <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg4" /></a></div>
-                }
-                @if (!string.IsNullOrWhiteSpace(Model.coverImg5))
-                {
-                    <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg5" /></a></div>
-                }
-            </div>
-            <!-- 分页器 -->
-            <div class="swiper-pagination"></div>
-        </div>
-        <div class="prodpagehead">
-            <div class="ppagetitle">
-                <h4>@Model.productName</h4>
-                <a href="javascript:;" title="分享">分享</a>
-            </div>
-            <div class="ppagenum">
-                <p>期号：@Model.licensingCode</p>
-         
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>易购SHOPPING</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+    <link rel="stylesheet" href="/css/master.css" />
+    <link rel="stylesheet" href="/css/swiper.min.css" />
+    <link rel="stylesheet" href="/css/esshopping.css" />
+    <link rel="stylesheet" href="/css/me.css" />
+    <link rel="stylesheet" href="/css/btn.css" />
 
-                <p class="line" style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"><em></em></p>
-                <p class="nums"><span>总需@(Model.productLimit)</span><span>剩余<i>@((Model.productLimit - Model.spellbuyCount) < 0 ? 0 : Model.productLimit - Model.spellbuyCount)</i></span></p>
-            </div>
-        </div>
-        <div class="prodpagelist">
-            <div class="prodtab">
-                @if (Model.winnerUserBuyCount > 0)
-                {
-                     <a href="javascript:;" title="">您当前参与购买 @Model.winnerUserBuyCount 份</a>
-                }
-                else
-                {
-                    <a href="javascript:;" title="">您没有参与本期夺宝哦，赶快试试吧</a>
-                }
-            </div>
-            <div class="pitem">
-                <div class="pitem-list">
-                    <h4 class="tuwen">图文详情</h4>
-                </div>
-            </div>
-            <div class="pitem">
-                <div class="pitem-list">
-                    <h4 class="wangqi">往期揭晓</h4>
-                </div>
-            </div>
-            <div class="pitem">
-                <div class="pitem-list">
-                    <h4 class="shaidan">商品晒单</h4>
-                </div>
-            </div>
-        </div>
-        <div class="partlog">
-            <h4>全部参与记录</h4>
-            <div class="loglist">
-                @if (ViewBag.AttendUsers != null)
-                {
-                    var attendUses = (List<AttendUserDTO>)ViewBag.AttendUsers;
-                    foreach (var item in attendUses)
-                    {
-                        <div class="loglist-item">
-                            <a class="log-user-img" href="javascript:;" title=""><img width="100%" src="images/photo.jpg" /></a>
-                            <ul class="log-user-name">
-                                <li class="name"><span>@item.userName</span>（IP:@item.ipAddress）</li>
-                                <li class="lognum"><span class="col">参与<span>@item.buyCount</span>次</span> @item.buyTime.ToString("yyyy-MM-dd HH:mm:ss")</li>
-                            </ul>
-                        </div>
+    <script src="@Url.Content("~/js/libs/jquery-1.11.1.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/libs/swiper.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/libs/html5shiv.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/page.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js")"></script>
+
+    <script type="text/javascript">
+
+        var addurl = "@Url.Action("AddProductToCar", "Home")";
+        var shppoingUrl = "@Url.Action("AddProductNum", "ShoppingCar")";
+
+        $(function () {
+            $.each($('#prodPageList').find('.pitem .pitem-list'), function (i, ele) {
+                $(ele).on('click', function () {
+                    if ($(ele).next('.lr-pad').hasClass('show')) {
+                        $(ele).find('h4').addClass('curr')
+                        $(ele).next('.lr-pad').removeClass('show').addClass('hide');
+                    } else {
+                        $(ele).find('h4').removeClass('curr')
+                        $(ele).next('.lr-pad').removeClass('hide').addClass('show');
                     }
-                }
-            </div>
-        </div>
-        <div >
-            <p class="carry">最新一期正在进行</p>
-            <a class="sub" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>
-        </div>
-    </section>
 
-   
+                })
+            });
+
+        });
+    </script>
+
+
+    @{
+
+        int selectEnum = (int)ViewBag.SelectEnum;
+        int count = (int)ViewBag.ShoppingCarCount;
+    }
+
+</head>
+<body>
+    <div id="wrapper">
+        <div class="container">
+            <header id="header" class="shopcar-top">
+                <a class="backs" href="javascript:;" title="返回"></a>
+                <h2>商品详情</h2>
+                <ul class="prodback">
+                    <li class="prodhome"><a href="@Url.Action("Index","Home")" title="首页"></a></li>
+                    <li class="prodcar"><a href="javascript:;" title=""></a></li>
+                </ul>
+            </header>
+            <section id="page-content" class="shopcar-content">
+                <div class="swiper-container" id="banner" style="font-size:0px;">
+                    <div class="swiper-wrapper">
+                        @if (!string.IsNullOrWhiteSpace(Model.coverImg1))
+                        {
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg1" /></a></div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.coverImg2))
+                        {
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg2" /></a></div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.coverImg3))
+                        {
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg3" /></a></div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.coverImg4))
+                        {
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg4" /></a></div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.coverImg5))
+                        {
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg5" /></a></div>
+                        }
+                    </div>
+                    <!-- 分页器 -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="prodpagehead">
+                    <div class="ppagetitle">
+                        <h4>@Model.productName</h4>
+                        <a href="javascript:;" title="分享">分享</a>
+                    </div>
+                    <div class="ppagenum">
+                        <p>期号：@Model.licensingCode</p>
+
+
+                        <p class="line" style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"><em></em></p>
+                        <p class="nums"><span>总需@(Model.productLimit)</span><span>剩余<i>@((Model.productLimit - Model.spellbuyCount) < 0 ? 0 : Model.productLimit - Model.spellbuyCount)</i></span></p>
+                    </div>
+                </div>
+                <div class="prodpagelist" id="prodPageList">
+                    <div class="prodtab">
+                        @if (Model.winnerUserBuyCount > 0)
+                        {
+                            <a href="javascript:;" title="">您当前参与购买 @Model.winnerUserBuyCount 份</a>
+                        }
+                        else
+                        {
+                            <a href="javascript:;" title="">您没有参与本期夺宝哦，赶快试试吧</a>
+                        }
+                    </div>
+                    <div class="pitem">
+                        <div class="pitem-list">
+                            <h4 class="tuwen">图文详情</h4>
+                        </div>
+                        <div class="lr-pad show">
+                            <div class="pitem_inner">
+                                @if (!string.IsNullOrEmpty(Model.detailImg))
+                                {
+                                    <img src="@Model.detailImg" width="100%" />
+                                }
+                                <p>@Model.productDetail</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="pitem">
+                        <div class="pitem-list">
+                            <h4 class="wangqi">往期揭晓</h4>
+                        </div>
+                        <div class="lr-pad hide">
+                            <div class="pitem_inner">
+                                <img src="images/act_img.png" width="100%" />
+                                <p>同时，中方正在采取措施妥善管控有关海域的事态。我们强烈希望日方恪守双方有关原则共识精神，冷静看待目前事态，不要采取任何可能导致局势紧张和复杂化的行动，共同为有关海域的稳定作出建设性努力。</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="pitem">
+                        <div class="pitem-list">
+                            <h4 class="shaidan">商品晒单</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="partlog">
+                    <h4>全部参与记录</h4>
+                    <div class="loglist">
+                        @if (ViewBag.AttendUsers != null)
+                        {
+                            var attendUses = (List<AttendUserDTO>)ViewBag.AttendUsers;
+                            foreach (var item in attendUses)
+                            {
+                                <div class="loglist-item">
+                                    <a class="log-user-img" href="javascript:;" title=""><img width="100%" src="images/photo.jpg" /></a>
+                                    <ul class="log-user-name">
+                                        <li class="name"><span>@item.userName</span>（IP:@item.ipAddress）</li>
+                                        <li class="lognum"><span class="col">参与<span>@item.buyCount</span>次</span> @item.buyTime.ConvertToPublicDateFormat()</li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </section>
+
+            <footer id="footer">
+                <div>
+                    <p class="carry">最新一期正在进行</p>
+                    <a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>
+                </div>
+                <ul>
+                    <li class="@(selectEnum == 1 ? "curr" : "")"><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>
+                    <li class="@(selectEnum == 2 ? "curr" : "")"><a href="@Url.Action("List", "Product")" title="">全部商品</a></li>
+                    <li class="@(selectEnum == 3 ? "curr" : "")"><a href="@Url.Action("List", "NewPublic")" title=" ">最新揭晓</a></li>
+                    <li class="@(selectEnum == 4 ? "curr" : "")"><a href="@Url.Action("ShoppingList", "ShoppingCar")" title="">购物车</a><i id="carCount">@count</i></li>
+                    <li class="@(selectEnum == 5 ? "curr" : "")"><a href="@Url.Action("Index", "MyEShopping")" title="">我的易购</a></li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
 
 
 

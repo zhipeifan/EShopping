@@ -284,7 +284,7 @@ namespace EShopping.WXUI.Controllers
                 userId = 14,
                 userName ="test1",
                 faceImg = "http://c.hiphotos.baidu.com/image/h%3D300/sign=9fbf2f521838534393cf8121a312b01f/e1fe9925bc315c609e3db7d185b1cb1349547760.jpg",
-                 weixinOpenId="888888"
+                 weixinOpenId="666666"
             };
 
              userinfo = LoginService.LoginUser(userinfo);

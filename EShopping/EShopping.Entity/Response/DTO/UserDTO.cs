@@ -53,6 +53,9 @@ namespace EShopping.Entity.Response.DTO
 
         public decimal CurrentWalletOfAll { get; set; }
 
+        /// <summary>
+        /// 个人可用积分
+        /// </summary>
         public int Integral{get;set;}
 
         public decimal money { get; set; }

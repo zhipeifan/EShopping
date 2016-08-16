@@ -541,5 +541,49 @@ ul.rob li.curr a{
 	width:30%;
 	color:#B70000;
 	border-left:1px solid #ccc;
+}
+/*
+ * 弹窗 pop
+ */
+#mark{
+	display:none;
+	position:fixed; top:0px; left:0px;
+	width:100%;height:100%;
+	background:rgba(20,20,20,0.5);
+}
+#pop{
+	width:80%; margin:0 auto;
+	background:#fff;
+	border-radius:6px;-webkit-border:6px; -moz-border-radius:6px;
+
+}
+.pop_inner{
+	padding:10px;
+}
+ul.pop_Btn{
+	width:100%;
+	overflow:hidden;
+	border-top:1px solid #ddd;
+}
+ul.pop_Btn li{
+	float:left;
+	width:50%;
+	height:40px;
+}
+ul.pop_Btn li:first-child{
+	border-right:1px solid #ddd;
 	
+}
+ul.pop_Btn a{
+	display:block;
+	width:100%; height:100%; line-height:40px;
+	text-align:center;
+	color:#B70000;
+}
+a.shut{
+	border-top:1px solid #ddd;
+	display:block;
+	width:100%; line-height:40px;
+	text-align:center;
+	color:#B70000;
 }

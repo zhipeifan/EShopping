@@ -19,7 +19,7 @@ namespace EShopping.Entity.Response.DTO
 
         public long createTime{get;set;}
 
-        public long lastUpdateTime{get;set;}
+        public DateTime lastUpdateTime{get;set;}
 
         public long startTime{get;set;}
 

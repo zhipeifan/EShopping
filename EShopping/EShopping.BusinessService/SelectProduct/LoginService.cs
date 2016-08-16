@@ -207,7 +207,6 @@ namespace EShopping.BusinessService.SelectProduct
        {
            QueryLevelConfigRequest request = new QueryLevelConfigRequest() { userId = userId };
 
-           string ss = JsonConvert.SerializeObject(new QueryLevelConfigResponse() {  responseData=new PrivateLevelConfigDTO()});
            var response = ServiceRequestClient.PostRquest(ServicesEnum.queryLevelConfig, request.FormatRequest<QueryLevelConfigRequest>());
            if (string.IsNullOrEmpty(response))
                return null;
@@ -216,6 +215,23 @@ namespace EShopping.BusinessService.SelectProduct
                return null;
            return data.responseData;
        }
+
+       /// <summary>
+       /// 积分兑换
+       /// </summary>
+       /// <param name="userId"></param>
+       /// <param name="integralCount"></param>
+       public static void ExchangeIntegral(int userId,int integralCount)
+       {
+           ExchangeIntegralRequest request = new ExchangeIntegralRequest
+           {
+               exchangeIntegral = integralCount,
+               exchangeMoney = integralCount / 1000,
+               userId = userId
+           };
+           ServiceRequestClient.PostRquest(ServicesEnum.exchangeIntegral, request.FormatRequest<ExchangeIntegralRequest>());
+       }
+
 
     }
 }
