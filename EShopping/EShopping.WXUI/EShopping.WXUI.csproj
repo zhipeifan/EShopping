@@ -269,6 +269,14 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Test\css\demo.gif" />
+    <Content Include="Views\Test\css\fonts\icomoon.svg" />
+    <Content Include="Views\Test\css\localResize.css" />
+    <Content Include="Views\Test\css\style.css" />
+    <Content Include="Views\Test\demo.html" />
+    <Content Include="Views\Test\jpeg_encoder.js" />
+    <Content Include="Views\Test\jquery.js" />
+    <Content Include="Views\Test\localUI.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -278,6 +286,7 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MyEShoppingController.cs" />
     <Compile Include="Controllers\NewPublicController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -286,6 +295,7 @@
     <Compile Include="Controllers\ShoppingCarController.cs" />
     <Compile Include="Controllers\SayController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,6 +341,9 @@
     <Content Include="Views\MyEShopping\CreateShareProduct.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\MyEShopping\Integral.cshtml" />
+    <Content Include="Views\Test\css\fonts\icomoon.eot" />
+    <Content Include="Views\Test\css\fonts\icomoon.ttf" />
+    <Content Include="Views\Test\css\fonts\icomoon.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -342,6 +355,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="dll\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\UserInfo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EShopping.BusinessService\EShopping.BusinessService.csproj">

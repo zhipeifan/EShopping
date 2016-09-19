@@ -10,11 +10,19 @@
                 <div class="share_list">
                     <div class="share_title">
                         <div class="share_padd">
-                            <a class="sh_photo" href="javascript:;" title=""><img src="@Model.FaceImg" /></a>
+                            <a class="sh_photo" href="javascript:;" title="">
+                            @if (string.IsNullOrEmpty(Model.FaceImg))
+                            {   <img src="~/Images/nav-mi.png" />
+                            }
+                            else { 
+                            <img src="@Model.FaceImg" />
+                            }
+                            
+                            </a>
                             <ul class="sh_tit_inner">
                                 <li class="namecol"><a href="javascript:;" style="color:#333; font-size:1.2rem;">@Model.shareTitle</a></li>
                             </ul>
-                            @*<p class="info">Apple iPhone6s plus 16G颜色随机</p>*@
+                            <p class="info">Apple iPhone6s plus 16G颜色随机</p>
                         </div>
                     </div>
                     <div class="share_mes">

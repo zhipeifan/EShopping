@@ -17,28 +17,36 @@ namespace EShopping.Common
 
         public static void DebugInfo(string content)
         {
-            Error("Error", content);
+            Error("Debug", content);
         }
 
         public static void Error(string MName,string request)
         {
           //  HttpContext.Current.Request
-            var basepath = System.AppDomain.CurrentDomain.BaseDirectory;
+            var basepath = System.AppDomain.CurrentDomain.BaseDirectory+"WebDebugInfo\\";
             string dataStr = DateTime.Now.ToString("yyyyMMdd");
             string path = basepath + "Error_" + dataStr+"_"+MName+".txt";
+            if (!Directory.Exists(basepath))
+                Directory.CreateDirectory(basepath);
+
             if (!File.Exists(path))
                 File.Create(path);
 
-
-            using(var writer=File.AppendText(path))
-            {
-                writer.WriteLine(MName + "-----------------Error Start-----------------");
-                writer.WriteLine("Request : ");
-                writer.WriteLine(request);
-                writer.WriteLine("Response Exception : ");
-                writer.WriteLine();
-                writer.WriteLine(MName + "-----------------Error   End-----------------");
-            }
+            FileStream fs = new FileStream(path, FileMode.Append);
+            StreamWriter writer = new StreamWriter(fs);
+            //开始写入
+            writer.WriteLine(DateTime.Now.ToString()+" --Error Start----------------");
+            writer.WriteLine("Request : ");
+            writer.WriteLine(request);
+            writer.WriteLine("Response Exception : ");
+            writer.WriteLine();
+            writer.WriteLine(MName + "-----------------Error   End-----------------");
+            writer.WriteLine("");
+            //清空缓冲区
+            writer.Flush();
+            //关闭流
+            writer.Close();
+            fs.Close();
 
             //string path = "";
         }

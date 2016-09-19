@@ -10,6 +10,7 @@ namespace EShopping.Entity.UIDTO
     {
         public int shareInfoId { get; set; }
 
+        public string UserName { get; set; }
         public string FaceImg { get; set; }
 
         /// <summary>

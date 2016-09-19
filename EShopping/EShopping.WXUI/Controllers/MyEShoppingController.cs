@@ -1,5 +1,6 @@
 ﻿using EShopping.BusinessService.SelectProduct;
 using EShopping.BusinessService.ShoppingCar;
+using EShopping.Common;
 using EShopping.Entity.Response.DTO;
 using EShopping.Entity.UIDTO;
 using EShopping.Entity.UIDTO.Enum;
@@ -18,6 +19,7 @@ namespace EShopping.WXUI.Controllers
         public ActionResult Index()
         {
             UserDTO user=LoadUserInfo();
+            ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(user));
             var levelConfig = LoginService.QueryPrivateLevelConfig(UserId);
             if(levelConfig!=null)
             {
@@ -164,6 +166,9 @@ namespace EShopping.WXUI.Controllers
             ShareProductDTO dto = new ShareProductDTO();
 
             var product = ProductService.LoadProductDetail(id,spellbuyId,UserId);
+
+            dto.FaceImg = UserInfo.faceImg;
+            dto.UserName = UserInfo.userName;
 
             if(product!=null)
             {
