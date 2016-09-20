@@ -390,6 +390,7 @@
     <Content Include="Views\Test\css\fonts\icomoon.eot" />
     <Content Include="Views\Test\css\fonts\icomoon.ttf" />
     <Content Include="Views\Test\css\fonts\icomoon.woff" />
+    <Content Include="Views\Product\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

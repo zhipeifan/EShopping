@@ -38,7 +38,7 @@ $(function(){
 				if(iRemain<0){
 					clearInterval(timer);
 					iRemain=0;
-					alert('时间已过');
+				//	alert('时间已过');
 				};
 				iDay=parseInt(iRemain/86400);
 				iRemain%=86400;

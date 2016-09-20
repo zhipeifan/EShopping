@@ -1,6 +1,7 @@
 ﻿using EShopping.BusinessService.SelectProduct;
 using EShopping.BusinessService.ShoppingCar;
 using EShopping.Common;
+using EShopping.Common.Enums;
 using EShopping.Entity.Response.DTO;
 using EShopping.Entity.UIDTO;
 using EShopping.Entity.UIDTO.Enum;
@@ -14,6 +15,11 @@ namespace EShopping.WXUI.Controllers
 {
     public class MyEShoppingController : BaseController
     {
+
+        public MyEShoppingController()
+        {
+            ViewBag.SelectEnum = (int)FloolterMenu.Index;
+        }
         //
         // GET: /MyEShopping/
         public ActionResult Index()

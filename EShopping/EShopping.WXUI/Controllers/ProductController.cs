@@ -85,5 +85,10 @@ namespace EShopping.WXUI.Controllers
 
              return RedirectToAction("ShoppingList", "ShoppingCar");
         }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
 	}
 }

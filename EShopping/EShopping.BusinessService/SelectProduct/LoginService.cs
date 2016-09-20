@@ -132,7 +132,7 @@ namespace EShopping.BusinessService.SelectProduct
        public static bool AddSign(int userId)
        {
            var SignConfig = LoadSigHistoryList(userId);
-           if (SignConfig == null)
+           if (SignConfig == null || SignConfig.days == 0)
                return false;
 
 

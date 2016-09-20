@@ -9,7 +9,11 @@ namespace EShopping.Common
 {
     public static class ApplicationLog
     {
-
+        public static void RequestMsg(string title, string content)
+        {
+            Error("RequestMsg", title, content);
+        }
+        
         public static void Error(string title, string content)
         {
             Error("Error",title,content);

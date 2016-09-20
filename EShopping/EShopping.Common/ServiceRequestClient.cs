@@ -36,6 +36,8 @@ namespace EShopping.Common
                 // request.Proxy = null;
                 // request.CookieContainer = cookieContainer;
 
+                ApplicationLog.RequestMsg(name.ToString(),requestContent);
+
                 if (!string.IsNullOrEmpty(requestContent))
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(requestContent);
@@ -48,7 +50,9 @@ namespace EShopping.Common
                 if (response != null && response.StatusCode == HttpStatusCode.OK)
                 {
                     var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("utf-8"));
-                    return stream.ReadToEnd();
+                    var resp= stream.ReadToEnd();
+                    ApplicationLog.RequestMsg(name.ToString(), resp);
+                    return resp;
 
                 }
 

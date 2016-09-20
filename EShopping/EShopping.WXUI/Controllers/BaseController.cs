@@ -271,13 +271,13 @@ namespace EShopping.WXUI.Controllers
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
                 (
                 1,
-                userinfo.userId.ToString(),
+                usre.userId.ToString(),
                 DateTime.Now,
                 DateTime.Now.AddMonths(1),
                 false,
                 _userInfo
                 );
-            FormsAuthentication.SetAuthCookie(userinfo.userId.ToString(),true,FormsAuthentication.FormsCookiePath);
+            FormsAuthentication.SetAuthCookie(usre.userId.ToString(), true, FormsAuthentication.FormsCookiePath);
             string enyTicket = FormsAuthentication.Encrypt(ticket);
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, enyTicket);
             cookie.HttpOnly = true;

@@ -98,18 +98,19 @@ namespace EShopping.Common
                 dtDateTime = dtDateTime.AddMilliseconds(unixTimeStamp).ToLocalTime();
             }
 
-           var diffDate = dtDateTime - DateTime.Now;
+           //var diffDate = dtDateTime - DateTime.Now;
+            var diffDate = dtDateTime;
 
             switch (type)
             {
                 case ConvertDateTypeEnum.Hour:
-                    return diffDate.Hours;
+                    return diffDate.Hour;
                     break;
                 case ConvertDateTypeEnum.Minutes:
-                    return diffDate.Minutes;
+                    return diffDate.Minute;
                     break;
                 case ConvertDateTypeEnum.Second:
-                    return diffDate.Seconds;
+                    return diffDate.Second;
                     break;
                 default:
                     return 0;
