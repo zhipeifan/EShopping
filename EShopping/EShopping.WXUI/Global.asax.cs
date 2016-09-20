@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EShopping.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,13 @@ namespace EShopping.WXUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            ApplicationLog.Error("system error", Server.GetLastError()
+                                      .GetBaseException().Message);
+
         }
     }
 }

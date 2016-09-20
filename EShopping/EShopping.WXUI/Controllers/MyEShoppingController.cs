@@ -18,8 +18,12 @@ namespace EShopping.WXUI.Controllers
         // GET: /MyEShopping/
         public ActionResult Index()
         {
+            if(!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("WeChatLogin","Base");
+            }
             UserDTO user=LoadUserInfo();
-            ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(user));
+            ApplicationLog.DebugInfo("回调结束",Newtonsoft.Json.JsonConvert.SerializeObject(user));
             var levelConfig = LoginService.QueryPrivateLevelConfig(UserId);
             if(levelConfig!=null)
             {

@@ -10,17 +10,27 @@ namespace EShopping.Common
     public static class ApplicationLog
     {
 
+        public static void Error(string title, string content)
+        {
+            Error("Error",title,content);
+        }
+
         public static void Error(string content)
         {
-            Error("Error",content);
+            Error("Error", "",content);
+        }
+
+        public static void DebugInfo(string title,string content)
+        {
+            Error("Debug",title, content);
         }
 
         public static void DebugInfo(string content)
         {
-            Error("Debug", content);
+            Error("Debug","", content);
         }
 
-        public static void Error(string MName,string request)
+        public static void Error(string MName,string title,string request)
         {
           //  HttpContext.Current.Request
             var basepath = System.AppDomain.CurrentDomain.BaseDirectory+"WebDebugInfo\\";
@@ -30,15 +40,15 @@ namespace EShopping.Common
                 Directory.CreateDirectory(basepath);
 
             if (!File.Exists(path))
-                File.Create(path);
+                File.Create(path).Close();
 
             FileStream fs = new FileStream(path, FileMode.Append);
             StreamWriter writer = new StreamWriter(fs);
             //开始写入
             writer.WriteLine(DateTime.Now.ToString()+" --Error Start----------------");
-            writer.WriteLine("Request : ");
+            writer.WriteLine("Title : " + title);
             writer.WriteLine(request);
-            writer.WriteLine("Response Exception : ");
+            writer.WriteLine("Exception : ");
             writer.WriteLine();
             writer.WriteLine(MName + "-----------------Error   End-----------------");
             writer.WriteLine("");
