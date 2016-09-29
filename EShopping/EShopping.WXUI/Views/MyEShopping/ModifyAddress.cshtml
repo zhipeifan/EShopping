@@ -2,6 +2,11 @@
 
 @model AddressDTO
 
+<script type="text/javascript">
+
+        var addressUrl="@Url.Action("GetProvinceOrCity", "MyEShopping")";
+</script>
+
 
 @Html.BeginForm("ModifyAddress", "MyEShopping", FormMethod.Post)
 {
@@ -30,9 +35,15 @@
                 @Html.TextBoxFor(c => c.phone, new { placeholder = "手机号" })
             </div>
         </div>
+       
         <div class="newadd">
             <div class="lr-pad">
-                <p class="province">省、市、区</p>
+                @Html.TextBoxFor(c => c.province, new {@class = "province" , placeholder = "省份" })
+            </div>
+        </div>
+        <div class="newadd">
+            <div class="lr-pad">
+                @Html.TextBoxFor(c => c.city, new { @class = "province" , placeholder = "城市" })
             </div>
         </div>
         <div class="newadd">
@@ -44,4 +55,105 @@
             <input id="subAdd" class="subAdd" type="submit" value="保存" />
         </div>
     </div>
+
+    <div id="mark_pop" class="mark_pop">
+        <div class="pop_inner">
+            <div class="pop_header">
+                <h4>请选择一个城市</h4>
+                <a class="pop_closer" href="javascript:;" title="">X</a>
+            </div>
+            <div class="pop_content">
+                <div class="citys_list">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            //省份
+            $('#province').on('click', function () {
+                $(".pop_header h4").html("请选择一个省份");
+                var data = {
+                    type: "",
+                    provinceName:""
+                };
+
+                $.ajax({
+                    type: "post",
+                    url: addressUrl,
+                    data: data,
+                    dataType: "json",
+                    success: function (response) {
+                        $(".citys_list ul li").remove();
+                        $(response).each(function (index, item) {
+                            $("<li onclick='provinceSelect(this)'>" + item.provinceName + "</li>").appendTo($(".citys_list ul"));
+                        });
+                      //  $(obj).parents(".item-inner").find("#carCount").val(num);
+                    }
+                });
+                $("#mark_pop").show();
+            });
+
+            //城市
+            $('#city').on('click', function () {
+
+                $(".pop_header h4").html("请选择一个城市");
+                var province = $("#province").val();
+                if (province == "")
+                {
+                    alert("请选择省份");
+                    return false;
+                }
+
+                var data = {
+                    type: "city",
+                    provinceName: province
+                };
+
+                $.ajax({
+                    type: "post",
+                    url: addressUrl,
+                    data: data,
+                    dataType: "json",
+                    success: function (response) {
+
+                        $(".citys_list ul li").remove();
+                        $(response[0].cityVOs).each(function (index, item) {
+                            $("<li onclick='citySelect(this)'>" + item.cityName + "</li>").appendTo($(".citys_list ul"));
+                        });
+                        //  $(obj).parents(".item-inner").find("#carCount").val(num);
+                    }
+                });
+                $("#mark_pop").show();
+            });
+
+            $('a.pop_closer').on('click', function () {
+                $("#mark_pop").hide();
+            });
+        });
+        $.pageErr({
+            show: function () {
+               
+            }
+        });
+        $.pageErr.show();
+
+
+        function provinceSelect(obj)
+        {
+            $('#province').val('').val($(obj).html());
+            $("#mark_pop").hide();
+        }
+
+        function citySelect(obj) {
+            $('#city').val('').val($(obj).html());
+            $("#mark_pop").hide();
+        }
+
+    </script>
+
 </section>

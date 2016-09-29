@@ -90,7 +90,9 @@
     <Content Include="css\btn.css" />
     <Content Include="css\esshopping.css" />
     <Content Include="css\master.css" />
+    <Content Include="css\me.css" />
     <Content Include="css\media.css" />
+    <Content Include="css\selectCss.css" />
     <Content Include="css\swiper.min.css" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace EShopping.WXUI.Controllers
 {
-    public class TestController : Controller
+    public class TestController : BaseController
     {
         //
         // GET: /Test/

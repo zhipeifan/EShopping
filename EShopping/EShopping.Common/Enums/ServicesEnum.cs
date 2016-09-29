@@ -124,7 +124,11 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 积分兑换
         /// </summary>
-        exchangeIntegral
+        exchangeIntegral,
+        /// <summary>
+        /// 行政区域
+        /// </summary>
+        queryRegion
 
 
     }

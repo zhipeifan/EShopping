@@ -54,6 +54,7 @@
     <Compile Include="Request\QueryProductListByTypeRequest.cs" />
     <Compile Include="Request\QueryProductTypeRequest.cs" />
     <Compile Include="Request\QueryPublishingListRequest.cs" />
+    <Compile Include="Request\QueryRegionRequest.cs" />
     <Compile Include="Request\QueryShareInfoListRequest.cs" />
     <Compile Include="Request\QueryShoppingCartListReuqest.cs" />
     <Compile Include="Request\QuerySignConfigRequest.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Response\DTO\ProductDTO.cs" />
     <Compile Include="Response\DTO\ProductTypeDTO.cs" />
     <Compile Include="Response\DTO\ProductVOs.cs" />
+    <Compile Include="Response\DTO\ProvinceCityDTO.cs" />
     <Compile Include="Response\DTO\SignHistoryDTO.cs" />
     <Compile Include="Response\DTO\WalletDTO.cs" />
     <Compile Include="Response\DTO\WinnerProductDTO.cs" />

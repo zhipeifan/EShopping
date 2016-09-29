@@ -188,5 +188,7 @@ namespace EShopping.BusinessService.SelectProduct
 
            ServiceRequestClient.PostRquest(ServicesEnum.sendUpCount, request.ReplcaceRequest<SendUpCountRequest>());
        }
+
+       //public 
     }
 }

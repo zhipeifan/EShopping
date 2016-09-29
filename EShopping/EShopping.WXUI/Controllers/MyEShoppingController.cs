@@ -242,5 +242,17 @@ namespace EShopping.WXUI.Controllers
 
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// 获取城市列表
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="provinceName"></param>
+        /// <returns></returns>
+         public JsonResult GetProvinceOrCity(string type, string provinceName)
+         {
+             var data= new LoadLocalDataService().QueryCitys(type, provinceName);
+             return Json(data);
+         }
 	}
 }

@@ -1,0 +1,23 @@
+﻿.content {
+	margin:50px auto 0;
+	width:300px;
+	min-height: 500px;
+}
+
+.form-group {
+	width:100%;
+	float:left;
+	margin:5px 0;
+}
+
+label{
+	margin-bottom:10px;
+	float:left;			
+}
+
+.field-input, select{
+	width:calc(100% - 20px);
+	float:left;
+	padding:10px;
+	font-family:inherit;
+}
