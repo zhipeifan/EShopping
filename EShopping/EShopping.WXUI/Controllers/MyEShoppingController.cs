@@ -254,5 +254,41 @@ namespace EShopping.WXUI.Controllers
              var data= new LoadLocalDataService().QueryCitys(type, provinceName);
              return Json(data);
          }
+
+        public ActionResult MeInfo()
+         {
+             if (!User.Identity.IsAuthenticated)
+             {
+                 return RedirectToAction("WeChatLogin", "Base");
+             }
+             UserDTO user = LoadUserInfo();
+             return View(user);
+         }
+
+        /// <summary>
+        /// 修改头像、名称
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ModifyMe()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("WeChatLogin", "Base");
+            }
+            UserDTO user = LoadUserInfo();
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult SaveMyInfo(UserDTO newUser)
+        {
+            if (string.IsNullOrEmpty(newUser.nickName))
+            {
+
+            }
+            // if(Request.Form["hidFaceImg"].)
+            UserDTO user = LoadUserInfo();
+            return View(user);
+        } 
 	}
 }

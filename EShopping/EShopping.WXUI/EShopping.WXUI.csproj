@@ -89,12 +89,19 @@
     <Content Include="css\base.css" />
     <Content Include="css\btn.css" />
     <Content Include="css\esshopping.css" />
+    <Content Include="css\loadImg\demo.gif" />
+    <Content Include="css\loadImg\fonts\icomoon.svg" />
+    <Content Include="css\loadImg\localResize.css" />
+    <Content Include="css\loadImg\style.css" />
     <Content Include="css\master.css" />
     <Content Include="css\me.css" />
     <Content Include="css\media.css" />
     <Content Include="css\selectCss.css" />
     <Content Include="css\swiper.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="css\loadImg\fonts\icomoon.eot" />
+    <Content Include="css\loadImg\fonts\icomoon.ttf" />
+    <Content Include="css\loadImg\fonts\icomoon.woff" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\activ_bg.png" />
@@ -205,6 +212,8 @@
     <Content Include="Images\weixin_icon.jpg" />
     <Content Include="Images\winnerimg.png" />
     <Content Include="Images\zhan.png" />
+    <Content Include="js\BussinesJs\jpeg_encoder.js" />
+    <Content Include="js\BussinesJs\localUI.js" />
     <Content Include="js\BussinesJs\shoppingCar.js" />
     <Content Include="js\BussinesJs\ShoppingOrder.js" />
     <Content Include="js\Calendar\cupertino\images\animated-overlay.gif" />
@@ -393,6 +402,8 @@
     <Content Include="Views\Test\css\fonts\icomoon.ttf" />
     <Content Include="Views\Test\css\fonts\icomoon.woff" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\MyEShopping\MeInfo.cshtml" />
+    <Content Include="Views\MyEShopping\ModifyMe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

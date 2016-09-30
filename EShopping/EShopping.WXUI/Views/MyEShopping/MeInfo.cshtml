@@ -1,0 +1,29 @@
+﻿
+
+@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model UserDTO
+
+
+
+        <div class="container">
+            <header id="header" class="shopcar-top">
+                <a class="backs" href="javascript:;" title="返回"></a>
+                <h2>个人信息</h2>
+            </header>
+            <section id="meInfo" class="pad70">
+                <div class="me_list">
+                    <ul>
+                        <li class="me_photo">
+                            <span>修改头像</span>
+                            <a class="aphoto" href="javascript:;" title=""><img src="@Model.faceImg" /></a>
+                        </li>
+                        <li class="me_name">
+                            <span>修改名称</span>
+                            <a href="javascript:;" title="">@Model.nickName</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+           

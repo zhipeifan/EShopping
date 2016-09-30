@@ -1,0 +1,71 @@
+﻿@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model UserDTO
+
+
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/loadImg/style.css")">
+<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/localUI.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/jpeg_encoder.js")"></script>
+@Html.BeginForm("SaveMyInfo", "MyEShopping", FormMethod.Post)
+{
+<div class="container">
+    <header id="header" class="shopcar-top">
+        <a class="backs" href="javascript:;" title="返回"></a>
+        <h2>修改头像</h2>
+    </header>
+    <section id="page-content" class="shopcar-content">
+        <div class="mod_photo">
+            <div class="main_photo">
+                <a href="javascript:;" title=""><img width="100%" src="@Model.faceImg" id="faceImg" /></a>
+                <input type="hidden" id="hidfaceImg" name="hidFaceImg" />
+                <p>
+                    @*@Html.TextBoxFor(c => Model.nickName, new { placeholder = "请输出昵称" })*@
+                </p>
+            </div>
+        </div>
+        <div class="me_photo_list">
+            <div class="lr-pad">
+                <ul>
+                    <li class="curr"><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
+
+                    <li>
+
+                        <div class="left">
+                            <div class="pull-left"></div>
+                            <img id='img' alt="">
+                        </div>
+
+                    </li>
+                </ul>
+                <input id="modPhoto" type="submit" value="提交" />
+            </div>
+
+        </div>
+
+        <script>
+            var ok = function (stop, data) {
+                data.original.size = (data.original.size / 1024).toFixed(2);
+                $('#img').attr('src', data.base64);
+                setTimeout(function () { stop(); }, 1000);
+            }
+            var init = new LocalResize($('.pull-left'), { rWidth: 100, quality: 1, success: ok });
+            init.change(function (n) {
+                "function" == typeof this.defaults.change ? this.defaults.change(n) : void 0;
+            }).success(function (n, t) {
+                "function" == typeof this.defaults.success ? this.defaults.success(n, t) : void 0;
+            }).reset = function () {
+                init.UI.reset();
+                "function" == typeof this.defaults.reset && this.defaults.reset();
+            }
+        </script>
+
+
+    </section>
