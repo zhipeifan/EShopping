@@ -37,7 +37,17 @@ namespace EShopping.Common
             return JsonConvert.SerializeObject(request);
         }
 
- 
+        /// <summary>
+        /// 格式化Request
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static string FormatReq<T>(this T entity)
+        {
+            return JsonConvert.SerializeObject(entity);
+        }
+
 
 
         /// <summary>

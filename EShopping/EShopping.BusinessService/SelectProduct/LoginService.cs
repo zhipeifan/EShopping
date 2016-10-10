@@ -243,7 +243,7 @@ namespace EShopping.BusinessService.SelectProduct
                payload = user.ReplcaceRequest<UpdateUserInfoDTO>(),
                token = "f9140196-1de4-400e-ba12-190352d45578"
            };
-           ServiceRequestClient.PostRquest(ServicesEnum.updateUserInfo, request.FormatRequest<UpdateUserInfoRequest>());
+           ServiceRequestClient.PostRquest(ServicesEnum.updateUserInfo, request.FormatReq<UpdateUserInfoRequest>());
        }
 
     }
