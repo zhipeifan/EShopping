@@ -2,12 +2,15 @@
 using EShopping.BusinessService.ShoppingCar;
 using EShopping.Common;
 using EShopping.Common.Enums;
+using EShopping.Entity.Request;
 using EShopping.Entity.Response.DTO;
 using EShopping.Entity.UIDTO;
 using EShopping.Entity.UIDTO.Enum;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -186,6 +189,32 @@ namespace EShopping.WXUI.Controllers
             }
             return View(dto);
         }
+
+        /// <summary>
+        /// 添加晒单
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SaveShareProduct(ShareProductDTO dto)
+        {
+            if(string.IsNullOrEmpty(dto.shareContent))
+            {
+
+            }
+
+            //ShareProductDTO dto = new ShareProductDTO();
+
+            //var product = ProductService.LoadProductDetail(id, spellbuyId, UserId);
+
+            //dto.FaceImg = UserInfo.faceImg;
+            //dto.UserName = UserInfo.userName;
+
+            //if (product != null)
+            //{
+            //    dto.shareTitle = product.productTitle;
+            //}
+            //return View(dto);
+                return View();
+        }
              
 
         /// <summary>
@@ -284,11 +313,52 @@ namespace EShopping.WXUI.Controllers
         {
             if (string.IsNullOrEmpty(newUser.nickName))
             {
-
+                ModelState.AddModelError("UserNickName","亲，用户昵称不能为空哦！");
+                return View("ModifyMe",newUser);
             }
+
+            // ModelState.AddModelError
+
             // if(Request.Form["hidFaceImg"].)
             UserDTO user = LoadUserInfo();
-            return View(user);
-        } 
+            user.nickName = newUser.nickName;
+
+            if (!string.IsNullOrEmpty(newUser.NewFaceImg))
+            {
+                Dictionary<string, Stream> streams = new Dictionary<string, Stream>();
+                streams.Add(DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg", newUser.NewFaceImg.StringToStream());
+                string url = ShareService.UploadAttachment(streams);
+                user.faceImg = url;
+            }
+
+
+            UpdateUserInfoDTO updateUserInfo = new UpdateUserInfoDTO()
+            {
+                faceImg = user.faceImg,
+                mobilePhone = user.mobilePhone,
+                nickName = user.nickName,
+                userId = user.userId
+            };
+
+            LoginService.ModifyUserInfo(updateUserInfo);
+
+
+            var newuserinfo = LoginService.LoadUserInfo(updateUserInfo.userId);
+
+            string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(newuserinfo);
+            ReloadCookie(newuserinfo.userId, _userInfo);
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// 错误弹层
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ErrorPage()
+        {
+            return PartialView();
+        }
+
+        
 	}
 }

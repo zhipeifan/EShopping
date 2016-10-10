@@ -66,6 +66,7 @@
     <Compile Include="Request\SendUpCountRequest.cs" />
     <Compile Include="Request\SubmitOrderRequest.cs" />
     <Compile Include="Request\UpdateSpellbuyproductRequest.cs" />
+    <Compile Include="Request\UpdateUserInfoRequest.cs" />
     <Compile Include="Request\VerifyOtherLoginRequestDTO.cs" />
     <Compile Include="Response\AddSpellbuyproductResponse.cs" />
     <Compile Include="Response\AttendUserResponse.cs" />

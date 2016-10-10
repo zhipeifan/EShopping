@@ -316,7 +316,9 @@
     <Content Include="js\Calendar\lib\moment.min.js" />
     <Content Include="js\Calendar\moment.min.js" />
     <Content Include="js\libs\html5shiv.js" />
+    <Content Include="js\libs\jpeg_encoder.js" />
     <Content Include="js\libs\jquery-1.11.1.js" />
+    <Content Include="js\libs\localUI.js" />
     <Content Include="js\libs\swiper.min.js" />
     <Content Include="js\page.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -344,6 +346,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuHelper.cs" />
     <Compile Include="Controllers\MyEShoppingController.cs" />
     <Compile Include="Controllers\NewPublicController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -404,6 +407,8 @@
     <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\MyEShopping\MeInfo.cshtml" />
     <Content Include="Views\MyEShopping\ModifyMe.cshtml" />
+    <Content Include="Views\Shared\ErrorMsg.cshtml" />
+    <Content Include="Views\MyEShopping\ErrorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

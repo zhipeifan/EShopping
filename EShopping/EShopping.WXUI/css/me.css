@@ -273,7 +273,7 @@ ul.rob li.curr a{
 	font-size:1.2rem;
 }
 .pop_content{
-	padding-top:2.5rem;
+	padding-top:5.5rem;
 	height:100%;
 	position:relative
 }
@@ -430,13 +430,18 @@ ul.rob li.curr a{
 	margin:0 auto;
 	overflow:hidden;
 }
-.main_photo a{
+.main_photo .bigPhoto{
 	display:block;
 	width:5rem;	height:5rem;
 	border-radius:5rem; -webkit-border-radius:5rem;-moz-border-radius:5rem;
 	overflow:hidden;
-	margin-top:2rem;
+	margin-top:1rem;
 	margin-bottom:1rem;
+	background:#fff;
+	position:relative;
+}
+#img{
+	position:absolute;top:0px; left:0px;
 }
 .main_photo input{
 	color:#fff;
@@ -457,12 +462,19 @@ ul.rob li.curr a{
 	float:left;
 	width:25%;
 	padding:10px;
-	
+	overflow:hidden;
+}
+.me_photo_list ul li:last-child a{
+	border:0px;
+}
+.me_photo_list ul li .bigPhoto{
+	width:100%; height:100%;
+	position:relative;
 }
 .me_photo_list ul a{
 	display:block;
 	width:100%;height:100%;
-	border-radius:100px;
+	border-radius:100px; -webkit-border-radius:100px; -moz-border-radius:100px; -o-border-radius:100px;
 	overflow:hidden;
 	border:1px solid #ccc;
 	
@@ -646,4 +658,23 @@ a.shut{
 	width:100%; line-height:40px;
 	text-align:center;
 	color:#B70000;
+}
+.text-muted {
+	color: #999;
+}
+.pull-left {
+	float: left;
+}
+.left ul {
+	padding:0 40px 0 10px;
+	overflow: hidden;
+}
+.left ul li {
+	margin-bottom: 5px;
+}
+.lr {
+	
+}
+[ng-src] {
+	box-shadow: 0 0 5px rgba(0,0,0,0.7);
 }

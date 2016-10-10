@@ -128,7 +128,11 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 行政区域
         /// </summary>
-        queryRegion
+        queryRegion,
+        /// <summary>
+        /// 修改个人信息
+        /// </summary>
+        updateUserInfo
 
 
     }

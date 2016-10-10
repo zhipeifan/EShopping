@@ -3,6 +3,7 @@ using EShopping.Entity.Request;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -182,6 +183,12 @@ namespace EShopping.Common
         {
             var start = new DateTime(1970, 1, 1, 0, 0, 0, dateTime.Kind);
             return Convert.ToInt64((dateTime - start).TotalSeconds);
+        }
+
+        public static Stream StringToStream(this string str)
+        {
+            byte[] strBytes = Encoding.UTF8.GetBytes(str);
+            return new MemoryStream(strBytes);
         }
     }
 }

@@ -232,6 +232,19 @@ namespace EShopping.BusinessService.SelectProduct
            ServiceRequestClient.PostRquest(ServicesEnum.exchangeIntegral, request.FormatRequest<ExchangeIntegralRequest>());
        }
 
+       /// <summary>
+       /// 修改个人信息
+       /// </summary>
+       /// <param name="user"></param>
+       public static void ModifyUserInfo(UpdateUserInfoDTO user)
+       {
+           UpdateUserInfoRequest request = new UpdateUserInfoRequest
+           {
+               payload = user.ReplcaceRequest<UpdateUserInfoDTO>(),
+               token = "f9140196-1de4-400e-ba12-190352d45578"
+           };
+           ServiceRequestClient.PostRquest(ServicesEnum.updateUserInfo, request.FormatRequest<UpdateUserInfoRequest>());
+       }
 
     }
 }

@@ -17,6 +17,7 @@ using EShopping.BusinessService.ShoppingCar;
 using EShopping.Entity.UIDTO.Enum;
 using System.Net;
 using EShopping.Common;
+using System.Text;
 
 namespace EShopping.WXUI.Controllers
 {
@@ -240,7 +241,7 @@ namespace EShopping.WXUI.Controllers
 
 
         [AllowAnonymous]
-        public ActionResult WeChatLogin(string code="", string state="")
+        public ActionResult WeChatLogin(string code = "", string state = "")
         {
             //string url = Request.Url.OriginalString;
             //if (string.IsNullOrEmpty(code))
@@ -263,31 +264,38 @@ namespace EShopping.WXUI.Controllers
             {
                 faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
                 nickName = "樊智佩",
-                weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE"
+                weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
+                userId=35
             };
 
             var usre = LoginService.LoginUser(userinfo);
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);
+            ReloadCookie(usre.userId, _userInfo);//载入cookie
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public void ReloadCookie(int userId,string userData)
+        {
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
-                (
-                1,
-                usre.userId.ToString(),
-                DateTime.Now,
-                DateTime.Now.AddMonths(1),
-                false,
-                _userInfo
-                );
-            FormsAuthentication.SetAuthCookie(usre.userId.ToString(), true, FormsAuthentication.FormsCookiePath);
+              (
+              1,
+              userId.ToString(),
+              DateTime.Now,
+              DateTime.Now.AddMonths(1),
+              false,
+              userData
+              );
+            FormsAuthentication.SetAuthCookie(userId.ToString(), true, FormsAuthentication.FormsCookiePath);
             string enyTicket = FormsAuthentication.Encrypt(ticket);
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, enyTicket);
             cookie.HttpOnly = true;
             cookie.Domain = FormsAuthentication.CookieDomain;
             cookie.Path = FormsAuthentication.FormsCookiePath;
 
-            System.Web.HttpContext.Current.Response.Cookies.Remove(cookie.Name);
-            System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
-
-            return RedirectToAction("Index","Home");
+            System.Web.HttpContext.Current.Response.Cookies.Set(cookie);
+            //System.Web.HttpContext.Current.Response.Cookies.Remove(cookie.Name);
+            //System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
         }
         #endregion
 
@@ -309,5 +317,6 @@ namespace EShopping.WXUI.Controllers
             }
             return AddressIP;
         }
+
     }
 }

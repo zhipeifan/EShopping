@@ -43,6 +43,12 @@ namespace EShopping.WXUI.Controllers
             var products = LoadShoppingCar();
 
             var selectedProduct = dto.Where(x => x.IsChecked).ToList();
+
+            if(selectedProduct.Count==0)
+            {
+                ModelState.AddModelError("ShoppingCarErro","亲，至少选择一个商品结算哦！");
+                return View("ShoppingList", dto);
+            }
             if(selectedProduct!=null&&selectedProduct.Count>0)
             {
                 List<BuyProductVOs> shoppingProducts = new List<BuyProductVOs>();

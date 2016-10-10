@@ -1,56 +1,82 @@
-﻿@using EShopping.Entity.Response.DTO
+﻿
+@using EShopping.Entity.Response.DTO
 @using EShopping.Common
+@using EShopping.WXUI.Controllers
 
 @model UserDTO
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>shopping</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/media.css" />
+    <link rel="stylesheet" href="../../css/master.css" />
+    <link rel="stylesheet" href="../../css/me.css" />
+    <script type="text/javascript" src="../../js/libs/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../../js/libs/jpeg_encoder.js"></script>
+    <script type="text/javascript" src="../../js/libs/localUI.js"></script>
+    <script type="text/javascript" src="../../js/libs/html5shiv.js"></script>
+</head>
+<body style="background:#f0f0f0">
+    @Html.ValidationSummaryAlert();
+    <form action="/MyEShopping/SaveMyInfo" method="post">
+
+        <div id="wrapper">
+            <div class="container">
+                <header id="header" class="shopcar-top">
+                    <a class="backs" href="javascript:;" title="返回"></a>
+                    <h2>修改头像</h2>
+                </header>
+                <section id="page-content" class="shopcar-content">
 
 
-<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/loadImg/style.css")">
-<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/localUI.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/jpeg_encoder.js")"></script>
-@Html.BeginForm("SaveMyInfo", "MyEShopping", FormMethod.Post)
-{
-<div class="container">
-    <header id="header" class="shopcar-top">
-        <a class="backs" href="javascript:;" title="返回"></a>
-        <h2>修改头像</h2>
-    </header>
-    <section id="page-content" class="shopcar-content">
-        <div class="mod_photo">
-            <div class="main_photo">
-                <a href="javascript:;" title=""><img width="100%" src="@Model.faceImg" id="faceImg" /></a>
-                <input type="hidden" id="hidfaceImg" name="hidFaceImg" />
-                <p>
-                    @*@Html.TextBoxFor(c => Model.nickName, new { placeholder = "请输出昵称" })*@
-                </p>
-            </div>
-        </div>
-        <div class="me_photo_list">
-            <div class="lr-pad">
-                <ul>
-                    <li class="curr"><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-                    <li><a href="javascript:;" title=""><img width="100%" src="../images/carlist-img.jpg" /></a></li>
-
-                    <li>
-
-                        <div class="left">
-                            <div class="pull-left"></div>
-                            <img id='img' alt="">
+                    <div class="mod_photo">
+                        <div class="main_photo">
+                            <div class="bigPhoto left">
+                                <div class="pull-left"></div>
+                                <a href="javascript:;" title="">
+                                    <img id="faceImg" width="100%" height="100%" src="@Model.faceImg" />
+                                </a>
+                            </div>
+                         
+                            <p>
+                                @Html.TextBoxFor(c => c.nickName, new { placeholder = "请输入名称", style = "text-align:center" })
+                                @Html.HiddenFor(c => c.NewFaceImg)
+                            </p>
                         </div>
+                    </div>
+                    <div class="me_photo_list">
+                        <div class="lr-pad">
+                            <ul>
+                                @*<li class="curr"><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
+                                    <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
+                                    <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
+                                    <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
+                                    <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
+                                    <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
+                                    <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>*@
+                            </ul>
+                            <input id="modPhoto" type="submit" value="提交" />
+                        </div>
+                    </div>
 
-                    </li>
-                </ul>
-                <input id="modPhoto" type="submit" value="提交" />
+
+                </section>
+                <footer id="footer">
+                    <ul>
+                        <li class="curr"><a href="javascript:;" title="">Shopping</a></li>
+                        <li><a href="javascript:;" title="">全部商品</a></li>
+                        <li><a href="javascript:;" title="">最新揭晓</a></li>
+                        <li><a href="javascript:;" title="">购物车</a><i>11</i></li>
+                        <li><a href="javascript:;" title="">我的易购</a></li>
+                    </ul>
+                </footer>
             </div>
-
         </div>
-
-        <script>
+        <script type="text/javascript">
             var ok = function (stop, data) {
                 data.original.size = (data.original.size / 1024).toFixed(2);
                 $('#img').attr('src', data.base64);
@@ -65,7 +91,18 @@
                 init.UI.reset();
                 "function" == typeof this.defaults.reset && this.defaults.reset();
             }
+
+            $(function () {
+                $.each($('.me_photo_list').find('li'), function (i, ele) {
+                    $(ele).on('click', function () {
+                        $('.me_photo_list').find('li').removeClass('curr')
+                        $(ele).addClass('curr');
+                        var imgSrc = $(ele).find('img').attr('src');
+                        $('.main_photo').find('img').attr('src', imgSrc);
+                    });
+                })
+            });
         </script>
-
-
-    </section>
+        
+        </form></body>
+</html>

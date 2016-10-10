@@ -2,6 +2,10 @@
 
 @model ShareProductDTO
 
+@Html.ValidationSummary()
+
+@Html.BeginForm(Url.Action("",""))
+{
 
             <header id="header" class="shopcar-top">
                 <h2>我的晒单</h2>
@@ -41,4 +45,5 @@
                     </div>
                 </div>
             </div>
+}
        

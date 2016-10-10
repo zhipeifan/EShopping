@@ -39,7 +39,7 @@ namespace EShopping.Entity.Response.DTO
  
         //public string UserPwd{get;set;}
 
-        public string Email{get;set;}
+        //public string Email{get;set;}
 
         public string UserType{get;set;}
 
@@ -69,5 +69,8 @@ namespace EShopping.Entity.Response.DTO
         /// 距下一等级需要
         /// </summary>
         public int nextLevelNeedExpense { get; set; }
+
+
+        public string NewFaceImg { get; set; }
     }
 }
