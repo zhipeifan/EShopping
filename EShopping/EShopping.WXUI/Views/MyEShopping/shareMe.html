@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>shopping</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/media.css" />
+<link rel="stylesheet" href="css/master.css" />
+<link rel="stylesheet" href="css/swiper.min.css" />
+<script type="text/javascript" src="js/libs/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="js/libs/jpeg_encoder.js" ></script>
+<script type="text/javascript" src="js/libs/localUI.js" ></script>
+<script type="text/javascript" src="js/libs/html5shiv.js" ></script>
+<script type="text/javascript" src="js/page.js" ></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="container">
+			<header id="header" class="shopcar-top">
+				<h2>我的晒单</h2>
+			</header>
+			<div class="share">
+				<div class="share_list">
+					<div class="share_title">
+						<div class="share_padd">
+							<a class="sh_photo" href="javascript:;" title=""><img src="images/photo.jpg" /></a>
+							<ul class="sh_tit_inner">
+								<li class="namecol"><a href="javascript:;" style="color:#333; font-size:1.2rem;">Apple iPhone6s plus 16G颜色随机</a></li>
+							</ul>
+							<p class="info">Apple iPhone6s plus 16G颜色随机</p>
+						</div>
+					</div>
+					<div class="share_mes">
+						<ul class="share_pro_list">
+							<li class="first_li">
+								<div class="bigPhoto left">
+									<div class="pull-left"></div>
+									<img src="images/click_photoo.jpg" width="100%" />
+								</div>
+							</li>
+							<li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+							<li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+							<li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+						</ul>
+					</div>
+					<div class="lr-pad shareMeTxt">
+						<textarea placeholder="请输入内容"></textarea>
+					</div>
+					<div class="lr-pad">
+						<input class="smSub" type="submit" value="提交" />
+					</div>
+				</div>
+			</div>
+			<footer id="footer">
+				<ul>
+					<li class="curr"><a href="javascript:;" title="">Shopping</a></li>
+					<li><a href="javascript:;" title="">全部商品</a></li>
+					<li><a href="javascript:;" title="">最新揭晓</a></li>
+					<li><a href="javascript:;" title="">购物车</a><i>11</i></li>
+					<li><a href="javascript:;" title="">我的易购</a></li>
+				</ul>
+			</footer>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/libs/swiper.min.js" ></script>
+	<script type="text/javascript">
+		var ok = function (stop, data) {
+			data.original.size = (data.original.size / 1024).toFixed(2);
+				var setLi=$('<li><a href="javascript:;" title=""><img width="100%" src="'+data.base64+'" /></a><em></em></li>');
+					$('.first_li').after(setLi);
+					setTimeout(function () {stop();}, 1000);
+			}
+			var init = new LocalResize($('.pull-left'),{rWidth: 100,quality: 1,success:ok});
+			init.change(function(n) {
+				"function" == typeof this.defaults.change ? this.defaults.change(n) : void 0;
+			}).success(function(n, t) {
+				"function" == typeof this.defaults.success ? this.defaults.success(n, t) : void 0;
+			}).reset = function() {
+				init.UI.reset();
+				"function" == typeof this.defaults.reset&&this.defaults.reset();
+			}
+		$(function(){
+			$('.share_pro_list').on('click','em', function(){
+				$(this).parent('li').remove();
+			});
+		});
+	</script>
+</body>
+</html>

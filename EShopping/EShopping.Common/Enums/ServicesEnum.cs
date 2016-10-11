@@ -132,8 +132,14 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 修改个人信息
         /// </summary>
-        updateUserInfo
-
-
+        updateUserInfo,
+        /// <summary>
+        /// 商品搜索
+        /// </summary>
+        searchProductList,
+        /// <summary>
+        /// 添加晒单
+        /// </summary>
+        addShareInfo
     }
 }

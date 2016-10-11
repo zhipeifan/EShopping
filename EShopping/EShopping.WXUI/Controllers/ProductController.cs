@@ -86,9 +86,30 @@ namespace EShopping.WXUI.Controllers
              return RedirectToAction("ShoppingList", "ShoppingCar");
         }
 
-        public ActionResult Search()
+        public ActionResult Search(string key="", int pageIndex = 1, int pageSize = 10)
         {
+            //if(string.IsNullOrEmpty(key))
+            //{
+            //    return RedirectToAction("List","Product");
+            //}
+            //else
+            //{
+            //    return RedirectToAction("SearchResult", "Product", new { key=key});
+            //}
             return View();
+        }
+
+        /// <summary>
+        /// 搜索商品结果
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public ActionResult SearchResult(string key,int pageIndex=1,int pageSize=10)
+        {
+            var list = ProductService.SearchProducts(key,pageIndex,pageSize);
+            return View(list);
         }
 	}
 }

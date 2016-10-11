@@ -36,8 +36,10 @@ namespace EShopping.WXUI.Controllers
             get
             {
                 string id = User.Identity.Name;
-                //if (string.IsNullOrEmpty(id))
-                //    return 0;
+                if (string.IsNullOrEmpty(id) || id=="0")
+                {
+                    return UserInfo.userId;
+                }
                 return Convert.ToInt32(id);
 
             }
@@ -53,6 +55,16 @@ namespace EShopping.WXUI.Controllers
                     ApplicationLog.DebugInfo("UserInfo1");
                 string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
                 var _user= Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
+
+                    if(_user==null||_user.userId==0)
+                    {
+                        _user = LoginService.LoginUser(new UserDTO
+                        {
+                            faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
+                            nickName = "樊智佩",
+                            weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE"
+                        });
+                    }
                 //_user.userName = "15105149197";
                 return _user;
                 }

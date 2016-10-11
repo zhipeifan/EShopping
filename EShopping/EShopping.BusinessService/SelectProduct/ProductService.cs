@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using EShopping.Common;
 using EShopping.Entity.Request;
 using Newtonsoft.Json;
-using EShopping.Entity.Response;   
+using EShopping.Entity.Response;
+using EShopping.Entity.UIDTO;   
 
 namespace EShopping.BusinessService.SelectProduct
 {
@@ -189,6 +190,44 @@ namespace EShopping.BusinessService.SelectProduct
            ServiceRequestClient.PostRquest(ServicesEnum.sendUpCount, request.ReplcaceRequest<SendUpCountRequest>());
        }
 
-       //public 
+       /// <summary>
+       /// 商品搜索
+       /// </summary>
+       /// <param name="key"></param>
+       /// <param name="pageIndex"></param>
+       /// <param name="PageSize"></param>
+       /// <returns></returns>
+       public  static List<ProductDTO> SearchProducts(string key,int pageIndex,int PageSize)
+       {
+           SearchReqeustDTO payload = new SearchReqeustDTO
+           {
+               currentPage = pageIndex,
+               keyword = key,
+               pageSize = PageSize
+           };
+
+           var response = ServiceRequestClient.PostRquest(ServicesEnum.searchProductList, payload.FormatRequest<SearchReqeustDTO>());
+           if (response == null)
+               return new List<ProductDTO>();
+           var data = response.ToEntity<QueryPublishingListResponse>();
+           if (data.responseData == null)
+               return new List<ProductDTO>();
+           return data.responseData.productVOs;
+       }
+
+       /// <summary>
+       ///添加晒单
+       /// </summary>
+       /// <param name="dto"></param>
+       public static void AddShareProductOrder(ShareProductDTO dto)
+       {
+          ServiceRequestClient.PostRquest(ServicesEnum.addShareInfo, dto.FormatRequest<ShareProductDTO>());
+           //if (response == null)
+           //    return new List<ProductDTO>();
+           //var data = response.ToEntity<QueryPublishingListResponse>();
+           //if (data.responseData == null)
+           //    return new List<ProductDTO>();
+           //return data.responseData.productVOs;
+       }
     }
 }

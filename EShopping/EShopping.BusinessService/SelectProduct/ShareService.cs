@@ -54,16 +54,21 @@ namespace EShopping.BusinessService.SelectProduct
         /// <param name="pageIndex"></param>
         /// <param name="PageSize"></param>
         /// <returns></returns>
-        public static List<QueryShareInfoListDTO> ShareList(int pageIndex, int PageSize, int userId)
+        public static List<QueryShareInfoListDTO> ShareList(int pageIndex, int PageSize, int userId, int byDetailOrMy=1)
         {
             var payload = new QueryShareInfoListRequest
             {
                 currentPage = pageIndex,
                 pageSize = PageSize,
-                byDetailOrMy = 1,
+                byDetailOrMy = byDetailOrMy,
                 userId = userId,
                  isShowAll=true
             };
+
+            if(payload.byDetailOrMy==2)
+            {
+                payload.isShowAll = false;
+            }
 
             CommonRequest request = new CommonRequest
             {
@@ -100,6 +105,23 @@ namespace EShopping.BusinessService.SelectProduct
                 return data.responseData.imagePathList[0];
             }
             return "";
+        }
+
+        /// <summary>
+        /// 批量上传图片
+        /// </summary>
+        /// <param name="streams"></param>
+        /// <returns></returns>
+        public static List<string> BatchUploadAttachment(Dictionary<string, Stream> streams)
+        {
+            var response = ServiceRequestClient.PostRquestAndAttachment(streams);
+            if (!string.IsNullOrEmpty(response))
+            {
+                var data = response.ToEntity<UploadImageResponse>();
+                if (data != null && data.responseData != null && data.responseData.imagePathList != null && data.responseData.imagePathList.Count > 0)
+                    return data.responseData.imagePathList;
+            }
+            return new List<string>();
         }
     }
 }

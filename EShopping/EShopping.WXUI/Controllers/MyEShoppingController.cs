@@ -182,6 +182,8 @@ namespace EShopping.WXUI.Controllers
 
             dto.FaceImg = UserInfo.faceImg;
             dto.UserName = UserInfo.userName;
+            dto.productId = id;
+            dto.spellbuyproductId = spellbuyId;
 
             if(product!=null)
             {
@@ -196,24 +198,50 @@ namespace EShopping.WXUI.Controllers
         /// <returns></returns>
         public ActionResult SaveShareProduct(ShareProductDTO dto)
         {
-            if(string.IsNullOrEmpty(dto.shareContent))
+            if (string.IsNullOrEmpty(dto.shareContent))
             {
-
+                ModelState.AddModelError("ShareOrderContent", "亲，请填写晒单内容！");
+                return View("CreateShareProduct", dto);
             }
 
-            //ShareProductDTO dto = new ShareProductDTO();
+            if (dto.ShareImages == null || dto.ShareImages.Count == 0 || dto.ShareImages.Count > 5)
+            {
+                ModelState.AddModelError("ShareOrderImage", "亲，晒带图片最多上传5张，至少上传一张！");
+                return View("CreateShareProduct", dto);
+            }
 
-            //var product = ProductService.LoadProductDetail(id, spellbuyId, UserId);
 
-            //dto.FaceImg = UserInfo.faceImg;
-            //dto.UserName = UserInfo.userName;
+            Dictionary<string, Stream> streams = new Dictionary<string, Stream>();
 
-            //if (product != null)
-            //{
-            //    dto.shareTitle = product.productTitle;
-            //}
-            //return View(dto);
-                return View();
+            int index=1;
+            dto.ShareImages.ForEach(x =>
+            {
+                streams.Add(DateTime.Now.ToString("yyyyMMddHHmmssfff")+index + ".jpg", x.StringToStream());
+                index++;
+            });
+            List<string> urls = ShareService.BatchUploadAttachment(streams);
+
+
+            if (urls != null && urls.Count > 0)
+            {
+                for (var i = 0; i < urls.Count; i++)
+                {
+                    if (i == 0)
+                        dto.shareImg1 = urls[i];
+                    if (i == 1)
+                        dto.shareImg2 = urls[i];
+                    if (i == 2)
+                        dto.shareImg3 = urls[i];
+                    if (i == 3)
+                        dto.shareImg4 = urls[i];
+                    if (i == 4)
+                        dto.shareImg5 = urls[i];
+                }
+            }
+            dto.userId = UserId;
+            dto.addOrUpdate = 1;
+            ProductService.AddShareProductOrder(dto);
+            return RedirectToAction("ShoppingWinnedList", "MyEShopping");
         }
              
 
@@ -354,11 +382,21 @@ namespace EShopping.WXUI.Controllers
         /// 错误弹层
         /// </summary>
         /// <returns></returns>
-        public ActionResult ErrorPage()
+        public ActionResult ErrorPage(string error)
         {
-            return PartialView();
+            return PartialView(error);
         }
 
+        /// <summary>
+        ///我的晒单
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult MyShareOrderList()
+        {
+            var list = ShareService.ShareList(1, 10, UserId,2);
+            return View(list);
+        }
+             
         
 	}
 }

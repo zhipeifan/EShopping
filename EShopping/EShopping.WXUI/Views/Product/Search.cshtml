@@ -1,44 +1,47 @@
-﻿ 
-            <header id="header" class="shopcar-top">
-                <a class="backs" href="javascript:;" title="返回"></a>
-                <h2>搜索</h2>
-            </header>
-            <div class="search_content">
-                <div class="search_input">
-                    <div class="search_item">
-                        <input type="text" placeholder="请输入商品名称" />
-                        <input type="submit" value="搜索" />
-                    </div>
+﻿
+@*<header id="header" class="shopcar-top">
+    <a class="backs" href="javascript:;" title="返回"></a>
+    <h2>搜索</h2>
+</header>*@
+<div class="search_content">
+    <div class="search_input">
+        <div class="search_item">
+            @Html.BeginForm("SearchResult", "Product", FormMethod.Post)
+            {
+            <input type="text" placeholder="请输入商品名称" id="key" name="key" />
+            <input type="submit" value="搜索" />
+            }
+        </div>
+    </div>
+    @*<div class="search_rec">
+            <div class="lr-pad">
+                <div class="search_rec_top">
+                    <span class="rec">历史记录</span>
+                    <span class="rec_del"></span>
                 </div>
-                @*<div class="search_rec">
-                    <div class="lr-pad">
-                        <div class="search_rec_top">
-                            <span class="rec">历史记录</span>
-                            <span class="rec_del"></span>
-                        </div>
-                        <ul class="rec_list">
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">ipad</a></li>
-                            <li><a href="javascript:;" title="">苹果手机</a></li>
-                            <li><a href="javascript:;" title="">小米手机</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">ipad</a></li>
-                            <li><a href="javascript:;" title="">苹果手机</a></li>
-                            <li><a href="javascript:;" title="">小米手机</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">ipad</a></li>
-                            <li><a href="javascript:;" title="">苹果手机</a></li>
-                            <li><a href="javascript:;" title="">小米手机</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                            <li><a href="javascript:;" title="">ipad</a></li>
-                            <li><a href="javascript:;" title="">苹果手机</a></li>
-                            <li><a href="javascript:;" title="">小米手机</a></li>
-                            <li><a href="javascript:;" title="">iphone</a></li>
-                        </ul>
-                    </div>
-                </div>*@
+                <ul class="rec_list">
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">ipad</a></li>
+                    <li><a href="javascript:;" title="">苹果手机</a></li>
+                    <li><a href="javascript:;" title="">小米手机</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">ipad</a></li>
+                    <li><a href="javascript:;" title="">苹果手机</a></li>
+                    <li><a href="javascript:;" title="">小米手机</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">ipad</a></li>
+                    <li><a href="javascript:;" title="">苹果手机</a></li>
+                    <li><a href="javascript:;" title="">小米手机</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                    <li><a href="javascript:;" title="">ipad</a></li>
+                    <li><a href="javascript:;" title="">苹果手机</a></li>
+                    <li><a href="javascript:;" title="">小米手机</a></li>
+                    <li><a href="javascript:;" title="">iphone</a></li>
+                </ul>
             </div>
-          
+        </div>*@
+</div>
+

@@ -67,6 +67,26 @@ namespace EShopping.Entity.Response.DTO
         public UserDTO userInfoVO { get; set; }
 
         public ProductDTO productVO { get; set; }
+
+        public List<string> ShareImages
+        {
+            get
+            {
+                List<string> list = new List<string>();
+                if (!string.IsNullOrEmpty(shareImg1))
+                    list.Add(shareImg1);
+                if (!string.IsNullOrEmpty(shareImg2))
+                    list.Add(shareImg2);
+                if (!string.IsNullOrEmpty(shareImg3))
+                    list.Add(shareImg3);
+                if (!string.IsNullOrEmpty(shareImg4))
+                    list.Add(shareImg4);
+                if (!string.IsNullOrEmpty(shareImg5))
+                    list.Add(shareImg5);
+
+                return list;
+            }
+        }
              
     }
 }

@@ -1,0 +1,56 @@
+﻿@using EShopping.Entity.Response.DTO;
+@using EShopping.Common;
+
+
+@model List<ProductDTO>
+
+
+@{
+    var productTypes = (List<ProductTypeDTO>)ViewBag.ProductTypes;
+}
+
+
+<header id="header" class="shopcar-top">
+    <h2>搜索结果</h2>
+</header>
+
+<div class="search_content">
+    <div class="search_input">
+        <div class="search_item">
+            @Html.BeginForm("SearchResult", "Product", FormMethod.Post)
+            {
+            <input type="text" placeholder="请输入商品名称" id="key" name="key" />
+            <input type="submit" value="搜索" />
+            }
+
+
+            <section id="page-content" class="shopcar-content">
+                <div class="fullinner">
+                    <div class="fullgoods-list" style="width:100% !important">
+                        <ul class="products">
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Detail", "Product", new { id = item.Id, spellBuyProductId = item.spellbuyproductId })">
+                                            <img src="@(item.coverImg1)" />
+                                            <span class="prodtitle">@item.productName</span>
+                                            <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(item.productLimit, item.spellbuyCount))</em></span>
+                                            <span class="pacet"><em></em></span>
+                                            <a href="javascript:;" class="iaddcar" pid="@item.Id" spellbuyproductid="@item.spellbuyproductId"></a>
+                                            <span class="prodns">
+                                                <em>总需@(item.productLimit)</em>
+                                                <em>剩余<i>@((item.productLimit - item.spellbuyCount) < 0 ? 0 : item.productLimit - item.spellbuyCount)</i></em>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+

@@ -4,8 +4,10 @@
 
 @Html.ValidationSummary()
 
-@Html.BeginForm(Url.Action("",""))
+@using (Html.BeginForm("SaveShareProduct", "MyEShopping", FormMethod.Post, new { id = "myform" }))
 {
+    @Html.HiddenFor(c=>c.productId)
+    @Html.HiddenFor(c=>c.spellbuyproductId)
 
             <header id="header" class="shopcar-top">
                 <h2>我的晒单</h2>
@@ -15,27 +17,40 @@
                     <div class="share_title">
                         <div class="share_padd">
                             <a class="sh_photo" href="javascript:;" title="">
-                            @if (string.IsNullOrEmpty(Model.FaceImg))
-                            {   <img src="~/Images/nav-mi.png" />
-                            }
-                            else { 
-                            <img src="@Model.FaceImg" />
-                            }
-                            
+                                @if (string.IsNullOrEmpty(Model.FaceImg))
+                                {   <img src="~/Images/nav-mi.png" />
+                                }
+                                else
+                                {
+                                    <img src="@Model.FaceImg" />
+                                }
+
                             </a>
                             <ul class="sh_tit_inner">
                                 <li class="namecol"><a href="javascript:;" style="color:#333; font-size:1.2rem;">@Model.shareTitle</a></li>
                             </ul>
-                            <p class="info">Apple iPhone6s plus 16G颜色随机</p>
+                            @*<p class="info">Apple iPhone6s plus 16G颜色随机</p>*@
                         </div>
                     </div>
                     <div class="share_mes">
                         <ul class="share_pro_list">
-                            <li class="first_li"><a href="javascript:;" title=""><img src="images/click_photoo.jpg" width="100%" height="100%" /></a></li>
-                            <li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
-                            <li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
-                            <li><a href="javascript:;" title=""><img src="images/carlist-img.jpg" width="100%" /></a><em></em></li>
+                            <li class="first_li">
+                                <div class="bigPhoto left">
+                                    <div class="pull-left"></div>
+                                    <img src="~/images/click_photoo.jpg" id="firstImg" width="100%" />
+                                </div>
+                            </li>
+
+                            @if (Model.ShareImages != null && Model.ShareImages.Count > 0)
+                            {
+                                foreach (var ShareImages in Model.ShareImages)
+                                {
+                                    <li><a href="javascript:;" title=""><img width="100%" src="@ShareImages" /></a><em></em></li>
+                                @Html.HiddenFor(c => ShareImages)
+                                }
+                            }
                         </ul>
+                        @*<input id="img" name="ShareImages" type="hidden" value="http://www.2345.com/7.jpg" />*@ 
                     </div>
                     <div class="lr-pad shareMeTxt">
                         @Html.TextAreaFor(c => c.shareContent, new { placeholder = "请输入内容" })
@@ -45,5 +60,52 @@
                     </div>
                 </div>
             </div>
-}
+      
+}    
+
+<script type="text/javascript" src="@Url.Content("~/js/libs/localUI.js")"></script>
+<script type="text/javascript">
+    var ok = function (stop, data) {
+        data.original.size = (data.original.size / 1024).toFixed(2);
+        var setLi = $('<li><a href="javascript:;" title=""><img width="100%" src="' + data.base64 + '" /></a><em></em></li>');
+        $('.first_li').after(setLi);
+        var hidsetLi = $('<input type=\"hidden\" name=\"ShareImages\" value="' + data.base64 + '" />');
+        $('.share_pro_list').append(hidsetLi);
+        var count = $(".share_mes ul li img").length;
+        if (count >= 6)
+        {
+            $(".first_li").hide();
+        }
+        setTimeout(function () { stop(); }, 1000);
+    }
+    var init = new LocalResize($('.pull-left'), { rWidth: 100, quality: 1, success: ok });
+    init.change(function (n) {
+        "function" == typeof this.defaults.change ? this.defaults.change(n) : void 0;
+    }).success(function (n, t) {
+        "function" == typeof this.defaults.success ? this.defaults.success(n, t) : void 0;
+    }).reset = function () {
+        init.UI.reset();
+        "function" == typeof this.defaults.reset && this.defaults.reset();
+    }
+    $(function () {
+        $('.share_pro_list').on('click', 'em', function () {
+            $(this).parent('li').remove();
+            $(".share_mes input[type='hidden']").remove();
+            $(".share_mes ul li img").each(function (index, item) {
+                if ($(item).attr("id") != "firstImg") {
+                    var hidsetLi = $('<input type=\"hidden\" name=\"ShareImages\" value="' + $(item).attr("src") + '" />');
+                    $('.share_pro_list').append(hidsetLi);
+                }
+            });
+
+            var count = $(".share_mes ul li img").length;
+            if (count < 6) {
+                $(".first_li").show();
+            }
+        });
+    });
+</script>
+
+
+
        

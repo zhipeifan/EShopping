@@ -8,6 +8,15 @@ namespace EShopping.Entity.UIDTO
 {
     public class ShareProductDTO
     {
+
+        //public ShareProductDTO()
+        //{
+        //    ShareImages = new List<string>();
+        //    ShareImages.Add("http://www.2345.com/1.jpg");
+        //    ShareImages.Add("http://www.2345.com/3.jpg");
+        //    ShareImages.Add("http://www.2345.com/2.jpg");
+        //}
+
         public int shareInfoId { get; set; }
 
         public string UserName { get; set; }
@@ -34,6 +43,6 @@ namespace EShopping.Entity.UIDTO
         public string shareImg4 { get; set; }
         public string shareImg5 { get; set; }
 
-
+        public List<string> ShareImages { get; set; }
     }
 }

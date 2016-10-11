@@ -63,6 +63,7 @@
     <Compile Include="Request\QueryUserAddressListRequest.cs" />
     <Compile Include="Request\QueryUserInfoRequest.cs" />
     <Compile Include="Request\QueryWalletRequest.cs" />
+    <Compile Include="Request\SearchProductListRequest.cs" />
     <Compile Include="Request\SendUpCountRequest.cs" />
     <Compile Include="Request\SubmitOrderRequest.cs" />
     <Compile Include="Request\UpdateSpellbuyproductRequest.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Response\QueryUserAddressListResponse.cs" />
     <Compile Include="Response\QueryUserByIntegralTopResponse.cs" />
     <Compile Include="Response\QueryWalletResponse.cs" />
+    <Compile Include="Response\SearchResponse.cs" />
     <Compile Include="Response\UploadImageResponse.cs" />
     <Compile Include="Response\VerifyOtherLoginResponseDTO.cs" />
     <Compile Include="UIDTO\Enum\BuyTypeEnum.cs" />
