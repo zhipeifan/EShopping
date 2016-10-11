@@ -29,10 +29,10 @@
                             <p>@item.shareContent</p>
                         </div>
                         <ul class="share_pro_list">
-                            @if(item.productVO.ProductImages!=null&&item.productVO.ProductImages.Count>0)
+                           @if (item.ShareImages != null && item.ShareImages.Count > 0)
+                        {
+                            foreach (var img in item.ShareImages)
                             {
-                                foreach(var img in item.productVO.ProductImages)
-                                {
                                     <li><a href="javascript:;" title=""><img src="@img" width="100%" /></a></li>
                                 }
                             }

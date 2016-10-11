@@ -60,12 +60,11 @@ namespace EShopping.WXUI.Controllers
                     {
                         _user = LoginService.LoginUser(new UserDTO
                         {
-                            faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
-                            nickName = "樊智佩",
-                            weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE"
+                            faceImg =_user.faceImg,
+                            nickName = _user.nickName,
+                            weixinOpenId = _user.weixinOpenId
                         });
                     }
-                //_user.userName = "15105149197";
                 return _user;
                 }
                 else
@@ -255,30 +254,30 @@ namespace EShopping.WXUI.Controllers
         [AllowAnonymous]
         public ActionResult WeChatLogin(string code = "", string state = "")
         {
-            //string url = Request.Url.OriginalString;
-            //if (string.IsNullOrEmpty(code))
-            //    return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://www.kalezhe.com.cn/Base/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
+            string url = Request.Url.OriginalString;
+            if (string.IsNullOrEmpty(code))
+                return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://www.kalezhe.com.cn/Base/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
 
-            //var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
-            //var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
+            var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
+            var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
 
-            //ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(wechatUser));
-
-            //var userinfo = new UserDTO
-            //{
-            //    weixinOpenId = wechatUser.openid,
-            //    faceImg = wechatUser.headimgurl,
-            //    sex = wechatUser.sex.ToString(),
-            //    nickName = wechatUser.nickname
-            //};
+            ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(wechatUser));
 
             var userinfo = new UserDTO
             {
-                faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
-                nickName = "樊智佩",
-                weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
-                userId=35
+                weixinOpenId = wechatUser.openid,
+                faceImg = wechatUser.headimgurl,
+                sex = wechatUser.sex.ToString(),
+                nickName = wechatUser.nickname
             };
+
+            //var userinfo = new UserDTO
+            //{
+            //    faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
+            //    nickName = "樊智佩",
+            //    weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
+            //    userId=35
+            //};
 
             var usre = LoginService.LoginUser(userinfo);
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);

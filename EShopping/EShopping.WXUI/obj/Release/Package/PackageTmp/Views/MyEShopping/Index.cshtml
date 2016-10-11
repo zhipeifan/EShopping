@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                     <div class="pre-content">
-                        <a class="pre-photo" href="javascript:;" title=""><img src="@Model.faceImg" height="100%" /></a>
+                        <a class="pre-photo" href="@Url.Action("ModifyMe", "MyEShopping")" title=""><img src="@Model.faceImg" height="100%" /></a>
                         <ul>
                             <li>@Model.nickName</li>
                             <li>钱包：@Model.CurrentWalletOfAll</li>
@@ -48,7 +48,7 @@
                     </ul>
                     <ul>
                         <li><a class="jidfan" href="@Url.Action("Integral", "MyEShopping")" title="积分兑换">积分兑换</a></li>
-                        <li><a class="mshaidan" href="@Url.Action("MyRed", "MyEShopping")" title="我的晒单">我的晒单</a></li>
+                        <li><a class="mshaidan" href="@Url.Action("MyShareOrderList", "MyEShopping")" title="我的晒单">我的晒单</a></li>
                         <li><a class="mimituan" href="@Url.Action("Index", "Secret")" title="秘密团">秘密团</a></li>
                     </ul>
                     <ul>

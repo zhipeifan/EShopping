@@ -11,7 +11,7 @@
 
 
 <header id="header">
-    <a class="searchtop" href="javascript:;" title="搜索"></a>
+    <a class="searchtop" href="@Url.Action("Search", "Product")" title="搜索"></a>
     <a class="friendtop" href="javascript:;" title="搜索"></a>
     <h2>易购SHOPPING</h2>
 </header>
@@ -46,6 +46,7 @@
      
     </div>
 </div>
+
 <div id="menu">
     <ul>
         <li class="nav01"><a href="@Url.Action("List", "Product", new { categoryId = 1})" title="">新手专区</a></li>

@@ -27,12 +27,12 @@ $(function(){
 				var iHour=0;
 				var iMin=0;
 				var iSec=0;
-				oDateEnd.setFullYear(parseInt(2016));
-				oDateEnd.setMonth(parseInt(6));
-				oDateEnd.setDate(parseInt(4));
-				oDateEnd.setHours(parseInt(oHour));
-				oDateEnd.setMinutes(parseInt(oMinu));
-				oDateEnd.setSeconds(parseInt(oSec));
+				//oDateEnd.setFullYear(parseInt(2016));
+				//oDateEnd.setMonth(parseInt(6));
+				//oDateEnd.setDate(parseInt(4));
+				//oDateEnd.setHours(parseInt(oHour));
+				//oDateEnd.setMinutes(parseInt(oMinu));
+				//oDateEnd.setSeconds(parseInt(oSec));
 				iRemain=(oDateEnd.getTime()-oDateNow.getTime())/1000;
 				
 				if(iRemain<0){

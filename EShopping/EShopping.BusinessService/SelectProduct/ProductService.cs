@@ -187,7 +187,7 @@ namespace EShopping.BusinessService.SelectProduct
                  userId=userId
            };
 
-           ServiceRequestClient.PostRquest(ServicesEnum.sendUpCount, request.ReplcaceRequest<SendUpCountRequest>());
+           ServiceRequestClient.PostRquest(ServicesEnum.sendUpCount, request.FormatRequest<SendUpCountRequest>());
        }
 
        /// <summary>

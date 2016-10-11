@@ -1,4 +1,5 @@
 ﻿@using EShopping.Entity.UIDTO
+@using EShopping.WXUI.Controllers
 
 @model List<ShoppingCarDTO>
 
@@ -13,7 +14,7 @@
 <script type="text/javascript">
     var ourl = "@Url.Action("CreateShoppingOrder", "ShoppingCar")";
 </script>
-
+@Html.ValidationSummaryAlert()
 @using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post)) 
 {
     <header id="header" class="shopcar-top">

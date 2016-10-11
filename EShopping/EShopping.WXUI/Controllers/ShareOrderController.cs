@@ -48,7 +48,6 @@ namespace EShopping.WXUI.Controllers
         /// </summary>
         /// <param name="shareId"></param>
         /// <returns></returns>
-        [HttpPost]
         public ActionResult SendUpCount(int shareId, int pageIndex = 1, int pageSize = 10)
         {
             ProductService.SendUpCount(UserId,shareId);

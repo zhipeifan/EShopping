@@ -3,6 +3,28 @@
 
 @model List<QueryShareInfoListDTO>
 
+<script type="text/javascript">
+    var ourl = "@Url.Action("SendUpCount", "ShareOrder")";
+    function zan(shareId)
+    {
+
+        var data = {
+            shareId: shareId
+        };
+        $.ajax({
+            type: "post",
+            url: ourl,
+            data: data,
+            dataType: "json",
+            success: function (response) {
+                var _val = $(obj).html();
+                $(obj).html(parseint(_val)+1);
+            }
+        });
+    }
+
+</script>
+
 <header id="header" class="shopcar-top">
     <h2>我的晒单</h2>
 </header>
@@ -39,7 +61,7 @@
                     </ul>
                 </div>
                 <ul class="share_sub">
-                    <li><a href="@Url.Action("SendUpCount", "ShareOrder", new { shareId = @item.Id, pageIndex = ViewBag.PageIndex, pageSize = ViewBag.PageSize })" title=""><em class="zhan">@item.upCount</em></a></li>
+                    <li><a href="javascript:zan(@item.Id)" title="" shareid="@item.Id"><em class="zhan">@item.upCount</em></a></li>
                     <li class="col"><a href="javascript:;" title="">我也想要</a></li>
                 </ul>
             </div>
