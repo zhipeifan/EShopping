@@ -246,6 +246,15 @@ namespace EShopping.WXUI.Controllers
             {
                 string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
                 userInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
+                if (userInfo == null || userInfo.userId == 0)
+                {
+                    userInfo = LoginService.LoginUser(new UserDTO
+                    {
+                        faceImg = userInfo.faceImg,
+                        nickName = userInfo.nickName,
+                        weixinOpenId = userInfo.weixinOpenId
+                    });
+                }
             }
             return userInfo;
         }
@@ -254,30 +263,30 @@ namespace EShopping.WXUI.Controllers
         [AllowAnonymous]
         public ActionResult WeChatLogin(string code = "", string state = "")
         {
-            string url = Request.Url.OriginalString;
-            if (string.IsNullOrEmpty(code))
-                return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://www.kalezhe.com.cn/Base/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
+            //string url = Request.Url.OriginalString;
+            //if (string.IsNullOrEmpty(code))
+            //    return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://www.kalezhe.com.cn/Base/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
 
-            var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
-            var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
+            //var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
+            //var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
 
-            ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(wechatUser));
-
-            var userinfo = new UserDTO
-            {
-                weixinOpenId = wechatUser.openid,
-                faceImg = wechatUser.headimgurl,
-                sex = wechatUser.sex.ToString(),
-                nickName = wechatUser.nickname
-            };
+            //ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(wechatUser));
 
             //var userinfo = new UserDTO
             //{
-            //    faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
-            //    nickName = "樊智佩",
-            //    weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
-            //    userId=35
+            //    weixinOpenId = wechatUser.openid,
+            //    faceImg = wechatUser.headimgurl,
+            //    sex = wechatUser.sex.ToString(),
+            //    nickName = wechatUser.nickname
             //};
+
+            var userinfo = new UserDTO
+            {
+                faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
+                nickName = "樊智佩",
+                weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
+                userId = 35
+            };
 
             var usre = LoginService.LoginUser(userinfo);
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);
@@ -288,6 +297,13 @@ namespace EShopping.WXUI.Controllers
 
         public void ReloadCookie(int userId,string userData)
         {
+            var oldCookie=System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if(oldCookie!=null)
+            {
+                oldCookie.Expires = DateTime.Now.AddHours(-1);
+                System.Web.HttpContext.Current.Response.Cookies.Add(oldCookie);
+            }
+
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
               (
               1,
@@ -303,10 +319,9 @@ namespace EShopping.WXUI.Controllers
             cookie.HttpOnly = true;
             cookie.Domain = FormsAuthentication.CookieDomain;
             cookie.Path = FormsAuthentication.FormsCookiePath;
+            cookie.Expires = DateTime.Now.AddMonths(1);
 
-            System.Web.HttpContext.Current.Response.Cookies.Set(cookie);
-            //System.Web.HttpContext.Current.Response.Cookies.Remove(cookie.Name);
-            //System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+            System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
         }
         #endregion
 

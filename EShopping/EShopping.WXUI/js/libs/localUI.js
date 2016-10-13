@@ -130,12 +130,16 @@
 			this.defaults.UI && (this.UI = new LrUI(this));
 			this.file = document.createElement("input");
 			this.file.type = "file";
+            this.file.name="uploadImg"
 			return this.el.append(this.file);
 		};
 		tag.prototype._getBase64 = function() {
 			var e;
-			this.file.addEventListener("change", function() {return e(this.files[0]), this.value = ""}, !1);
-			return e = function(e) {
+		    //this.file.addEventListener("change", function () { return e(this.files[0]), this.value = "" }, !1);
+			this.file.addEventListener("change", function () { return e(this.files[0]) }, !1);
+		
+			return e = function (e) {
+			  
 				return function(n) {
 					var i, s, o, r, a, u;
 					i = window.URL || window.webkitURL || window.mozURL || window.msURL, s = e.defaults, a = e.results = {}, a.original = {};

@@ -104,6 +104,7 @@
     <Content Include="css\loadImg\fonts\icomoon.woff" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\161600998956182911.png" />
     <Content Include="Images\activ_bg.png" />
     <Content Include="Images\act_img.png" />
     <Content Include="Images\add.jpg" />

@@ -194,9 +194,12 @@ ul.prodback li:last-child a{
 }
 
 #menu ul{
-	display:flex;
-	display:-webkit-flex;
-	display:-moz-box-flex;
+	display: -moz-box; /* Firefox 17- */
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
 }
 
 #menu ul li.nav01{
@@ -225,9 +228,11 @@ ul.prodback li:last-child a{
 }
 
 #menu ul li{
-	flex:1;
-	-webkit-flex:1;
-	-moz-box-flex:1;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
 	height:5rem;
 	background-size:contain;
 	text-align:center;
@@ -1347,13 +1352,20 @@ ul.ser_deg li.num span.pans input,
 	background:#fff;
 }
 #footer ul{
-	display:flex;
-	display:-webkit-flex;
-	display:-moz-box-flex;
+	display: -moz-box; /* Firefox 17- */
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
 }
 
 #footer ul li{
-	flex:1;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
 	padding-top:0.6rem;
 	text-align:center;
 	position:relative;
@@ -2164,14 +2176,19 @@ ul.pro_num li.num_line span{
 	margin-bottom:20px;
 }
 .secret_tabs ul{
-	display:flex;
-	display:-webkit-box-flex;
-	display:-moz-box-flex;
+	display: -moz-box; /* Firefox 17- */
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
 }
 .secret_tabs ul li{
-	-webkit-box-flex:1;
-	-moz-box-flex:1;
-	flex:1;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
 	text-align:center;
 	line-height:50px;
 	position:relative;

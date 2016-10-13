@@ -351,14 +351,14 @@ namespace EShopping.WXUI.Controllers
             UserDTO user = LoadUserInfo();
             user.nickName = newUser.nickName;
 
-            if (!string.IsNullOrEmpty(newUser.NewFaceImg))
+            var img = Request.Files["uploadImg"];
+            if(img!=null)
             {
                 Dictionary<string, Stream> streams = new Dictionary<string, Stream>();
-                streams.Add(DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg", newUser.NewFaceImg.StringToStream());
+                streams.Add(DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg", img.InputStream);
                 string url = ShareService.UploadAttachment(streams);
                 user.faceImg = url;
             }
-
 
             UpdateUserInfoDTO updateUserInfo = new UpdateUserInfoDTO()
             {
@@ -369,7 +369,6 @@ namespace EShopping.WXUI.Controllers
             };
 
             LoginService.ModifyUserInfo(updateUserInfo);
-
 
             var newuserinfo = LoginService.LoadUserInfo(updateUserInfo.userId);
 

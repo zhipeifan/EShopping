@@ -36,6 +36,9 @@ namespace EShopping.Entity.Response.DTO
 
         public bool isBuyCurrentShareInfo { get; set; }
 
+       /// <summary>
+       /// 当前用户是否赞过
+       /// </summary>
         public bool isUpCurrentShareInfo { get; set; }
 
         public int spellbuyproductId { get; set; }

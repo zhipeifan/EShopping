@@ -22,7 +22,7 @@
 </head>
 <body style="background:#f0f0f0">
     @Html.ValidationSummaryAlert();
-    <form action="/MyEShopping/SaveMyInfo" method="post">
+    <form action="/MyEShopping/SaveMyInfo" method="post" enctype="multipart/form-data">
 
         <div id="wrapper">
             <div class="container">
@@ -51,6 +51,8 @@
                     <div class="me_photo_list">
                         <div class="lr-pad">
                             <ul>
+
+                                <input type="file" name="testfile"/>
                                 @*<li class="curr"><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
                                     <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>
                                     <li><a href="javascript:;" title=""><img width="100%" src="../../images/carlist-img.jpg" /></a></li>

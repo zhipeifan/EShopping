@@ -61,7 +61,17 @@
                     </ul>
                 </div>
                 <ul class="share_sub">
-                    <li><a href="javascript:zan(@item.Id)" title="" shareid="@item.Id"><em class="zhan">@item.upCount</em></a></li>
+                    <li><a href="javascript:zan(@item.Id)" title="" shareid="@item.Id">
+                        @if(item.isUpCurrentShareInfo)
+                        {
+                        <em class="zhaned">@item.upCount</em>
+                        }
+                        else
+                        {
+                        <em class="zhan">@item.upCount</em>
+                        }
+                        
+                        </a></li>
                     <li class="col"><a href="javascript:;" title="">我也想要</a></li>
                 </ul>
             </div>

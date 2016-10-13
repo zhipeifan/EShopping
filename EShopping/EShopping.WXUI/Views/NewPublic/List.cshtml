@@ -27,7 +27,7 @@
                             <img src="@item.coverImg1" />
                             <span class="prodtitle">@item.productName</span>
                             <span class="prodnum">期号:<em>@item.licensingCode</em></span>
-                            <span class="prodtime">即将揭晓</span>
+                            <span class="prodtime">即将揭晓@(item.winnerTime.ConvertToPublicDate())</span>
                             <ul class="andtime">
                                 <li class="hour">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Hour))</li>
                                 <li class="minu">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Minutes))</li>

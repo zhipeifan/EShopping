@@ -60,7 +60,7 @@
 <div class="products-list">
     <div class="product-title">
         <h2 class="tnews">最新揭晓</h2>
-        <a class="prod-more" href="javascript:;" title=""></a>
+        <a class="prod-more" href="@Url.Action("List", "NewPublic")" title=""></a>
     </div>
     <ul class="products">
         @if(Model.ProductVOs!=null)
@@ -106,7 +106,7 @@
     <div class="products-list">
         <div class="product-title">
             <h2 class="trec">推荐商品</h2>
-            <a class="prod-more" href="javascript:;" title=""></a>
+            <a class="prod-more" href="@Url.Action("List", "Product")" title=""></a>
         </div>
         <ul class="products">
 
