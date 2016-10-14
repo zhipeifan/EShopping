@@ -755,7 +755,18 @@ ul li.vipbars span{
 
 
 /** 购物车  **/
-
+.sel_all{
+	background:#f0f0f0;
+	overflow:hidden;
+}
+.sel_all a{
+	display:block;
+	padding-left:1.5rem;
+}
+.sel_all li{
+	float:left; 
+	padding:0.3rem 0;
+}
 .shopcar-content{
 	height:100%;
 	padding-top:51px !important;
@@ -787,6 +798,8 @@ ul li.vipbars span{
 }
 
 .car-inner-item .item-title span.select,
+.sel_all span.select,
+.sel_all span.select-curr,
 .car-inner-item .item-title span.select-curr{
 	float:left;
 	display:inline-block;
@@ -796,12 +809,12 @@ ul li.vipbars span{
 	margin-left:-1.5rem;
 	margin-top:0.2rem;
 }
-
+.sel_all span.select,
 .car-inner-item .item-title span.select{
 	background:url(../images/car-select.png) no-repeat center left;
 	background-size:contain;
 }
-
+.sel_all span.select-curr,
 .car-inner-item .item-title span.select-curr{
 	background:url(../images/car-select-curr.png) no-repeat center left;
 	background-size:contain;
@@ -1044,7 +1057,7 @@ ul.ser_deg li.num span.pans input,
 	float:left;
 	width:80%;
 	padding-right:10px;
-	border-right:1px solid #ddd;
+	/*border-right:1px solid #ddd;*/
 }
 
 .ppagetitle a{

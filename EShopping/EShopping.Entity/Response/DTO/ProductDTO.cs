@@ -34,7 +34,17 @@ namespace EShopping.Entity.Response.DTO
         public string licensingCode { get; set; }
         public long winnerTime { get; set; }
         public int winnerStatus { get; set; }
+
+        public int winnerUserId { get; set; }
+
         public int winnerUserBuyCount { get; set; }
+
+        public string winnerBuyCode { get; set; }
+
+        public string winnerUserName { get; set; }
+
+        public string winnerFaceImg { get; set; }
+
         public long systemTime { get; set; }
         public int currentUserBuyCount { get; set; }
 

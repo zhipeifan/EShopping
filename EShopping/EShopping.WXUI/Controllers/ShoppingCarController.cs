@@ -112,7 +112,7 @@ namespace EShopping.WXUI.Controllers
 
             OperatShoppingCar(id,spellBuyProductId,true);
 
-            return RedirectToAction("ShoppingList");
+            return RedirectToAction("ShoppingList", "ShoppingCar");
         }
 
         public ActionResult PayFor()

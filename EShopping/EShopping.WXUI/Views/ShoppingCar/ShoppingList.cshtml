@@ -14,13 +14,30 @@
 <script type="text/javascript">
     var ourl = "@Url.Action("CreateShoppingOrder", "ShoppingCar")";
 </script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#ckAll").click(function () {
+            $(".car-inner-list :checkbox").prop("checked", $("#ckAll").is(":checked"));
+
+        });
+    })
+</script>
+
 @Html.ValidationSummaryAlert()
-@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post)) 
+@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post))
 {
     <header id="header" class="shopcar-top">
         <h2>购物车</h2>
     </header>
     <section id="page-content" class="shopcar-content">
+        @if (Model != null && Model.Count > 0)
+        {
+            <ul class="lr-pad sel_all">
+                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;"><input type="checkbox" id="ckAll" style="margin-right:10px;" />全选</a></li>
+            </ul>
+        }
+
         <div class="car-inner">
             @if (Model != null && Model.Count > 0)
             {
@@ -36,7 +53,17 @@
                             <div class="item-title">
                                 <div class="lr-pad">
                                     @*<span class="select"></span>*@
-                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "select" })
+                                    <span style="float:left; margin-left:-1.5rem;">
+                                    @if(Model[i].IsChecked)
+                                    {
+                                        <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" checked="checked"/>
+                                    }
+                                    else
+                                    {
+                                       <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" />  
+                                    }
+                                    @*@Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" })*@
+                                    </span>
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)
                                     <h4>@Model[i].product.productName</h4>
@@ -50,8 +77,8 @@
                                     <li class="num">
                                         <span>购买数量</span>
                                         <span class="pans">
-                                            <em num="-1" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">-</em>                                          
-                                            @Html.TextBoxFor(c => Model[i].BuyNum,new {id="carCount" ,@class="buyNum"})
+                                            <em num="-1" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">-</em>
+                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum" })
                                             <em num="1" pid="@Model[i].product.Id" spellbuyproductid="@Model[i].product.spellbuyproductId">+</em>
                                         </span>
                                         <span class="carend" style="@(Model[i].IsBuyAll?"":"background:#999;")">包尾</span>
@@ -79,12 +106,23 @@
             else
             {
 
-                <div class="settle">
-                    <p>快去挑选几件期待已久的宝贝吧！</p><p>医院就可以实现你的愿望~</p>
-                    <a href="javascript:;" title="">立即夺宝</a>
+                <div class="car-inner-item">
+                    <div class="item-title">
+                        <div class="lr-pad">
+
+                            <h4>快去挑选几件期待已久的宝贝吧！一元就可以实现你的愿望~</h4>
+
+                        </div>
+                    </div>
+                    <div class="item-inner">
+                        <a class="carlist-img" href="javascript:;" title=""> </a>
+                        <ul class="carlist-inners">
+                            <li class="tit"><em><a href="@Url.Action("List", "Product")" title="" style="margin-left:17%;color:#EA0000;">立即夺宝</a></em></li>
+                        </ul>
+                    </div>
                 </div>
             }
         </div>
     </section>
 
-        }
+}
