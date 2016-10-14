@@ -60,7 +60,7 @@
 <div class="products-list">
     <div class="product-title">
         <h2 class="tnews">最新揭晓</h2>
-        <a class="prod-more" href="javascript:;" title=""></a>
+        <a class="prod-more" href="@Url.Action("List", "NewPublic")" title=""></a>
     </div>
     <ul class="products">
         @if(Model.ProductVOs!=null)
@@ -75,7 +75,7 @@
                         <span class="prodtitle">@item.productName</span>
                         <span class="newprodinfo">期号：<em>@item.licensingCode</em></span>
                         <span class="newprodinfo">获奖者：<em class="blue">@item.winnerUserName</em></span>
-                        <span class="newprodinfo">参与人次：<em>@item.currentUserBuyCount</em></span>
+                        <span class="newprodinfo">参与人次：<em>@item.winnerUserBuyCount</em></span>
                         <span class="newprodinfo">幸运号：<em class="red">@item.winnerBuyCode</em></span>
                         <span class="newprodinfo">揭晓时间：<em>@item.winnerTime.ConvertToPublicDate()</em></span>
                     </a>
@@ -106,7 +106,7 @@
     <div class="products-list">
         <div class="product-title">
             <h2 class="trec">推荐商品</h2>
-            <a class="prod-more" href="javascript:;" title=""></a>
+            <a class="prod-more" href="@Url.Action("List", "Product")" title=""></a>
         </div>
         <ul class="products">
 

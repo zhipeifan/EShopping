@@ -22,37 +22,16 @@
             {
                 foreach (var item in Model.Products)
                 {
-                    <li>
-                        <a href="javascript:;" title="">
-                            <img src="@item.coverImg1" />
-                            <span class="prodtitle">@item.productName</span>
-                            <span class="prodnum">期号:<em>@item.licensingCode</em></span>
-                            <span class="prodtime">即将揭晓</span>
-                            <ul class="andtime">
-                                <li class="hour">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Hour))</li>
-                                <li class="minu">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Minutes))</li>
-                                <li class="sero">@(item.winnerTime.ConvertToPublicDate(ConvertDateTypeEnum.Second))</li>
-                            </ul>
-                        </a>
-                    </li>
-                }
-            }
-            if (Model.HistoryProducts != null && Model.HistoryProducts.Count > 0)
-            {
-                foreach (var item in Model.HistoryProducts)
-                {
-
-
-                    <li>
-                        <a href="javascript:;" title="">
-                            <img src="images/p.png" />
-                            <span class="prodtitle">@item.productName</span>
-                            <span class="newprodinfo">期号：<em>@item.licensingCode</em></span>
-                            <span class="newprodinfo">获奖者：<em class="blue">@item</em></span>
-                            <span class="newprodinfo">参与人次：<em>123456789</em></span>
-                            <span class="newprodinfo">幸运号：<em class="red">1000888</em></span>
-                            <span class="newprodinfo">揭晓时间：<em>2016-05-03 12:00</em></span>
-                        </a>
+                   <li>
+                       <a href="@Url.Action("Detail", "Product", new { id = @item.Id, spellBuyProductId =@item.spellbuyproductId})" title="">
+                           <img src="@item.coverImg1" />
+                           <span class="prodtitle">@item.productName</span>
+                           <span class="newprodinfo">期号：<em>@item.licensingCode</em></span>
+                           <span class="newprodinfo">获奖者：<em class="blue">@item.winnerUserName</em></span>
+                           <span class="newprodinfo">参与人次：<em>@item.winnerUserBuyCount</em></span>
+                           <span class="newprodinfo">幸运号：<em class="red">@item.winnerBuyCode</em></span>
+                           <span class="newprodinfo">揭晓时间：<em>@item.winnerTime.ConvertToPublicDate()</em></span>
+                       </a>
                     </li>
                 }
             }

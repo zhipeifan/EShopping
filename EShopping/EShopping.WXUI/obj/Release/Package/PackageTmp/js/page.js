@@ -17,28 +17,29 @@ $(function(){
 	var oHour=$('.andtime').find('li.hour').html();
 	var oMinu=$('.andtime').find('li.minu').html();
 	var oSec=$('.andtime').find('li.sero').html();
-	var infoTime={
-			updateTime:function(){
-				var andTime=$('.andtime');
-				var oDateEnd=new Date();
+	var fullTime = $(".fullTime").html();
+	var infoTime = {
+	    updateTime: function () {
+
+	        var andTime = $('.andtime');
+	        var oDateEnd = new Date(fullTime);
 				var oDateNow=new Date();
 				var iRemain=0;
 				var iDay=0;
 				var iHour=0;
 				var iMin=0;
 				var iSec=0;
-				//oDateEnd.setFullYear(parseInt(2016));
-				//oDateEnd.setMonth(parseInt(6));
-				//oDateEnd.setDate(parseInt(4));
-				//oDateEnd.setHours(parseInt(oHour));
-				//oDateEnd.setMinutes(parseInt(oMinu));
-				//oDateEnd.setSeconds(parseInt(oSec));
+				oDateEnd.setFullYear(parseInt(2016));
+				oDateEnd.setMonth(parseInt(6));
+				oDateEnd.setDate(parseInt(4));
+				oDateEnd.setHours(parseInt(oHour));
+				oDateEnd.setMinutes(parseInt(oMinu));
+				oDateEnd.setSeconds(parseInt(oSec));
 				iRemain=(oDateEnd.getTime()-oDateNow.getTime())/1000;
 				
 				if(iRemain<0){
 					clearInterval(timer);
 					iRemain=0;
-				//	alert('时间已过');
 				};
 				iDay=parseInt(iRemain/86400);
 				iRemain%=86400;
@@ -62,12 +63,10 @@ $(function(){
 	infoTime.updateTime();
 	setInterval(infoTime.updateTime,1000);
 	var carlist={
-		bStop:true,
 		carSelect:function(){
 			var That=$(this);
-			if(carlist.bStop){
+			if(That.attr('class')=='select'){
 				That.attr('class', 'select-curr')
-				carlist.bStop=false;
 			}else{
 				That.attr('class','select');
 				carlist.bStop=true;

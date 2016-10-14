@@ -64,11 +64,11 @@
     <div id="wrapper">
         <div class="container">
             <header id="header" class="shopcar-top">
-                
+
                 <h2>商品详情</h2>
                 <ul class="prodback">
                     <li class="prodhome"><a href="@Url.Action("Index","Home")" title="首页"></a></li>
-                    <li class="prodcar"><a href="javascript:;" title=""></a></li>
+                    <li class="prodcar"><a href="@Url.Action("ShoppingList", "ShoppingCar")" title=""></a></li>
                 </ul>
             </header>
             <section id="page-content" class="shopcar-content">
@@ -101,7 +101,7 @@
                 <div class="prodpagehead">
                     <div class="ppagetitle">
                         <h4>@Model.productName</h4>
-                        <a href="javascript:;" title="分享">分享</a>
+                        @*<a href="javascript:;" title="分享">分享</a>*@
                     </div>
                     <div class="ppagenum">
                         <p>期号：@Model.licensingCode</p>
@@ -110,7 +110,39 @@
                         <p class="line" style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"><em></em></p>
                         <p class="nums"><span>总需@(Model.productLimit)</span><span>剩余<i>@((Model.productLimit - Model.spellbuyCount) < 0 ? 0 : Model.productLimit - Model.spellbuyCount)</i></span></p>
                     </div>
+
+                    @if (Model.winnerStatus == 1)
+                    {
+                        <div class="publitime">
+                            <ul>
+                                <li>
+                                    <p>期号：@Model.winnerBuyCode</p>
+                                </li>
+                                <li>
+                                    @*<a href="javascript:;" title="">计算详情</a>*@
+                                </li>
+                            </ul>
+                        </div>
+                    }
                 </div>
+                @if (Model.winnerStatus == 1)
+                {
+                    <div class="winner">
+                        <div class="winner-inner">
+                            <a class="winner-user" href="javascript:;" title="">
+                                <img id="faceImg" width="100%" height="100%" src="@Model.winnerFaceImg" />
+                            </a>
+                            <ul>
+                                <li>获奖者：<span>@Model.winnerUserName</span></li>
+                                @*<li>用户ID：987654321<em>（唯一不变标识）</em></li>*@
+                                <li>期号：@Model.winnerBuyCode</li>
+                                <li>本期参与：@(Model.winnerUserBuyCount)人次</li>
+                                <li>揭晓时间：@Model.winnerTime.ConvertToPublicDate()</li>
+                            </ul>
+                        </div>
+                        <p class="luck">幸运号码：<em>8000008</em>@*<a href="javascript:;" title="">计算详情</a>*@</p>
+                    </div>
+                }
                 <div class="prodpagelist" id="prodPageList">
                     <div class="prodtab">
                         @if (Model.winnerUserBuyCount > 0)
@@ -179,8 +211,8 @@
 
             <footer id="footer">
                 <div>
-                    <p class="carry">最新一期正在进行</p>
-                    <a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>
+                    <p class="carry"></p>
+                    @if(Model.winnerStatus!=1){<a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>}
                 </div>
                 <ul>
                     <li class="@(selectEnum == 1 ? "curr" : "")"><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>
@@ -194,7 +226,3 @@
     </div>
 </body>
 </html>
-
-
-
-
