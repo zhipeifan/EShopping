@@ -89,6 +89,8 @@
     <Content Include="css\base.css" />
     <Content Include="css\btn.css" />
     <Content Include="css\esshopping.css" />
+    <Content Include="css\loadCss\pullToRefresh.css" />
+    <Content Include="css\loadCss\reset.css" />
     <Content Include="css\loadImg\demo.gif" />
     <Content Include="css\loadImg\fonts\icomoon.svg" />
     <Content Include="css\loadImg\localResize.css" />
@@ -321,6 +323,9 @@
     <Content Include="js\libs\jquery-1.11.1.js" />
     <Content Include="js\libs\localUI.js" />
     <Content Include="js\libs\swiper.min.js" />
+    <Content Include="js\loadJs\colorful.js" />
+    <Content Include="js\loadJs\iscroll.js" />
+    <Content Include="js\loadJs\pullToRefresh.js" />
     <Content Include="js\page.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -361,6 +366,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductCategoryItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +419,8 @@
     <Content Include="Views\MyEShopping\ErrorPage.cshtml" />
     <Content Include="Views\Product\SearchResult.cshtml" />
     <Content Include="Views\MyEShopping\MyShareOrderList.cshtml" />
+    <Content Include="Views\Product\ProductItems.cshtml" />
+    <Content Include="Views\Product\ProductItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -423,7 +431,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="dll\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\UserInfo\" />
   </ItemGroup>

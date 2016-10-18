@@ -1,6 +1,7 @@
 ﻿using EShopping.BusinessService.SelectProduct;
 using EShopping.Common.Enums;
 using EShopping.Entity.Response.DTO;
+using EShopping.WXUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace EShopping.WXUI.Controllers
         /// <returns></returns>
         public ActionResult List(int categoryId = 0, int areaId = 0, int tcategoryId = 0, int pageIndex=1,int pageSize=10)
         {
+
             ViewBag.CategoryId = categoryId;
             ViewBag.TCategoryId = tcategoryId;
             ViewBag.AreaTypeId = areaId;
@@ -41,6 +43,12 @@ namespace EShopping.WXUI.Controllers
              var productTypes = ProductService.LoadProductType();
              ViewBag.ProductTypes = productTypes;
            return View(list);
+        }
+
+        public ActionResult ProductItems(int categoryId = 0, int areaId = 0, int tcategoryId = 0, int pageIndex = 1, int pageSize = 10)
+        {
+            var list = ProductService.LoadProductByType(tcategoryId, categoryId, areaId, pageIndex, pageSize);
+            return PartialView(list);
         }
 
         /// <summary>

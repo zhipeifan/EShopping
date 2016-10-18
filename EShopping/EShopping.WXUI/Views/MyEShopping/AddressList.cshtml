@@ -29,7 +29,7 @@
                             <ul class="oper">
                                 <li class="@(item.isDefault?"addcurr curr":"")" ><a href="@Url.Action("SetDefaultAddress", "MyEShopping", new { Id = @item.id })">默认地址</a></li>
                                 
-                                <li class="del"><a href="@Url.Action("DeleteAddress", "MyEShopping", new { Id = @item.id })">删除</a></li>
+                                <li class="del"><a href="@Url.Action("DeleteAddress", "MyEShopping", new { Id = @item.id })" onclick="return confirm('确定删除当前地址？');">删除</a></li>
                                 <li class="edi"><a href="@Url.Action("ModifyAddress", "MyEShopping", new { Id = @item.id })">编辑</a></li>
                             </ul>
                         </div>

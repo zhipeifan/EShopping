@@ -1,4 +1,5 @@
 ﻿using EShopping.BusinessService.SelectProduct;
+using EShopping.Entity.Response.DTO;
 using EShopping.Entity.UIDTO;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult Detail()
         {
-            return View();
+            return View(new  ProductDTO());
         }
 	}
 }

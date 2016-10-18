@@ -19,7 +19,10 @@
 
         $("#ckAll").click(function () {
             $(".car-inner-list :checkbox").prop("checked", $("#ckAll").is(":checked"));
+        });
 
+        $(".car-inner-list :checkbox").click(function () {
+            $("#ckAll").prop("checked", $(".car-inner-list :checkbox").length == $(".car-inner-list :checkbox:checked").length);
         });
     })
 </script>

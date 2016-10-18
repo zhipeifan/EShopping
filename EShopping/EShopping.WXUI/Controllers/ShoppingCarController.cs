@@ -47,6 +47,15 @@ namespace EShopping.WXUI.Controllers
             if(selectedProduct.Count==0)
             {
                 ModelState.AddModelError("ShoppingCarErro","亲，至少选择一个商品结算哦！");
+
+                dto.ForEach(x =>
+                {
+                    if(products.ContainsKey(InintKey(x.product.Id, x.product.spellbuyproductId)))
+                    {
+                        x.product = products[InintKey(x.product.Id, x.product.spellbuyproductId)].product;
+                    }
+                });
+
                 return View("ShoppingList", dto);
             }
             if(selectedProduct!=null&&selectedProduct.Count>0)

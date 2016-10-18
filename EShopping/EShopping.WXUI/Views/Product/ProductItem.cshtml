@@ -1,0 +1,23 @@
+﻿
+@using EShopping.Entity.Response.DTO;
+@using EShopping.Common;
+@using EShopping.WXUI.Models
+
+@model ProductDTO
+
+
+
+<li>
+    <a href="@Url.Action("Detail", "Product", new { id = @Model.Id, spellBuyProductId =@Model.spellbuyproductId })">
+        <img src="@(Model.coverImg1)" />
+        <span class="prodtitle">@Model.productName</span>
+        <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(@Model.productLimit, @Model.spellbuyCount))</em></span>
+        <span class="pacet"><em></em></span>
+        <a href="javascript:;" class="iaddcar" pid="@Model.Id" spellbuyproductid="@Model.spellbuyproductId"></a>
+        <span class="prodns">
+            <em>总需@(Model.productLimit)</em>
+            <em>剩余<i>@((Model.productLimit - @Model.spellbuyCount) < 0 ? 0 : @Model.productLimit - @Model.spellbuyCount)</i></em>
+        </span>
+    </a>
+    <span class="dzzqu"></span>
+</li>

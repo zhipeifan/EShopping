@@ -57,15 +57,15 @@
                                 <div class="lr-pad">
                                     @*<span class="select"></span>*@
                                     <span style="float:left; margin-left:-1.5rem;">
-                                    @if(Model[i].IsChecked)
+                                    @*@if(Model[i].IsChecked)
                                     {
                                         <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" checked="checked"/>
                                     }
                                     else
                                     {
                                        <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" />  
-                                    }
-                                    @*@Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" })*@
+                                    }*@
+                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" })
                                     </span>
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)

@@ -898,7 +898,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2016 14:50:03</publishTime>
     </File>
     <File Include="Views/ShoppingCar/ShoppingList.cshtml">
-      <publishTime>10/14/2016 13:25:20</publishTime>
+      <publishTime>10/14/2016 13:31:05</publishTime>
     </File>
     <File Include="Views/Test/css/demo.gif">
       <publishTime>02/25/2015 11:04:00</publishTime>
