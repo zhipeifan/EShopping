@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace EShopping.Entity.Response.DTO
 {
@@ -57,6 +57,19 @@ namespace EShopping.Entity.Response.DTO
         public long systemTime { get; set; }
 
         public List<SignHistoryDTO> signHistoryVOs { get; set; }
+
+
+        public string HistoryDates
+        {
+            get
+            {
+                if(signHistoryVOs!=null&&signHistoryVOs.Count>0)
+                {
+                    return string.Join(",",signHistoryVOs.Select(x => x.signTimeString.ToString("yyyy-MM-dd")).ToList());
+                }
+                return "";
+            }
+        }
     }
 
 

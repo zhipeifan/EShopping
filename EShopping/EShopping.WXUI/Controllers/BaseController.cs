@@ -131,11 +131,15 @@ namespace EShopping.WXUI.Controllers
         public ShoppingCarDTO InitShoppingCarDTO(int id, int spellBuyProductId)
         {
             var item = ProductService.LoadProductDetail(id,spellBuyProductId);
-            return new ShoppingCarDTO
+            var pdto= new ShoppingCarDTO
                   {
                       product = item,
                       BuyNum = 1
                   };
+
+            pdto.product.spellbuyCount++;//已购数量+1
+
+            return pdto;
         }
 
         public string InintKey(int id, int spellBuyProductId)

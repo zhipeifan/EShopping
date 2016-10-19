@@ -37,6 +37,7 @@ function IsBuyAll()
 {
     $(".carend").click(function () {
         var _style = $(this).attr("style");
+        var _surplus =parseInt($(this).attr("Surplus"));
         if (_style != "" && _style != undefined)
         {
             $(this).removeAttr("style");
@@ -50,19 +51,34 @@ function IsBuyAll()
 
 function BaingClick()
 {
+    $("form").attr("action", changeProductUrl);
     $(".item-inner .mon span").click(function () {
-        AddProductNum(this);
+       // AddProductNum(this);
     });
 
     $(".carlist-inners em").click(function () {
-        AddProductNum(this);
+        //AddProductNum(this);
     });
 
-    $(".orderDel").click(function () {
-        if (confirm("您确定要从购物车中删除该商品？")) {
-            AddProductNum(this);
-        }
-    });
+    //$(".orderDel").click(function () {
+    //    if (confirm("您确定要从购物车中删除该商品？")) {
+    //        AddProductNum(this);
+    //    }
+    //});
+}
+
+
+function ChangebuyNum(obj)
+{
+    $("form").attr("action", changeProductUrl);
+    var opt = parseInt($(obj).attr("opt"));
+    if (opt == 0)
+    {
+        $(obj).parents(".car-inner-item").find("#carCount").val($(obj).attr("num"));
+    } else {
+        $(obj).parents(".car-inner-item").find("#OperationType").val($(obj).attr("opt"));
+    }
+    $("form").submit();
 }
 
 
@@ -84,7 +100,7 @@ function AddProductNum(obj)
             data: data,
             dataType: "text",
             success: function (response) {
-                $(obj).parents(".item-inner").find("#carCount").val(num);
+                window.location.reload();
             }
         });
   

@@ -18,5 +18,13 @@ namespace EShopping.Entity.UIDTO
         public bool IsBuyAll { get; set; }
 
         public bool IsChecked { get; set; }
+
+        /// <summary>
+        /// 操作类型
+        /// -1=减少一件
+        /// 1=添加一件
+        /// 0=包尾
+        /// </summary>
+        public int OperationType { get; set; }
     }
 }

@@ -94,6 +94,72 @@ namespace EShopping.WXUI.Controllers
            return null;
         }
 
+        [HttpPost]
+        public ActionResult ChangeShoppingList(List<ShoppingCarDTO> dto)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                WeChatLogin("", "");
+            }
+
+            var products = LoadShoppingCar();
+
+            dto.ForEach(x =>
+            {
+                string key = InintKey(x.product.Id,x.product.spellbuyproductId);
+                if (!products.ContainsKey(key))
+                    return;
+
+                var item = products[key];
+                switch (x.OperationType)
+                {
+                    case -1:
+                        if (item.BuyNum - 1 > 0)
+                        {
+                            item.BuyNum--;
+                            item.product.spellbuyCount--;
+                        }
+                        break;
+                    case 1:
+                        if (item.BuyNum + 1 <= item.product.spellbuyLimit)
+                        {
+                            item.BuyNum++;
+                            item.product.spellbuyCount++;
+                        }
+                        break;
+                    case 2:
+                        item.BuyNum = (item.product.productLimit - item.product.spellbuyCount) < 0 ? 0 : item.product.productLimit - item.product.spellbuyCount+1;
+                        item.product.spellbuyCount = item.product.productLimit;
+                        x.IsBuyAll = true;
+                        break;
+                    case -2:
+                        item.product.spellbuyCount = item.product.spellbuyCount - item.BuyNum + 1;
+                        item.BuyNum = 1;
+                        x.IsBuyAll = false;
+                        break;
+                    default:
+                        if (item.product.productLimit - item.product.spellbuyCount <=x.BuyNum)
+                        {
+                            x.BuyNum = item.product.productLimit - item.product.spellbuyCount;
+                        }
+                        item.product.spellbuyCount = item.product.spellbuyCount+x.BuyNum-item.BuyNum;
+                        item.BuyNum = x.BuyNum;
+                        break;
+                }
+
+                item.IsBuyAll = x.IsBuyAll;
+                item.IsChecked = x.IsChecked;
+                if(item.product.spellbuyCount>item.product.productLimit)
+                {
+                    item.product.productLimit = item.product.spellbuyCount;
+                }
+            });
+
+            Session["ShoppingCar"] = products;
+
+            return RedirectToAction("ShoppingList");
+        }
+
         public ActionResult AddProductNum(int id,int spellBuyProductId,int num)
         {
             var products = LoadShoppingCar();

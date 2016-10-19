@@ -112,52 +112,52 @@
 	height:4rem; line-height:4rem;
 	overflow:hidden;
 }
-.rank_header li:nth-child(1),
-.rank_inner li:nth-child(1){
+.rank_header li:nth-child(2),
+.rank_inner li:nth-child(2){
 	width:50%;
 }
-.rank_inner li:nth-child(1){
+.rank_inner li:nth-child(2){
 	line-height:none;
 }
-.rank_inner li:nth-child(1) span.rank_photo{
+.rank_inner li:nth-child(2) span.rank_photo{
 	float:left; display:block;
 	width:3rem;height:3rem;
 	padding:0.5rem 0.1rem 0px 0.5rem;
 	box-sizing:initial;
 	overflow:hidden;
 }
-.rank_inner li:nth-child(1) span.rank_name{
+.rank_inner li:nth-child(2) span.rank_name{
 	float:left;
 	font-size:1rem;
 	overflow:hidden;
 	white-space:nowrap;
 	text-overflow:ellipsis;
 }
-.rank_inner li:nth-child(1) span.rank_name img{
+.rank_inner li:nth-child(2) span.rank_name img{
 	float:left;
 	width:1rem;
 	margin:1.5rem 2px 0 0px;
 }
-.rank_inner li:nth-child(1) span em{
+.rank_inner li:nth-child(2) span em{
 	float:left;
 	margin-left:-20%;
 }
-.rank_inner li:nth-child(1) span em{
+.rank_inner li:nth-child(2) span em{
 	display:block;
 	width:30%;
 }
-.rank_inner li:nth-child(1) span em img{
+.rank_inner li:nth-child(2) span em img{
 	width:100%;
-}
-.rank_header li:nth-child(2),
-.rank_inner li:nth-child(2){
-	width:30%;
-}
-.rank_inner li:nth-child(2){
-	color:#B70000;
 }
 .rank_header li:nth-child(3),
 .rank_inner li:nth-child(3){
+	width:30%;
+}
+.rank_inner li:nth-child(3){
+	color:#B70000;
+}
+.rank_header li:nth-child(1),
+.rank_inner li:nth-child(1){
 	width:20%;
 }
 ul.rob{

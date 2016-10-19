@@ -5738,10 +5738,25 @@ var DayGrid = FC.DayGrid = Grid.extend(DayTableMixin, {
 		classes = this.getDayClasses(date);
 		classes.unshift('fc-day-number');
 
-		return '' +
+	    //fanzhipei
+		if (days.indexOf(date.format())>-1)
+		{
+		    return '' +
+			'<td class=" tdchecked ' + classes.join(' ') + '" data-date="' + date.format() + '">' +
+				date.date() +
+			'</td>';
+		} else
+		{
+		    return '' +
 			'<td class="' + classes.join(' ') + '" data-date="' + date.format() + '">' +
 				date.date() +
 			'</td>';
+		}
+
+		//return '' +
+		//	'<td class=" tdchecked  ' + classes.join(' ') + '" data-date="' + date.format() + '">' +
+		//		date.date() +
+		//	'</td>';
 	},
 
 
@@ -9331,7 +9346,6 @@ Calendar.mixin(EmitterMixin);
 
 function Calendar_constructor(element, overrides) {
 	var t = this;
-
 
 	t.initOptions(overrides || {});
 	var options = this.options;
