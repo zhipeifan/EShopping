@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                     <div class="pre-content">
-                        <a class="pre-photo" href="@Url.Action("ModifyMe", "MyEShopping")" title=""><img src="@Model.faceImg" height="100%" /></a>
+                        <a class="pre-photo" href="@Url.Action("ModifyMe", "MyEShopping")" title=""><img src="@Model.faceImg" height="100%" width="100%"/></a>
                         <ul>
                             <li>@Model.nickName</li>
                             <li>钱包：@Model.CurrentWalletOfAll</li>
@@ -26,9 +26,9 @@
                     </div>
                 </div>
                 <div class="vipinner">
-                    <h4>VIP@(Model.Level)</h4>
+                    <h4>VIP进度条</h4>
                     <ul>
-                        <li class="viplogo"><a href="javascript:;" title=""><img width="100%" src="images/viplogo.png" /></a></li>
+                        <li class="viplogo"><a href="javascript:;" title=""><img height="100%" src="images/hvip@(Model.Level).png" /></a></li>
                         <li class="vipbars"><span style="width:@(ExtendUtility.ConvertProductspeed(Model.Experience,Model.nextLevelNeedExpense))"></span></li>
                     </ul>
                     <p>VIP积分信息 以及距离领红包还差@(Model.nextLevelNeedExpense)积分</p>

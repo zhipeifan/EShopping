@@ -8,14 +8,14 @@
 
             <header id="header" class="shopcar-top">
                
-                <h2>金榜排名</h2>
+                <h2 style="background-color: #BF0000; color: #fff !important">金榜排名</h2>
             </header>
             <section id="page-content" class="shopcar-content">
                 <div class="rank">
                     <ul class="rank_header">
+                        <li>排名</li>
                         <li>级别</li>
                         <li>积分</li>
-                        <li>排名</li>
                     </ul>
 
                     @if(Model!=null&&Model.Count>0)
@@ -23,12 +23,13 @@
                         foreach(var item in Model)
                         {
                               <ul class="rank_inner">
+
+                                  <li>@index</li>
                         <li>
                             <span class="rank_photo"><img src="@item.faceImg" width="100%" /></span>
-                            <span class="rank_name"><img src="../images/vipIcon.jpg" /> @item.nickName</span>
+                            <span class="rank_name"><img src="../images/vip@(item.Level).png"  height="100%"/> @item.nickName</span>
                         </li>
                         <li>@item.Integral</li>
-                        <li>@index</li>
                     </ul>
                             index++;
                         }

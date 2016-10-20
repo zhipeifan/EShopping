@@ -100,15 +100,15 @@
             @Html.HiddenFor(c => pageIndex)
             @Html.HiddenFor(c => pageSize)
 
-            @*<ul class="products">
+            <ul class="">
                 <div class="pullUp" style="display: block; line-height: 40px;">
-                    <div class="loader" style="display: block;">
+                    <div class="loader" style="display: none;">
                         <span></span><span></span><span></span><span></span>
                     </div><div class="pullUpLabel">
-                        <img src="~/Images/up.png" /> 向上拖动 <img src="~/Images/up.png" />
+                        <img src="~/Images/up.png" height="12px" />... 加载更多数据... <img src="~/Images/up.png" height="12px" />
                     </div>
                 </div>
-            </ul>*@
+            </ul>
         </div>
     </div>
 
@@ -120,7 +120,7 @@
             var scrollTop = $(this).scrollTop();
             var scrollHeight = $('#page-content').outerHeight();
             var wHeight = $(this).height() - $('#footer').height() - 1;
-            if (wHeight + scrollTop == scrollHeight) {
+            if (wHeight + scrollTop >= scrollHeight) {
 
                 var categoryId = $("#categoryId").val();
                 var tcategoryId = $("#tcategoryId").val();
@@ -136,13 +136,17 @@
                     pageSize: pageSize
                 };
 
+                $(".loader").show();
+
                 $.ajax({
                     type: "post",
                     url: shppoingItemUrl,
                     data: data,
                     dataType: "html",
                     success: function (response) {
-                        $('.loglist').append(response);
+                        $('.products').append(response);
+                        $("#pageIndex").val(parseInt(pageIndex) + 1);
+                        $(".loader").hide();
                     }
                 });
             };

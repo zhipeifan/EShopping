@@ -8,13 +8,14 @@
 <meta charset='utf-8' />
 <link href="~/js/Calendar/fullcalendar.css" rel="stylesheet" />
 <link href="~/js/Calendar/fullcalendar.print.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/selectCss.css" />
+
 <script src="~/js/Calendar/lib/moment.min.js"></script>
 <script src="~/js/Calendar/jquery.min.js"></script>
 <script src="~/js/Calendar/fullcalendar.js"></script>
 <script src="~/js/Calendar/gcal.js"></script>
 <script>
-
-    var days = "";
+    var days = "@Model.HistoryDates";
     @if(Model!=null&&Model.signHistoryVOs!=null&&Model.signHistoryVOs.Count>0)
     {
         
@@ -23,9 +24,6 @@
     $(document).ready(function () {
         $(".container").addClass("sign_bg");
         $('#calendar').fullCalendar({
-
-            //   googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
-
             // US Holidays
             events: [
                  {

@@ -196,7 +196,7 @@
                             foreach (var item in attendUses)
                             {
                                 <div class="loglist-item">
-                                    <a class="log-user-img" href="javascript:;" title=""><img width="100%" src="images/photo.jpg" /></a>
+                                    <a class="log-user-img" href="javascript:;" title=""><img width="100%" src="@item.faceImg" /></a>
                                     <ul class="log-user-name">
                                         <li class="name"><span>@item.userName</span>（IP:@item.ipAddress）</li>
                                         <li class="lognum"><span class="col">参与<span>@item.buyCount</span>次</span> @item.buyTime.ConvertToPublicDateFormat()</li>

@@ -8,3 +8,5 @@ D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Release\EShopping.
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Release\EShopping.Entity.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Release\EShopping.Entity.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Release\EShopping.Entity.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Release\Newtonsoft.Json.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Release\Newtonsoft.Json.xml

@@ -47,6 +47,7 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult ProductItems(int categoryId = 0, int areaId = 0, int tcategoryId = 0, int pageIndex = 1, int pageSize = 10)
         {
+            pageIndex++;
             var list = ProductService.LoadProductByType(tcategoryId, categoryId, areaId, pageIndex, pageSize);
             return PartialView(list);
         }

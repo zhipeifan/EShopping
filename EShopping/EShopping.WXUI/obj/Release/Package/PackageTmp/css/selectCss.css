@@ -41,3 +41,8 @@ label{
 	margin-left:-1.5rem;
 	margin-top:0.2rem;
 }
+
+
+td.tdchecked{
+    background:url(../images/redReg.png) no-repeat bottom right !important;
+}
