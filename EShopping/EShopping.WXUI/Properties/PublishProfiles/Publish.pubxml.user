@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/19/2016 22:30:53</publishTime>
     </File>
     <File Include="bin/EShopping.WXUI.dll">
-      <publishTime>10/19/2016 22:30:54</publishTime>
+      <publishTime>10/20/2016 17:34:44</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>05/13/2016 10:14:00</publishTime>
@@ -865,7 +865,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2016 17:25:26</publishTime>
     </File>
     <File Include="Views/Product/List.cshtml">
-      <publishTime>10/19/2016 21:38:23</publishTime>
+      <publishTime>10/20/2016 17:14:55</publishTime>
     </File>
     <File Include="Views/Product/ProductItem.cshtml">
       <publishTime>10/17/2016 19:26:52</publishTime>
@@ -901,7 +901,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2016 17:12:27</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/17/2016 17:18:03</publishTime>
+      <publishTime>10/20/2016 16:50:10</publishTime>
     </File>
     <File Include="Views/ShareOrder/BuyProductHistoryList.cshtml">
       <publishTime>07/26/2016 22:06:08</publishTime>
@@ -919,7 +919,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2016 14:50:03</publishTime>
     </File>
     <File Include="Views/ShoppingCar/ShoppingList.cshtml">
-      <publishTime>10/19/2016 20:52:55</publishTime>
+      <publishTime>10/20/2016 16:50:03</publishTime>
     </File>
     <File Include="Views/Test/css/demo.gif">
       <publishTime>02/25/2015 11:04:00</publishTime>
