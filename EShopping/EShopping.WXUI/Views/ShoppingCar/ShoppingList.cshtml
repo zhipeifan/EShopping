@@ -18,6 +18,8 @@
 <script type="text/javascript">
     $(function () {
 
+        $("#ckAll").prop("checked", $(".car-inner-list :checkbox").length == $(".car-inner-list :checkbox:checked").length);
+
         $("#ckAll").click(function () {
             $(".car-inner-list :checkbox").prop("checked", $("#ckAll").is(":checked"));
         });
@@ -29,7 +31,7 @@
 </script>
 
 @Html.ValidationSummaryAlert()
-@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post))
+@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post, new { id = "form1" }))
 {
     <header id="header" class="shopcar-top">
         <h2>购物车</h2>
@@ -86,7 +88,7 @@
                                             @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum" })
                                             <em onclick="ChangebuyNum(this)" opt="1">+</em>
                                         </span>
-                                        @if(Model[i].IsBuyAll)
+                                        @if (Model[i].IsBuyAll)
                                         {
                                               <span class="carend"  onclick="ChangebuyNum(this)" opt="-2">
                                             包尾

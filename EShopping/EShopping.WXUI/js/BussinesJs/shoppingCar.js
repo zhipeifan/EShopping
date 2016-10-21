@@ -70,7 +70,7 @@ function BaingClick()
 
 function ChangebuyNum(obj)
 {
-    $("form").attr("action", changeProductUrl);
+    $("#form1").attr("action", changeProductUrl);
     var opt = parseInt($(obj).attr("opt"));
     if (opt == 0)
     {
@@ -78,7 +78,7 @@ function ChangebuyNum(obj)
     } else {
         $(obj).parents(".car-inner-item").find("#OperationType").val($(obj).attr("opt"));
     }
-    $("form").submit();
+    $("#form1").submit();
 }
 
 

@@ -134,7 +134,8 @@ namespace EShopping.WXUI.Controllers
             var pdto= new ShoppingCarDTO
                   {
                       product = item,
-                      BuyNum = 1
+                      BuyNum = 1,
+                      IsChecked=true
                   };
 
             pdto.product.spellbuyCount++;//已购数量+1
