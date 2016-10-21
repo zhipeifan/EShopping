@@ -40,7 +40,7 @@
         @if (Model != null && Model.Count > 0)
         {
             <ul class="lr-pad sel_all">
-                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;"><input type="checkbox" id="ckAll" style="margin-right:10px;" />全选</a></li>
+                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;"><input type="checkbox" id="ckAll" style="margin-right:10px;" onclick="ChangebuyNum(this)" opt="7">全选</a></li>
             </ul>
         }
 
@@ -53,7 +53,10 @@
 
                     @for (var i = 0; i < Model.Count; i++)
                     {
-                        price += Model[i].TotalPrice;
+                        if (Model[i].IsChecked)
+                        {
+                            price += Model[i].TotalPrice;
+                        }
                                         <!-- list -->
                         <div class="car-inner-item">
                             <div class="item-title">
@@ -68,7 +71,7 @@
                                     {
                                        <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" />  
                                     }*@
-                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" })
+                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" ,onclick="ChangebuyNum(this)", opt="7"})
                                     </span>
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)
