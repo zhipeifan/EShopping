@@ -36,7 +36,7 @@ D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Debug\
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.Entity\obj\Debug\EShopping.Entity.pdb
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\EShopping.Entity.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\EShopping.Entity.pdb
-D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.dll
-D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.pdb
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\Newtonsoft.Json.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\Newtonsoft.Json.xml
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.pdb

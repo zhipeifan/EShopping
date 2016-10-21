@@ -147,6 +147,10 @@
                         $('.products').append(response);
                         $("#pageIndex").val(parseInt(pageIndex) + 1);
                         $(".loader").hide();
+                        if ($.trim(response) == "")
+                        {
+                            $(".pullUpLabel").html("亲，以上就是全部商品哟。");
+                        }
                     }
                 });
             };

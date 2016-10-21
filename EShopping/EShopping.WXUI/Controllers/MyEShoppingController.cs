@@ -336,7 +336,6 @@ namespace EShopping.WXUI.Controllers
             return View(user);
         }
 
-        [HttpPost]
         public ActionResult SaveMyInfo(UserDTO newUser)
         {
             if (string.IsNullOrEmpty(newUser.nickName))
@@ -374,7 +373,7 @@ namespace EShopping.WXUI.Controllers
 
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(newuserinfo);
             ReloadCookie(newuserinfo.userId, _userInfo);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "MyEShopping");
         }
 
         /// <summary>

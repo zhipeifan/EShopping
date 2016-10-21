@@ -135,7 +135,8 @@
 		};
 		tag.prototype._getBase64 = function() {
 			var e;
-			this.file.addEventListener("change", function() {return e(this.files[0]), this.value = ""}, !1);
+		    //this.file.addEventListener("change", function() {return e(this.files[0]), this.value = ""}, !1);
+			this.file.addEventListener("change", function () { return e(this.files[0])}, !1);
 			return e = function(e) {
 				return function(n) {
 					var i, s, o, r, a, u;
