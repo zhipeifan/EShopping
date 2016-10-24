@@ -46,3 +46,10 @@ label{
 td.tdchecked{
     background:url(../images/redReg.png) no-repeat bottom right !important;
 }
+
+
+
+.bgRedFontWhite {
+    color:#fff !important;
+    background-color: #BF0000 !important;
+}

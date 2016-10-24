@@ -5492,7 +5492,7 @@ var DayTableMixin = FC.DayTableMixin = {
 		var view = this.view;
 
 		return '' +
-			'<th class="fc-day-header ' + view.widgetHeaderClass + ' fc-' + dayIDs[date.day()] + '"' +
+			'<th class="fc-day-header bgRedFontWhite ' + view.widgetHeaderClass + ' fc-' + dayIDs[date.day()] + '"' +
 				(this.rowCnt == 1 ?
 					' data-date="' + date.format('YYYY-MM-DD') + '"' :
 					'') +

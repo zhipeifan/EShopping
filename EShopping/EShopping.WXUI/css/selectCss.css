@@ -53,3 +53,13 @@ td.tdchecked{
     color:#fff !important;
     background-color: #BF0000 !important;
 }
+
+
+
+.currMenu{
+    background-color:#BF0000 !important;
+}
+
+.currMenu a{
+     color:#fff !important;
+}

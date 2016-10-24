@@ -18,6 +18,8 @@
 <script type="text/javascript">
     $(function () {
 
+        $("#ckAll").prop("checked", $(".car-inner-list :checkbox").length == $(".car-inner-list :checkbox:checked").length);
+
         $("#ckAll").click(function () {
             $(".car-inner-list :checkbox").prop("checked", $("#ckAll").is(":checked"));
         });
@@ -29,7 +31,7 @@
 </script>
 
 @Html.ValidationSummaryAlert()
-@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post))
+@using (Html.BeginForm("CreateShoppingOrder", "ShoppingCar", FormMethod.Post, new { id = "form1" }))
 {
     <header id="header" class="shopcar-top">
         <h2>购物车</h2>
@@ -38,7 +40,7 @@
         @if (Model != null && Model.Count > 0)
         {
             <ul class="lr-pad sel_all">
-                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;"><input type="checkbox" id="ckAll" style="margin-right:10px;" />全选</a></li>
+                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;"><input type="checkbox" id="ckAll" style="margin-right:10px;" onclick="ChangebuyNum(this)" opt="7">全选</a></li>
             </ul>
         }
 
@@ -51,7 +53,10 @@
 
                     @for (var i = 0; i < Model.Count; i++)
                     {
-                        price += Model[i].TotalPrice;
+                        if (Model[i].IsChecked)
+                        {
+                            price += Model[i].TotalPrice;
+                        }
                                         <!-- list -->
                         <div class="car-inner-item">
                             <div class="item-title">
@@ -66,7 +71,7 @@
                                     {
                                        <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" />  
                                     }*@
-                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" })
+                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" ,onclick="ChangebuyNum(this)", opt="7"})
                                     </span>
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)
@@ -86,7 +91,7 @@
                                             @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum" })
                                             <em onclick="ChangebuyNum(this)" opt="1">+</em>
                                         </span>
-                                        @if(Model[i].IsBuyAll)
+                                        @if (Model[i].IsBuyAll)
                                         {
                                               <span class="carend"  onclick="ChangebuyNum(this)" opt="-2">
                                             包尾
