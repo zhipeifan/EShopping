@@ -1,4 +1,5 @@
 ﻿using EShopping.BusinessService.SelectProduct;
+using EShopping.Common.Enums;
 using EShopping.Entity.Response.DTO;
 using EShopping.Entity.UIDTO;
 using System;
@@ -11,6 +12,10 @@ namespace EShopping.WXUI.Controllers
 {
     public class NewPublicController : BaseController
     {
+        public NewPublicController()
+        {
+            ViewBag.SelectEnum = (int)FloolterMenu.NewPublic;
+        }
         //
         // GET: /NewPublic/
         public ActionResult List(int PageIndex=1,int PageSize=10)

@@ -8,6 +8,11 @@
 @using EShopping.WXUI.Controllers
 
 @model UserDTO
+           @{
+               
+           
+               int count = (int)ViewBag.ShoppingCarCount;
+           }
 
 <!DOCTYPE html>
 <html>
@@ -73,11 +78,11 @@
                 </section>
                 <footer id="footer">
                     <ul>
-                        <li class="curr"><a href="javascript:;" title="">Shopping</a></li>
-                        <li><a href="javascript:;" title="">全部商品</a></li>
-                        <li><a href="javascript:;" title="">最新揭晓</a></li>
-                        <li><a href="javascript:;" title="">购物车</a><i>11</i></li>
-                        <li><a href="javascript:;" title="">我的易购</a></li>
+                        <li ><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>
+                        <li ><a href="@Url.Action("List", "Product")" title="">全部商品</a></li>
+                        <li ><a href="@Url.Action("List", "NewPublic")" title=" ">最新揭晓</a></li>
+                        <li  ><a href="@Url.Action("ShoppingList", "ShoppingCar")" title="">购物车</a><i id="carCount">@count</i></li>
+                        <li class="curr"><a href="@Url.Action("Index", "MyEShopping")" title="">我的易购</a></li>
                     </ul>
                 </footer>
             </div>

@@ -120,7 +120,11 @@ namespace EShopping.WXUI.Controllers
             {
                 LoadShoppingCar();
             }
-            ViewBag.SelectEnum = (int)FloolterMenu.Index;
+
+            if (ViewBag.SelectEnum == null)
+            {
+                ViewBag.SelectEnum = (int)FloolterMenu.Index;
+            }
             ViewBag.ShoppingCarCount = LoadShoppingCar().Count;
             if (ViewBag.PageIndex == null)
                 ViewBag.PageIndex = 1;

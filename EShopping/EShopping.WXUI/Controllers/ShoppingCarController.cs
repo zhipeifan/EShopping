@@ -1,4 +1,5 @@
 ﻿using EShopping.BusinessService.ShoppingCar;
+using EShopping.Common.Enums;
 using EShopping.Entity.Request;
 using EShopping.Entity.UIDTO;
 using System;
@@ -11,6 +12,11 @@ namespace EShopping.WXUI.Controllers
 {
     public class ShoppingCarController : BaseController
     {
+
+        public ShoppingCarController()
+        {
+            ViewBag.SelectEnum = (int)FloolterMenu.ShoppingCar;
+        }
         //
         // GET: /ShoppingCar/
         public ActionResult ShoppingList(int id=0,int spellbuyProductId=0)
@@ -110,6 +116,9 @@ namespace EShopping.WXUI.Controllers
                     string key = InintKey(x.product.Id, x.product.spellbuyproductId);
                     if (!products.ContainsKey(key))
                         return;
+
+                    if (x.BuyNum < 0)
+                        x.BuyNum = 0;
 
                     var item = products[key];
                     switch (x.OperationType)

@@ -21,7 +21,7 @@ namespace EShopping.WXUI.Controllers
 
         public MyEShoppingController()
         {
-            ViewBag.SelectEnum = (int)FloolterMenu.Index;
+            ViewBag.SelectEnum = (int)FloolterMenu.MyShopping;
         }
         //
         // GET: /MyEShopping/
