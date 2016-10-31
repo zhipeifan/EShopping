@@ -421,6 +421,8 @@
     <Content Include="Views\MyEShopping\MyShareOrderList.cshtml" />
     <Content Include="Views\Product\ProductItems.cshtml" />
     <Content Include="Views\Product\ProductItem.cshtml" />
+    <Content Include="Views\ShoppingCar\RechargePayFor.cshtml" />
+    <Content Include="Views\ShoppingCar\DoRecharge.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -331,6 +331,34 @@ namespace EShopping.WXUI.Controllers
             cookie.Expires = DateTime.Now.AddMonths(1);
 
             System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+
+           // ResetShoppingCarList(userId.ToString());
+        }
+
+
+        public void ResetShoppingCarList(string userId)
+        {
+            var _ShoppingCar = new Dictionary<string, ShoppingCarDTO>();
+            if (!string.IsNullOrEmpty(userId))
+            {
+                var list = ShoppingCarService.LoadShoppingList(userId);
+                //var list = ShoppingCarService.LoadShoppingList("15105149197");
+                if (list != null && list.Count > 0)
+                {
+                    list.ForEach(x =>
+                    {
+                        ShoppingCarDTO dto = new ShoppingCarDTO
+                        {
+                            BuyNum = x.buyCount,
+                            product = x.productVO,
+                            TotalPrice = x.buyCount * x.productVO.productPrice
+                        };
+                        _ShoppingCar.Add(InintKey(x.productVO.Id, x.productVO.spellbuyproductId), dto);
+                    });
+                }
+            }
+
+            Session["ShoppingCar"] = _ShoppingCar;
         }
         #endregion
 

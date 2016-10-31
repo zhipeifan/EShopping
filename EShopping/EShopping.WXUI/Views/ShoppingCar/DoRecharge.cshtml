@@ -1,0 +1,43 @@
+﻿
+@{
+    
+    Layout = "";
+}
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: '@ViewBag.AppId',
+        timestamp: '@ViewBag.TimeStamp',
+        nonceStr: '@ViewBag.NonceStr',
+        signature: '@ViewBag.Signature',
+        jsApiList: ['checkJsApi', 'chooseWXPay']
+    });
+
+    wx.ready(function () {
+        wx.chooseWXPay({
+            timestamp: '@ViewBag.TimeStamp',
+            nonceStr: '@ViewBag.NonceStr',
+            package: 'prepay_id=@ViewBag.PrepayId',
+            signType: 'MD5',
+            paySign: '@ViewBag.PaySign',
+            success: function (res) {
+                if (res.errMsg == "chooseWXPay:ok") {
+                    alert("支付成功");
+                    location.href = '@Url.Action("PaySuccess")';
+                }
+                if (res.errMsg == "chooseWXPay:cancel") {
+                    alert("交易取消");
+                }
+                if (res.errMsg == "chooseWXPay:fail") {
+                    alert("支付失败");
+                }
+            }
+        });
+    });
+
+    wx.error(function (res) {
+        alert('调用微信接口错误!' + JSON.stringify(res));
+    });
+</script>

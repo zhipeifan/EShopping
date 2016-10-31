@@ -19,6 +19,7 @@
 }
 
 <link rel="stylesheet" href="@Url.Content("~/css/loadCss/pullToRefresh.css")" />
+<link rel="stylesheet" href="@Url.Content("~/css/selectCss.css")" />
 @*<link rel="stylesheet" href="@Url.Content("~/css/loadCss/reset.css")" />*@
 
 
@@ -52,19 +53,19 @@
     <div class="fullinner">
         <div class="fullmenu">
             <ul>
-                <a href="@Url.Action("List", "Product", new { categoryId = 0, areaId = areaId })" title="全部商品"><li class="curr">全部商品</li></a>
-                <li><a href="@Url.Action("List", "Product", new { categoryId = 1, areaId = areaId })" title="新手专区">新手专区</a></li>
-                <li><a href="@Url.Action("List", "Product", new { categoryId = 2, areaId = areaId })" title="大众专区">大众专区</a></li>
-                <li><a href="@Url.Action("List", "Product", new { categoryId = 3, areaId = areaId })" title="土豪专区">土豪专区</a></li>
-                <li><a href="@Url.Action("List", "Product", new { categoryId = 4, areaId = areaId })" title="限购专区">限购专区</a></li>
-                <li><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>
+                <li class="@((categoryId == 0&&tcategoryId==0) ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 0, areaId = areaId })" title="全部商品">全部商品</li></a>
+                <li class="@(categoryId == 1 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 1, areaId = areaId })" title="新手专区">新手专区</a></li>
+                <li class="@(categoryId == 2 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 2, areaId = areaId })" title="大众专区">大众专区</a></li>
+                <li class="@(categoryId == 3 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 3, areaId = areaId })" title="土豪专区">土豪专区</a></li>
+                <li class="@(categoryId == 4 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 4, areaId = areaId })" title="限购专区">限购专区</a></li>
+                <li class="@(categoryId == 5 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>
                 @if (productTypes != null && productTypes.Count > 0)
-                {
-                    foreach (var item in productTypes)
-                    {
-                        <li><a href="@Url.Action("List", "Product", new { categoryId = 0, areaId = 0, tcategoryId=@item.id })" title="商品分类">@item.typeName </a></li>
-                    }
-                }
+{
+    foreach (var item in productTypes)
+    {
+        <li class="@(tcategoryId ==item.id ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 0, areaId = 0, tcategoryId=@item.id })" title="商品分类">@item.typeName </a></li>
+    }
+}
 
             </ul>
         </div>

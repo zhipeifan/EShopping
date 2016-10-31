@@ -58,7 +58,7 @@
                 <li class="@(categoryId == 2 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 2, areaId = areaId })" title="大众专区">大众专区</a></li>
                 <li class="@(categoryId == 3 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 3, areaId = areaId })" title="土豪专区">土豪专区</a></li>
                 <li class="@(categoryId == 4 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 4, areaId = areaId })" title="限购专区">限购专区</a></li>
-                <li class="@(categoryId == 5 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>
+                @*<li class="@(categoryId == 5 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>*@
                 @if (productTypes != null && productTypes.Count > 0)
 {
     foreach (var item in productTypes)

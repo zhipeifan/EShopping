@@ -80,7 +80,7 @@ namespace EShopping.BusinessService.ShoppingCar
         /// <param name="userId"></param>
         /// <param name="ip"></param>
         /// <param name="shoppingProducts"></param>
-        public static void CreateOrder(int userId,string ip,List<BuyProductVOs> shoppingProducts)
+        public static SubmitOrderDTO CreateOrder(int userId, string ip, List<BuyProductVOs> shoppingProducts)
         {
             OrderRequest orderFilter = new OrderRequest()
             {
@@ -95,6 +95,14 @@ namespace EShopping.BusinessService.ShoppingCar
             };
 
             var response = ServiceRequestClient.PostRquest(ServicesEnum.submitOrder, JsonConvert.SerializeObject(request));
+
+            if (string.IsNullOrEmpty(response))
+                return new SubmitOrderDTO();
+
+            var data = response.ToEntity<SubmitOrderResponse>();
+            if (data == null || data.responseData == null)
+                return new SubmitOrderDTO();
+            return data.responseData;
         }
 
         /// <summary>

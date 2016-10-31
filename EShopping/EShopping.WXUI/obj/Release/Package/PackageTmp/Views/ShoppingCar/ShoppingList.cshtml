@@ -22,10 +22,14 @@
 
         $("#ckAll").click(function () {
             $(".car-inner-list :checkbox").prop("checked", $("#ckAll").is(":checked"));
+            //$(".car-inner-list .ckspan [type='hidden']").val($("#ckAll").is(":checked"));
+            ChangebuyNum(this);
         });
 
         $(".car-inner-list :checkbox").click(function () {
             $("#ckAll").prop("checked", $(".car-inner-list :checkbox").length == $(".car-inner-list :checkbox:checked").length);
+            //$(this).next().val($(this).is(":checked"));
+            ChangebuyNum(this);
         });
     })
 </script>
@@ -40,7 +44,8 @@
         @if (Model != null && Model.Count > 0)
         {
             <ul class="lr-pad sel_all">
-                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;"><input type="checkbox" id="ckAll" style="margin-right:10px;" onclick="ChangebuyNum(this)" opt="7">全选</a></li>
+                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;">
+                    <input type="checkbox" id="ckAll" style="margin-right:10px;"  opt="7">全选</a></li>
             </ul>
         }
 
@@ -62,16 +67,8 @@
                             <div class="item-title">
                                 <div class="lr-pad">
                                     @*<span class="select"></span>*@
-                                    <span style="float:left; margin-left:-1.5rem;">
-                                    @*@if(Model[i].IsChecked)
-                                    {
-                                        <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" checked="checked"/>
-                                    }
-                                    else
-                                    {
-                                       <input type="checkbox" class="checkSelect" name="[@(i)].IsChecked" />  
-                                    }*@
-                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" ,onclick="ChangebuyNum(this)", opt="7"})
+                                    <span style="float:left; margin-left:-1.5rem;" class="ckspan">
+                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" , opt="7"})
                                     </span>
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)

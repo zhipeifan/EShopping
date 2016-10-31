@@ -47,6 +47,7 @@
     <Compile Include="SelectProduct\ActivityService.cs" />
     <Compile Include="SelectProduct\LoadLocalDataService.cs" />
     <Compile Include="SelectProduct\LoginService.cs" />
+    <Compile Include="SelectProduct\OrderService.cs" />
     <Compile Include="SelectProduct\ProductService.cs" />
     <Compile Include="SelectProduct\ShareService.cs" />
     <Compile Include="ShoppingCar\ShoppingCarService.cs" />

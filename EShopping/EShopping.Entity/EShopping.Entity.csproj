@@ -114,6 +114,7 @@
     <Compile Include="Response\QueryUserByIntegralTopResponse.cs" />
     <Compile Include="Response\QueryWalletResponse.cs" />
     <Compile Include="Response\SearchResponse.cs" />
+    <Compile Include="Response\SubmitOrderResponse.cs" />
     <Compile Include="Response\UploadImageResponse.cs" />
     <Compile Include="Response\VerifyOtherLoginResponseDTO.cs" />
     <Compile Include="UIDTO\Enum\BuyTypeEnum.cs" />
