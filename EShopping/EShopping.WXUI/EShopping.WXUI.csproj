@@ -216,6 +216,7 @@
     <Content Include="Images\winnerimg.png" />
     <Content Include="Images\zhan.png" />
     <Content Include="js\BussinesJs\jpeg_encoder.js" />
+    <Content Include="js\BussinesJs\jquery.fly.min.js" />
     <Content Include="js\BussinesJs\localUI.js" />
     <Content Include="js\BussinesJs\shoppingCar.js" />
     <Content Include="js\BussinesJs\ShoppingOrder.js" />

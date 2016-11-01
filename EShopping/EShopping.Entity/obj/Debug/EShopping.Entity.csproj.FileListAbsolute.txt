@@ -38,6 +38,6 @@ D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\EShopping.En
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\EShopping.Entity.pdb
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\Newtonsoft.Json.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\bin\Debug\Newtonsoft.Json.xml
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.pdb
-D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.Entity\obj\Debug\EShopping.Entity.csprojResolveAssemblyReference.cache

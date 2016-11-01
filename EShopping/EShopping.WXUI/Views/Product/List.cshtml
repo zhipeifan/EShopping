@@ -20,10 +20,31 @@
 
 <link rel="stylesheet" href="@Url.Content("~/css/loadCss/pullToRefresh.css")" />
 <link rel="stylesheet" href="@Url.Content("~/css/selectCss.css")" />
-@*<link rel="stylesheet" href="@Url.Content("~/css/loadCss/reset.css")" />*@
+<style type="text/css">
+    .u-flyer {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        position: fixed;
+        z-index: 9999;
+    }
 
-
-
+    #sMsg {
+        position: fixed;
+        bottom: 8rem;
+        right: 0px;
+        z-index: 10000;
+        width: 1px;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+        background: #B70000;
+        display: none;
+    }
+</style>
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/colorful.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/iscroll.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/pullToRefresh.js")"></script>
@@ -172,5 +193,7 @@
         })
 
     });
+
+
 </script>
 
