@@ -42,6 +42,7 @@ function postToCar(obj)
 function shoppingCarAnimation(obj)
 {
     var addcar = $(obj);
+    var scrollTop = $(document).scrollTop();
     //console.log(addcar.offset())
     var img = addcar.parents('li').find('img').attr('src');
     var imgOffset = addcar.offset();
@@ -50,7 +51,7 @@ function shoppingCarAnimation(obj)
     flyer.fly({
         start: {
             left: parseInt(imgOffset.left), //开始位置（必填）#fly元素会被设置成position: fixed 
-            top: parseInt(imgOffset.top) //开始位置（必填） 
+            top: parseInt(imgOffset.top - scrollTop) //开始位置（必填） 
             //left: event.pageX,//抛物体起点横坐标   
             //top: event.pageY //抛物体起点纵坐标   
         },
