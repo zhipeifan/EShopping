@@ -228,6 +228,7 @@ D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.WXUI\bin\System.W
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.WXUI\obj\Debug\EShopping.WXUI.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.WXUI\obj\Debug\EShopping.WXUI.dll
 D:\Pirvate\EShopping_New\EShopping0801\EShopping0731\EShopping.WXUI\obj\Debug\EShopping.WXUI.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Debug\EShopping.WXUI.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\EShopping.WXUI.dll.config
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\EShopping.WXUI.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\EShopping.WXUI.pdb
@@ -243,9 +244,11 @@ D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Razor.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Webpages.Deployment.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Webpages.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Webpages.Razor.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\WeChatPayCommon.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\EShopping.BusinessService.pdb
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\EShopping.Common.pdb
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\EShopping.Entity.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\WeChatPayCommon.pdb
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\Newtonsoft.Json.xml
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\Senparc.Weixin.xml
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\Senparc.Weixin.MP.xml
@@ -255,6 +258,5 @@ D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Webpages.
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Webpages.Razor.xml
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Helpers.xml
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Mvc.xml
-D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Debug\EShopping.WXUI.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Debug\EShopping.WXUI.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Debug\EShopping.WXUI.pdb

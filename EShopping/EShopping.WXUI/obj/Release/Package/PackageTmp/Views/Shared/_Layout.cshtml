@@ -17,16 +17,8 @@
     <script type="text/javascript" src="@Url.Content("~/js/libs/swiper.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/libs/html5shiv.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/page.js")"></script>
-    @*<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/selectCss.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/jquery.fly.min.js")"></script>
 
-    
-
-    <script type="text/javascript">
-
-        var addurl = "@Url.Action("AddProductToCar", "Home")";        
-        var shppoingUrl="@Url.Action("AddProductNum", "ShoppingCar")";
-        var changeProductUrl = "@Url.Action("ChangeShoppingList", "ShoppingCar")";
-    </script>
 
     
     @{
@@ -46,11 +38,18 @@
                     <li class="@(selectEnum == 1 ? "curr" : "")"><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>
                     <li class="@(selectEnum == 2 ? "curr" : "")"><a href="@Url.Action("List", "Product")" title="">全部商品</a></li>
                     <li class ="@(selectEnum == 3 ? "curr" : "")"><a href="@Url.Action("List", "NewPublic")" title=" ">最新揭晓</a></li>
-                        <li class ="@(selectEnum == 4 ? "curr" : "")"><a href="@Url.Action("ShoppingList", "ShoppingCar")" title="">购物车</a><i id="carCount">@count</i></li>
-                            <li class="@(selectEnum == 5 ? "curr" : "")"><a href="@Url.Action("Index", "MyEShopping")" title="">我的易购</a></li>
+                        <li class ="@(selectEnum == 4 ? "curr" : "")"><a href="@Url.Action("ShoppingList", "ShoppingCar")" title="" id="end">购物车</a><i id="carCount">@count</i></li>
+                            <li class="@(selectEnum == 5 ? "curr" : "")"><a href="@Url.Action("Index", "MyEShopping")" title="">我的卡乐哲</a></li>
                 </ul>
             </footer>
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        var addurl = "@Url.Action("AddProductToCar", "Home")";
+        var shppoingUrl="@Url.Action("AddProductNum", "ShoppingCar")";
+        var changeProductUrl = "@Url.Action("ChangeShoppingList", "ShoppingCar")";
+    </script>
 </body>
 </html>

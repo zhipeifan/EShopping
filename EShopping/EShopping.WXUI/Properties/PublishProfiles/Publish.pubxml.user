@@ -10,16 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/EShopping.BusinessService.dll">
-      <publishTime>10/19/2016 22:30:53</publishTime>
+      <publishTime>11/03/2016 21:43:35</publishTime>
     </File>
     <File Include="bin/EShopping.Common.dll">
-      <publishTime>10/19/2016 22:30:53</publishTime>
+      <publishTime>11/03/2016 21:43:34</publishTime>
     </File>
     <File Include="bin/EShopping.Entity.dll">
-      <publishTime>10/19/2016 22:30:53</publishTime>
+      <publishTime>11/02/2016 18:33:30</publishTime>
     </File>
     <File Include="bin/EShopping.WXUI.dll">
-      <publishTime>10/24/2016 17:45:33</publishTime>
+      <publishTime>11/03/2016 21:47:56</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>05/13/2016 10:14:00</publishTime>
@@ -85,7 +85,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/29/2016 16:32:05</publishTime>
     </File>
     <File Include="css/master.css">
-      <publishTime>10/24/2016 16:29:43</publishTime>
+      <publishTime>10/31/2016 21:30:55</publishTime>
     </File>
     <File Include="css/me.css">
       <publishTime>10/19/2016 18:04:50</publishTime>
@@ -432,11 +432,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/BussinesJs/jpeg_encoder.js">
       <publishTime>09/29/2016 16:32:15</publishTime>
     </File>
+    <File Include="js/BussinesJs/jquery.fly.min.js">
+      <publishTime>10/31/2016 19:18:04</publishTime>
+    </File>
     <File Include="js/BussinesJs/localUI.js">
       <publishTime>10/20/2016 18:10:39</publishTime>
     </File>
     <File Include="js/BussinesJs/shoppingCar.js">
-      <publishTime>10/21/2016 16:42:53</publishTime>
+      <publishTime>11/02/2016 10:28:14</publishTime>
     </File>
     <File Include="js/BussinesJs/ShoppingOrder.js">
       <publishTime>07/24/2016 17:52:42</publishTime>
@@ -796,7 +799,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2016 16:48:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/21/2016 14:18:16</publishTime>
+      <publishTime>11/03/2016 21:37:51</publishTime>
     </File>
     <File Include="Views/Home/testIndex.cshtml">
       <publishTime>08/02/2016 20:40:51</publishTime>
@@ -814,10 +817,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2016 18:08:56</publishTime>
     </File>
     <File Include="Views/MyEShopping/Index.cshtml">
-      <publishTime>10/20/2016 18:43:00</publishTime>
+      <publishTime>11/03/2016 21:45:47</publishTime>
     </File>
     <File Include="Views/MyEShopping/Integral.cshtml">
-      <publishTime>09/20/2016 14:50:19</publishTime>
+      <publishTime>10/29/2016 16:13:26</publishTime>
     </File>
     <File Include="Views/MyEShopping/MeInfo.cshtml">
       <publishTime>09/29/2016 16:19:44</publishTime>
@@ -826,7 +829,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2016 14:13:01</publishTime>
     </File>
     <File Include="Views/MyEShopping/ModifyMe.cshtml">
-      <publishTime>10/24/2016 16:23:48</publishTime>
+      <publishTime>11/03/2016 21:40:40</publishTime>
     </File>
     <File Include="Views/MyEShopping/MyRed.cshtml">
       <publishTime>10/21/2016 14:21:43</publishTime>
@@ -841,7 +844,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2016 14:11:11</publishTime>
     </File>
     <File Include="Views/MyEShopping/shareMe.html">
-      <publishTime>10/10/2016 18:04:31</publishTime>
+      <publishTime>11/03/2016 21:40:44</publishTime>
     </File>
     <File Include="Views/MyEShopping/ShoppingHistoryList.cshtml">
       <publishTime>10/21/2016 14:10:37</publishTime>
@@ -862,13 +865,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2016 18:07:17</publishTime>
     </File>
     <File Include="Views/Product/Detail.cshtml">
-      <publishTime>10/21/2016 14:18:09</publishTime>
+      <publishTime>11/03/2016 21:40:50</publishTime>
     </File>
     <File Include="Views/Product/List.cshtml">
-      <publishTime>10/24/2016 15:39:05</publishTime>
+      <publishTime>11/01/2016 15:57:17</publishTime>
     </File>
     <File Include="Views/Product/ProductItem.cshtml">
-      <publishTime>10/21/2016 16:59:44</publishTime>
+      <publishTime>11/01/2016 17:36:04</publishTime>
     </File>
     <File Include="Views/Product/ProductItems.cshtml">
       <publishTime>10/17/2016 19:01:35</publishTime>
@@ -877,7 +880,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/19/2016 18:56:33</publishTime>
     </File>
     <File Include="Views/Product/SearchResult.cshtml">
-      <publishTime>10/21/2016 16:56:00</publishTime>
+      <publishTime>11/01/2016 17:35:58</publishTime>
     </File>
     <File Include="Views/Say/Index.cshtml">
       <publishTime>10/21/2016 14:18:56</publishTime>
@@ -901,7 +904,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2016 17:12:27</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/21/2016 14:17:56</publishTime>
+      <publishTime>11/03/2016 21:40:15</publishTime>
     </File>
     <File Include="Views/ShareOrder/BuyProductHistoryList.cshtml">
       <publishTime>07/26/2016 22:06:08</publishTime>
@@ -912,11 +915,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/ShareOrder/ShareList.cshtml">
       <publishTime>10/11/2016 17:28:45</publishTime>
     </File>
+    <File Include="Views/ShoppingCar/DoRecharge.cshtml">
+      <publishTime>11/03/2016 20:47:55</publishTime>
+    </File>
     <File Include="Views/ShoppingCar/PayFor.cshtml">
-      <publishTime>09/20/2016 14:50:03</publishTime>
+      <publishTime>11/02/2016 18:38:51</publishTime>
     </File>
     <File Include="Views/ShoppingCar/PaySuccess.cshtml">
       <publishTime>09/20/2016 14:50:03</publishTime>
+    </File>
+    <File Include="Views/ShoppingCar/RechargePayFor.cshtml">
+      <publishTime>11/03/2016 20:44:01</publishTime>
     </File>
     <File Include="Views/ShoppingCar/ShoppingList.cshtml">
       <publishTime>10/24/2016 16:12:23</publishTime>
@@ -964,7 +973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2016 09:53:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/20/2016 14:11:57</publishTime>
+      <publishTime>11/03/2016 20:41:17</publishTime>
     </File>
   </ItemGroup>
 </Project>

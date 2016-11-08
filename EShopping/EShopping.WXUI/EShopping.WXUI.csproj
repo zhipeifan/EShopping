@@ -363,6 +363,7 @@
     <Compile Include="Controllers\ShoppingCarController.cs" />
     <Compile Include="Controllers\SayController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TestShoppingCarController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -435,6 +436,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="dll\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\TestShoppingCar\" />
     <Folder Include="Views\UserInfo\" />
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +451,10 @@
     <ProjectReference Include="..\EShopping.Entity\EShopping.Entity.csproj">
       <Project>{81d3e9f0-5e1a-4f4e-a5f7-59786be0c508}</Project>
       <Name>EShopping.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeChatPayCommon\WeChatPayCommon.csproj">
+      <Project>{674de87a-d201-4b8b-89f2-3a48e88289ab}</Project>
+      <Name>WeChatPayCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

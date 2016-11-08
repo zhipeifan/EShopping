@@ -23,6 +23,7 @@
             signType: 'MD5',
             paySign: '@ViewBag.PaySign',
             success: function (res) {
+                alert("ssssss"+JSON.stringify(res));
                 if (res.errMsg == "chooseWXPay:ok") {
                     alert("支付成功");
                     location.href = '@Url.Action("PaySuccess")';

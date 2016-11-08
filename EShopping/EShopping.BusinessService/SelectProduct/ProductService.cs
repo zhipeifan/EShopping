@@ -229,5 +229,28 @@ namespace EShopping.BusinessService.SelectProduct
            //    return new List<ProductDTO>();
            //return data.responseData.productVOs;
        }
+
+       /// <summary>
+       /// 热门搜索词
+       /// </summary>
+       /// <returns></returns>
+       public static List<string> SearchKeys()
+       {
+           CommonRequest request = new CommonRequest
+           {
+               payload = ""
+           };
+
+           //queryProductListByType
+
+           var response = ServiceRequestClient.PostRquest(ServicesEnum.queryTopSearch, JsonConvert.SerializeObject(request));
+           //if (response == null)
+           //    return new List<ProductDTO>();
+           //var data = response.ToEntity<QueryProductListByTypeResponse>();
+           //if (data != null && data.responseData == null)
+           //    return new List<ProductDTO>();
+           //return data.responseData.productVOs;
+           return new List<string>();
+       }
     }
 }

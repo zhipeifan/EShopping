@@ -140,6 +140,10 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 添加晒单
         /// </summary>
-        addShareInfo
+        addShareInfo,
+        /// <summary>
+        /// 搜索热门
+        /// </summary>
+        queryTopSearch
     }
 }

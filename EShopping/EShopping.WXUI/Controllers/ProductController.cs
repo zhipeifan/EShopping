@@ -105,6 +105,9 @@ namespace EShopping.WXUI.Controllers
             //{
             //    return RedirectToAction("SearchResult", "Product", new { key=key});
             //}
+
+
+            var strs = ProductService.SearchKeys();
             return View();
         }
 

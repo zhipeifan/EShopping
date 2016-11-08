@@ -19,5 +19,32 @@ namespace EShopping.Common
                 return System.Configuration.ConfigurationManager.AppSettings["ServiceUrl"];
             }
         }
+
+        public static string AppId
+        {
+
+            get
+            {
+                return System.Configuration.ConfigurationManager.AppSettings["WechatAppId"];
+            }
+        }
+
+        public static string WechatAppSecret
+        {
+
+            get
+            {
+                return System.Configuration.ConfigurationManager.AppSettings["WechatAppSecret"];
+            }
+        }
+
+        /// <summary>
+        /// 统一订单Url
+        /// </summary>
+        public static string UnifiedOrderUrl
+        {
+            get { return System.Configuration.ConfigurationManager.AppSettings["unifiedOrderUrl"]; }
+        }
+        
     }
 }

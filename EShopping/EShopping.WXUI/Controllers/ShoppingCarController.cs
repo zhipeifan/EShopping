@@ -15,6 +15,8 @@ using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.TenPayLibV3;
 using System.Xml.Linq;
 using Senparc.Weixin.MP.CommonAPIs;
+using WXPay;
+using WX_TennisAssociation.Common;
 
 namespace EShopping.WXUI.Controllers
 {
@@ -214,7 +216,7 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult PayFor()
         {
-
+            ViewBag.SelectEnum = (int)FloolterMenu.MyShopping;
 
 
             return View();
@@ -225,85 +227,83 @@ namespace EShopping.WXUI.Controllers
             return View();
         }
 
-        public ActionResult DoRecharge(SubmitOrderDTO order, string code = "", string state = "")
+        public ActionResult DoRecharge(SubmitOrderDTO border, string code = "", string state = "")
         {
-            if(order!=null&&order.needPayMoney>0)
+            if (border != null && border.needPayMoney > 0)
             {
-                var userId = Guid.Parse(User.Identity.Name);
-               // var user = UserManager.GetUserById(userId);
+                // var userId = Guid.Parse(User.Identity.Name);
+                // var user = UserManager.GetUserById(userId);
 
-                ViewBag.WechatPay = order.needPayMoney;
+                ViewBag.WechatPay = border.needPayMoney;
+
+
+                string prepay_id = "";
+                string timeStamp = "";
+                string nonceStr = "";
+                string paySign = "";
 
                 try
                 {
-                    if (string.IsNullOrEmpty(code))
-                    {
-                        return Redirect(OAuthApi.GetAuthorizeUrl(appId, hostName + Url.Action("PayOrder", new { orderId = order.orderCode }), "PAY", OAuthScope.snsapi_userinfo));
-                    }
+                    WXpayUtil wXpayUtil = new WXpayUtil();
+                    string paySignKey = ConfigurationManager.AppSettings["paySignKey"].ToString();
+                    string AppSecret = ConfigurationManager.AppSettings["secret"].ToString();
+                    string mch_id = ConfigurationManager.AppSettings["mch_id"].ToString();
+                    appId = ConfigurationManager.AppSettings["AppId"].ToString();
 
-                    var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
-                    var openIdResponseString = openIdResponse.ConvertEntityToXmlString();
-                    var openId = openIdResponse.openid;
+                    WeixinApiDispatch wxApiDispatch = new WeixinApiDispatch();
+                    string accessToken = wxApiDispatch.GetAccessToken(appId, AppSecret);
 
-                    var mchId = ConfigurationManager.AppSettings["WechatMchId"];
-                    var partnerKey = ConfigurationManager.AppSettings["WechatPartnerKey"];
+                    System.Diagnostics.Debug.WriteLine("accessToken值: ");
+                    System.Diagnostics.Debug.WriteLine(accessToken);
 
-                    RequestHandler commonPaymentRequest = new RequestHandler(null);
-                    commonPaymentRequest.Init();
-                    commonPaymentRequest.SetParameter("appid", appId);
-                    commonPaymentRequest.SetParameter("mch_id", mchId);
-                    commonPaymentRequest.SetParameter("device_info", "WEB");
-                    commonPaymentRequest.SetParameter("nonce_str", TenPayV3Util.GetNoncestr());
-                    commonPaymentRequest.SetParameter("body", "美国进口（Starbucks）星巴克咖啡豆 ");
-                    commonPaymentRequest.SetParameter("attach", string.Format("couponPay={0}|accountPay={1}", 0, 0));
-                    commonPaymentRequest.SetParameter("out_trade_no", order.orderCode);
-                   // commonPaymentRequest.SetParameter("total_fee", ((int)(order.needPayMoney * 100)).ToString());
-                    commonPaymentRequest.SetParameter("total_fee", "1");
-                    commonPaymentRequest.SetParameter("spbill_create_ip", Request.UserHostAddress);
-                    commonPaymentRequest.SetParameter("notify_url", hostName + Url.Action("WechatPayCallback"));
-                    commonPaymentRequest.SetParameter("trade_type", TenPayV3Type.JSAPI.ToString());
-                    commonPaymentRequest.SetParameter("openid", openId);
+                    string strOpenid = UserInfo.weixinOpenId;
+                    UserJson userJson = wxApiDispatch.GetUserDetail(accessToken, strOpenid, "zh_CN");
 
-                    string sign = commonPaymentRequest.CreateMd5Sign("key", partnerKey);
-                    commonPaymentRequest.SetParameter("sign", sign);
+                    UnifiedOrder order = new UnifiedOrder();
+                    order.appid = appId;
+                    order.attach = "vinson";
+                    order.body = "12" + "拍币";
+                    order.device_info = "";
+                    order.mch_id = mch_id;
+                    order.nonce_str = WXpayUtil.getNoncestr();
+                    order.notify_url = "http://abelxu19.imwork.net/jsapi/pay.aspx";
+                    order.openid = userJson.openid;
+                    order.out_trade_no = border.orderCode;
+                    order.trade_type = "JSAPI";
+                    order.spbill_create_ip = GetAddressIP();
+                    order.total_fee = Convert.ToInt32(border.needPayMoney * 100);
 
-                    string data = commonPaymentRequest.ParseXML();
+                    prepay_id = wXpayUtil.getPrepay_id(order, paySignKey);
+                    timeStamp = WXpayUtil.getTimestamp();
+                    nonceStr = WXpayUtil.getNoncestr();
 
-                    System.IO.File.AppendAllText(Server.MapPath("~/DoRecharge.txt"), data);
-
-                    var unifiedOrderResponseString = TenPayV3.Unifiedorder(data);
-
-                    var res = XDocument.Parse(unifiedOrderResponseString);
-                    var prepayId = res.Element("xml").Element("prepay_id").Value;
-
-                    var timeStamp = JSSDKHelper.GetTimestamp();
-                    var nonceStr = JSSDKHelper.GetNoncestr();
-                    var ticket = AccessTokenContainer.GetJsApiTicket(appId);
-                    var signature = JSSDKHelper.GetSignature(ticket, nonceStr, timeStamp, Request.Url.AbsoluteUri);
-
-                    RequestHandler paySignReqHandler = new RequestHandler(null);
-                    paySignReqHandler.SetParameter("appId", appId);
-                    paySignReqHandler.SetParameter("timeStamp", timeStamp);
-                    paySignReqHandler.SetParameter("nonceStr", nonceStr);
-                    paySignReqHandler.SetParameter("package", string.Format("prepay_id={0}", prepayId));
-                    paySignReqHandler.SetParameter("signType", "MD5");
-                    var paySign = paySignReqHandler.CreateMd5Sign("key", partnerKey);
-
-                    ViewBag.AppId = appId;
-                    ViewBag.TimeStamp = timeStamp;
-                    ViewBag.NonceStr = nonceStr;
-                    ViewBag.Ticket = ticket;
-                    ViewBag.Signature = signature;
-                    ViewBag.PrepayId = prepayId;
-                    ViewBag.PaySign = paySign;
-                    ViewBag.UnifiedOrderResponseString = unifiedOrderResponseString;
-                    ViewBag.OpenIdResponseString = openIdResponseString;
+                    SortedDictionary<string, string> sParams = new SortedDictionary<string, string>();
+                    sParams.Add("appId", appId);
+                    sParams.Add("timeStamp", timeStamp);
+                    sParams.Add("nonceStr", nonceStr);
+                    sParams.Add("package", "prepay_id=" + prepay_id);
+                    sParams.Add("signType", "MD5");
+                    paySign = wXpayUtil.getsign(sParams, paySignKey);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    // Hmmm.... don't know what to do now. The code above sucks.
+                    Response.Write(ex.ToString());
+                    return View();
                 }
+
+                Response.Redirect("http://abelxu19.imwork.net/jsapi/pay.aspx?showwxpaytitle=1&appId=" + appId +
+                    "&timeStamp=" + timeStamp +
+                    "&nonceStr=" + nonceStr +
+                    "&prepay_id=" + prepay_id +
+                    "&signType=MD5&paySign=" + paySign +
+                    "&OrderID=" + border.orderCode);
             }
+            return View();
+        }
+        
+
+        public ActionResult OrderPayFor(string orderCode, string code = "", string state = "")
+        {
             return View();
         }
 

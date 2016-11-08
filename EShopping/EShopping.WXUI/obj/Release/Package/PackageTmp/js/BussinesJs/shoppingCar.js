@@ -3,25 +3,9 @@
 $(function () {
 
 
-    $("a.iaddcar").click(function () {
-        var id = $(this).attr("pid");
-        var spellBuyProductId = $(this).attr("spellBuyProductId");
-
-        var data = {
-            id: id,
-            spellBuyProductId: spellBuyProductId
-        };
-
-        $.ajax({
-            type: "post",
-            url: addurl,
-            data: data,
-            dataType: "json",
-            success: function (response) {
-                $("#carCount").html(response);
-            }
-        });
-    });
+    //$("a.iaddcar").click(function () {
+    //    shoppingCarAnimation(this);
+    //});
 
     BaingClick();
 
@@ -32,6 +16,65 @@ $(function () {
 
     IsBuyAll();//包尾
 });
+
+
+function postToCar(obj)
+{
+    var id = $(obj).attr("pid");
+    var spellBuyProductId = $(obj).attr("spellBuyProductId");
+
+    var data = {
+        id: id,
+        spellBuyProductId: spellBuyProductId
+    };
+
+    $.ajax({
+        type: "post",
+        url: addurl,
+        data: data,
+        dataType: "json",
+        success: function (response) {
+            $("#carCount").html(response);
+        }
+    });
+}
+
+function shoppingCarAnimation(obj)
+{
+    var addcar = $(obj);
+    var scrollTop = $(document).scrollTop();
+    //console.log(addcar.offset())
+    var img = addcar.parents('li').find('img').attr('src');
+    var imgOffset = addcar.offset();
+    var flyer = $('<img class="u-flyer" src="' + img + '">');
+    var oCarOffset = $('#carCount').offset();
+    flyer.fly({
+        start: {
+            left: parseInt(imgOffset.left), //开始位置（必填）#fly元素会被设置成position: fixed 
+            top: parseInt(imgOffset.top - scrollTop) //开始位置（必填） 
+            //left: event.pageX,//抛物体起点横坐标   
+            //top: event.pageY //抛物体起点纵坐标   
+        },
+        end: {
+            left: oCarOffset.left, //结束位置（必填） 
+            top: oCarOffset.top, //结束位置（必填） 
+            width: 0, //结束时宽度 
+            height: 0 //结束时高度 
+        },
+        onEnd: function () { //结束回调 
+            $("#sMsg").show(function () {
+            }).animate({
+                width: '250px'
+            }, 200).fadeOut(1000); //提示信息 
+            //i++;
+           // addcar.css("cursor", "default").removeClass('orange');
+           // $('#carCount').html(i);
+            //this.destory(); //移除dom 
+            postToCar(obj);
+        }
+    });
+   // $(flyer).remove();
+}
 
 function IsBuyAll()
 {

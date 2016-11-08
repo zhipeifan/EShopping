@@ -20,10 +20,31 @@
 
 <link rel="stylesheet" href="@Url.Content("~/css/loadCss/pullToRefresh.css")" />
 <link rel="stylesheet" href="@Url.Content("~/css/selectCss.css")" />
-@*<link rel="stylesheet" href="@Url.Content("~/css/loadCss/reset.css")" />*@
+<style type="text/css">
+    .u-flyer {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        position: fixed;
+        z-index: 9999;
+    }
 
-
-
+    #sMsg {
+        position: fixed;
+        bottom: 8rem;
+        right: 0px;
+        z-index: 10000;
+        width: 1px;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+        background: #B70000;
+        display: none;
+    }
+</style>
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/colorful.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/iscroll.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/pullToRefresh.js")"></script>
@@ -58,7 +79,7 @@
                 <li class="@(categoryId == 2 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 2, areaId = areaId })" title="大众专区">大众专区</a></li>
                 <li class="@(categoryId == 3 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 3, areaId = areaId })" title="土豪专区">土豪专区</a></li>
                 <li class="@(categoryId == 4 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 4, areaId = areaId })" title="限购专区">限购专区</a></li>
-                <li class="@(categoryId == 5 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>
+                @*<li class="@(categoryId == 5 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>*@
                 @if (productTypes != null && productTypes.Count > 0)
 {
     foreach (var item in productTypes)
@@ -172,5 +193,7 @@
         })
 
     });
+
+
 </script>
 
