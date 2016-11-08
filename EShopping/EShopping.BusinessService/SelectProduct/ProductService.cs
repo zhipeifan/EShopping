@@ -234,23 +234,19 @@ namespace EShopping.BusinessService.SelectProduct
        /// 热门搜索词
        /// </summary>
        /// <returns></returns>
-       public static List<string> SearchKeys()
+       public static List<SearData> SearchKeys()
        {
            CommonRequest request = new CommonRequest
            {
                payload = ""
            };
-
-           //queryProductListByType
-
            var response = ServiceRequestClient.PostRquest(ServicesEnum.queryTopSearch, JsonConvert.SerializeObject(request));
-           //if (response == null)
-           //    return new List<ProductDTO>();
-           //var data = response.ToEntity<QueryProductListByTypeResponse>();
-           //if (data != null && data.responseData == null)
-           //    return new List<ProductDTO>();
-           //return data.responseData.productVOs;
-           return new List<string>();
+           if (response == null)
+               return new List<SearData>();
+           var data = response.ToEntity<QueryTopSearchResponse>();
+           if (data != null && data.responseData == null)
+               return new List<SearData>();
+           return data.responseData;
        }
     }
 }

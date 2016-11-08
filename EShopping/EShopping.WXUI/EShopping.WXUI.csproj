@@ -364,7 +364,7 @@
     <Compile Include="Controllers\SayController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TestShoppingCarController.cs" />
-    <Compile Include="Controllers\UserInfoController.cs" />
+    <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -425,6 +425,8 @@
     <Content Include="Views\Product\ProductItem.cshtml" />
     <Content Include="Views\ShoppingCar\RechargePayFor.cshtml" />
     <Content Include="Views\ShoppingCar\DoRecharge.cshtml" />
+    <Content Include="Views\UserInfo\Index.cshtml" />
+    <Content Include="Views\UserCenter\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,7 +439,6 @@
     <Folder Include="dll\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\TestShoppingCar\" />
-    <Folder Include="Views\UserInfo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EShopping.BusinessService\EShopping.BusinessService.csproj">

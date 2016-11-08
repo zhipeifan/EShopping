@@ -97,18 +97,8 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult Search(string key="", int pageIndex = 1, int pageSize = 10)
         {
-            //if(string.IsNullOrEmpty(key))
-            //{
-            //    return RedirectToAction("List","Product");
-            //}
-            //else
-            //{
-            //    return RedirectToAction("SearchResult", "Product", new { key=key});
-            //}
-
-
-            var strs = ProductService.SearchKeys();
-            return View();
+            var keys = ProductService.SearchKeys();
+            return View(keys);
         }
 
         /// <summary>

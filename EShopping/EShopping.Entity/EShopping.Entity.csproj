@@ -110,6 +110,7 @@
     <Compile Include="Response\QueryShoppingCartListResponse.cs" />
     <Compile Include="Response\QuerySignConfigResponse.cs" />
     <Compile Include="Response\QuerySpellbuyrecordListResponse.cs" />
+    <Compile Include="Response\QueryTopSearchResponse.cs" />
     <Compile Include="Response\QueryUserAddressListResponse.cs" />
     <Compile Include="Response\QueryUserByIntegralTopResponse.cs" />
     <Compile Include="Response\QueryWalletResponse.cs" />
