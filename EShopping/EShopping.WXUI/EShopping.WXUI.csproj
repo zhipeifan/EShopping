@@ -427,6 +427,9 @@
     <Content Include="Views\ShoppingCar\DoRecharge.cshtml" />
     <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\UserCenter\Index.cshtml" />
+    <Content Include="Views\UserCenter\ShoppingWinnedList.cshtml" />
+    <Content Include="Views\UserCenter\ShoppingHistoryList.cshtml" />
+    <Content Include="Views\UserCenter\MyShareOrderList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
