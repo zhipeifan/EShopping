@@ -433,6 +433,8 @@
     <Content Include="Views\UserCenter\MyShareOrderList.cshtml" />
     <Content Include="Views\UserCenter\ShoppingWinnedListPartial.cshtml" />
     <Content Include="Views\MyEShopping\ShoppingWinnedListPartial.cshtml" />
+    <Content Include="Views\MyEShopping\ShoppingStartingListPartial.cshtml" />
+    <Content Include="Views\MyEShopping\ShoppingHistoryListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

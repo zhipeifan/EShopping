@@ -153,6 +153,16 @@ namespace EShopping.WXUI.Controllers
         }
 
         /// <summary>
+        /// 历史购买记录
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ShoppingHistoryListPartial(int pageIndex = 1, int pageSize = 10)
+        {
+            var list = ShoppingCarService.LoadBuyList(UserId, BuyTypeEnum.All, pageIndex, pageSize);
+            return PartialView(list);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="pageIndex"></param>
@@ -162,6 +172,18 @@ namespace EShopping.WXUI.Controllers
         {
             var list = ShoppingCarService.LoadBuyList(UserId, BuyTypeEnum.Staring, pageIndex, pageSize);
             return View(list);
+        }
+
+        /// <summary>
+        /// 进行中列表
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public ActionResult ShoppingStartingListPartial(int pageIndex = 1, int pageSize = 10)
+        {
+            var list = ShoppingCarService.LoadBuyList(UserId, BuyTypeEnum.Staring, pageIndex, pageSize);
+            return PartialView(list);
         }
 
         public ActionResult ShoppingWinnedList(int pageIndex = 1, int pageSize = 10)

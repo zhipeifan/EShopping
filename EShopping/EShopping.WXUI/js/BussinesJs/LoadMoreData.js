@@ -1,5 +1,5 @@
 ﻿
-
+//中奖记录列表
 function ShoppingWinnerListLoadMore() {
     var _pageIndex = $("#pageIndex").val();
     _pageIndex = parseInt(_pageIndex) + 1;
@@ -11,7 +11,31 @@ function ShoppingWinnerListLoadMore() {
     LoadMore(data, url, _toObj, _pageIndex);
 }
 
+//全部购买记录列表
+function ShoppingHistoryListLoadMore()
+{
+    var _pageIndex = $("#pageIndex").val();
+    _pageIndex = parseInt(_pageIndex) + 1;
+    var data = {
+        pageIndex: _pageIndex
+    };
+    var url = "/MyEShopping/ShoppingHistoryListPartial";
+    var _toObj = $(".g_tabs_list");
+    LoadMore(data, url, _toObj, _pageIndex);
+}
 
+//进行中列表
+function ShoppingStartingListLoadMore()
+{
+    var _pageIndex = $("#pageIndex").val();
+    _pageIndex = parseInt(_pageIndex) + 1;
+    var data = {
+        pageIndex: _pageIndex
+    };
+    var url = "/MyEShopping/ShoppingStartingListPartial";
+    var _toObj = $(".g_tabs_list");
+    LoadMore(data, url, _toObj, _pageIndex);
+}
 
 
 
