@@ -9,13 +9,13 @@
     <h2 style="background-color: #BF0000; color: #fff !important;">购买记录</h2>
 </header>
 <section id="page-content" class="shopcar-content">
-    <div class="secret_tabs" id="secretTab" style="margin:0px;">
+    @*<div class="secret_tabs" id="secretTab" style="margin:0px;">
         <ul>
             <li class="curr">全部<em></em></li>
             <li><a href="@Url.Action("ShoppingStartingList", "MyEShopping")">进行中</a><em></em></li>
             <li><a href="@Url.Action("ShoppingWinnedList", "MyEShopping")">已开奖</a><em></em></li>
         </ul>
-    </div>
+    </div>*@
     <div class="swiper-container" id="secretContainar">
         <div class="swiper-wrapper">
 
@@ -72,7 +72,13 @@
                     </div>
                 </div>
             </div>
-
+            <div class="pullUp" style="display: block; line-height: 40px;">
+                <div class="loader" style="display: none;">
+                    <span></span><span></span><span></span><span></span>
+                </div><div class="pullUpLabel">
+                    <img src="~/Images/up.png" height="12px" />... 加载更多数据... <img src="~/Images/up.png" height="12px" />
+                </div>
+            </div>
 
 
         </div>

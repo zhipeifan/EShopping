@@ -18,7 +18,7 @@
                         <div class="share_padd">
                             <a class="sh_photo" href="javascript:;" title=""><img src="images/photo.jpg" /></a>
                             <ul class="sh_tit_inner">
-                                <li class="namecol"><a href="@Url.Action("Index", "UserCenter", new {id=@item.userId })">@item.userInfoVO.nickName</a></li>
+                                <li class="namecol"><a href="@Url.Action("Index", "UserCenter", new {id=@item.winnerUserId })">@item.userInfoVO.nickName</a></li>
                                 <li class="times">@item.shareDate.ConvertToPublicDate()</li>
                             </ul>
                             <p class="info">@item.productVO.productName</p>

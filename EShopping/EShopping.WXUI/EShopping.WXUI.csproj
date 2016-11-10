@@ -217,6 +217,7 @@
     <Content Include="Images\zhan.png" />
     <Content Include="js\BussinesJs\jpeg_encoder.js" />
     <Content Include="js\BussinesJs\jquery.fly.min.js" />
+    <Content Include="js\BussinesJs\LoadMoreData.js" />
     <Content Include="js\BussinesJs\localUI.js" />
     <Content Include="js\BussinesJs\shoppingCar.js" />
     <Content Include="js\BussinesJs\ShoppingOrder.js" />
@@ -430,6 +431,8 @@
     <Content Include="Views\UserCenter\ShoppingWinnedList.cshtml" />
     <Content Include="Views\UserCenter\ShoppingHistoryList.cshtml" />
     <Content Include="Views\UserCenter\MyShareOrderList.cshtml" />
+    <Content Include="Views\UserCenter\ShoppingWinnedListPartial.cshtml" />
+    <Content Include="Views\MyEShopping\ShoppingWinnedListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

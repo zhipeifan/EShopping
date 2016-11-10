@@ -170,6 +170,12 @@ namespace EShopping.WXUI.Controllers
             return View(list);
         }
 
+        public ActionResult ShoppingWinnedListPartial(int pageIndex = 1, int pageSize = 10)
+        {
+            var list = ShoppingCarService.LoadBuyList(UserId, BuyTypeEnum.Winned, pageIndex, pageSize);
+            return PartialView(list);
+        }
+
         /// <summary>
         /// 添加晒单
         /// </summary>

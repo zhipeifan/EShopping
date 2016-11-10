@@ -211,9 +211,10 @@
 
             <footer id="footer">
                 <div id="prodfoot">
+@if (Model.winnerStatus != 1)
+{
                     <p class="carry">最新一期正在进行</p>
-                    @if (Model.winnerStatus != 1)
-                    {<a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>}
+                  <a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>}
                 </div>
                 <ul>
                     <li class="@(selectEnum == 1 ? "curr" : "")"><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>
