@@ -1,0 +1,55 @@
+﻿@using EShopping.Entity.Response.DTO
+@using EShopping.Common
+
+@model List<QueryShareInfoListDTO>
+
+@foreach (var item in Model)
+{
+    <div class="share">
+
+        <div class="share_list">
+            <div class="share_title">
+                <div class="share_padd">
+                    <a class="sh_photo" href="javascript:;" title=""><img src="images/photo.jpg" /></a>
+                    <ul class="sh_tit_inner">
+                        <li class="namecol"><a href="javascript:;">@item.userInfoVO.nickName</a></li>
+                        <li class="times">@item.shareDate.ConvertToPublicDate()</li>
+                    </ul>
+                    <p class="info">@item.productVO.productName</p>
+                </div>
+            </div>
+            <div class="share_mes">
+                <div class="share_padd">
+                    <p>@item.shareContent</p>
+                </div>
+                <ul class="share_pro_list">
+                    @if (item.ShareImages != null && item.ShareImages.Count > 0)
+                    {
+                        foreach (var img in item.ShareImages)
+                        {
+                            <li><a href="javascript:;" title=""><img src="@img" width="100%" /></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <ul class="share_sub">
+                <li>
+                    <a href="javascript:zan(@item.Id)" title="" shareid="@item.Id">
+                        @if (item.isUpCurrentShareInfo)
+                        {
+                            <em class="zhaned">@item.upCount</em>
+                        }
+                        else
+                        {
+                            <em class="zhan">@item.upCount</em>
+                        }
+
+                    </a>
+                </li>
+                <li class="col"><a href="@Url.Action("Detail", "Product", new { id = @item.winnerUserId, spellbuyProductId = @item.spellbuyproductId })" title="">我也想要</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+}

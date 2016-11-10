@@ -38,6 +38,58 @@ function ShoppingStartingListLoadMore()
 }
 
 
+//用户中心中奖记录列表
+function UserShoppingWinnerListLoadMore(id) {
+    var _pageIndex = $("#pageIndex").val();
+    _pageIndex = parseInt(_pageIndex) + 1;
+    var data = {
+        pageIndex: _pageIndex,
+        id: id
+    };
+    var url = "/MyEShopping/ShoppingWinnedListPartial";
+    var _toObj = $(".g_tabs_list");
+    LoadMore(data, url, _toObj, _pageIndex);
+}
+
+//用户中心全部购买记录列表
+function UserShoppingHistoryListLoadMore(id) {
+    var _pageIndex = $("#pageIndex").val();
+    _pageIndex = parseInt(_pageIndex) + 1;
+    var data = {
+        pageIndex: _pageIndex,
+        id: id
+    };
+    var url = "/UserCenter/ShoppingHistoryListPartial";
+    var _toObj = $(".g_tabs_list");
+    LoadMore(data, url, _toObj, _pageIndex);
+}
+
+//晒单列表
+function ShareOrderListLoadMore() {
+    var _pageIndex = $("#pageIndex").val();
+    _pageIndex = parseInt(_pageIndex) + 1;
+    var data = {
+        index: _pageIndex
+    };
+    var url = "/ShareOrder/PartialShareList";
+    var _toObj = $(".noclass");
+    LoadMore(data, url, _toObj, _pageIndex);
+}
+
+
+
+//用户中心晒单
+function UserShareOrderListLoadMore(id) {
+    var _pageIndex = $("#pageIndex").val();
+    _pageIndex = parseInt(_pageIndex) + 1;
+    var data = {
+        pageIndex: _pageIndex,
+        id:id
+    };
+    var url = "/UserCenter/MyShareOrderListPartial";
+    var _toObj = $(".noclass");
+    LoadMore(data, url, _toObj, _pageIndex);
+}
 
 
 
@@ -50,7 +102,7 @@ function LoadMore(data,url,toObj,pageIndex)
         dataType: "html",
         success: function (response) {
             $(toObj).append(response);
-            $(pageIndex).val(pageIndex);
+            $("#pageIndex").val(pageIndex);
            // $(".loader").hide();
             if ($.trim(response) == "") {
                 $(".pullUpLabel").html("亲，没有更多了哟。");

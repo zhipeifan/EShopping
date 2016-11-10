@@ -3,49 +3,26 @@
 
 @model List<QueryShareInfoListDTO>
 
-            <header id="header" class="shopcar-top">
-                <h2>晒单分享</h2>
-            </header>
+         <header id="header" class="shopcar-top">
+    <h2 style="background-color: #BF0000; color: #fff !important;">晒单列表</h2>
+</header>
+<input type="hidden" value="1" id="pageIndex" />
+<div class="noclass">
+    @if (Model != null && Model.Count != 0)
+    {
+        @Html.Partial("PartialShareList", Model);
+    }
+</div>
 
-@if(Model!=null&&Model.Count!=0)
-{ 
-    foreach(var item in Model)
-    { 
-            <div class="share">
+@if (Model != null && Model.Count > 0)
+{
+    <ul class="">
 
-                <div class="share_list">
-                    <div class="share_title">
-                        <div class="share_padd">
-                            <a class="sh_photo" href="javascript:;" title=""><img src="images/photo.jpg" /></a>
-                            <ul class="sh_tit_inner">
-                                <li class="namecol"><a href="@Url.Action("Index", "UserCenter", new {id=@item.winnerUserId })">@item.userInfoVO.nickName</a></li>
-                                <li class="times">@item.shareDate.ConvertToPublicDate()</li>
-                            </ul>
-                            <p class="info">@item.productVO.productName</p>
-                        </div>
-                    </div>
-                    <div class="share_mes">
-                        <div class="share_padd">
-                            <p>@item.shareContent</p>
-                        </div>
-                        <ul class="share_pro_list">
-                           @if (item.ShareImages != null && item.ShareImages.Count > 0)
-                        {
-                            foreach (var img in item.ShareImages)
-                            {
-                                    <li><a href="javascript:;" title=""><img src="@img" width="100%" /></a></li>
-                                }
-                            }
-                        </ul>
-                    </div>
-                    <ul class="share_sub">
-                        <li><a href="@Url.Action("SendUpCount", "ShareOrder", new { shareId = @item.Id, pageIndex = ViewBag.PageIndex, pageSize = ViewBag.PageSize })" title=""><em class="zhan">@item.upCount</em></a></li>
-                        <li class="col"><a href="javascript:;" title="">我也想要</a></li>
-                    </ul>
-                </div>
+        <div class="pullUp" style="display: block; line-height: 40px; margin-top: -9% !important; margin-left: 20% !important; ">
 
-
+            <div class="pullUpLabel" style="font-family: Arial, Microsoft YaHei; text-align: center; font-size: 14px; cursor: pointer; ">
+                <a style="color: #09a9ec !important; " onclick="ShareOrderListLoadMore(@(ViewBag.UserId))">查看更多</a>
             </div>
-    }
-    }
-          
+        </div>
+    </ul>
+}
