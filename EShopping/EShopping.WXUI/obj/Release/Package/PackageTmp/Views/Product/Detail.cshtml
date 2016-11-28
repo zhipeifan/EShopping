@@ -157,7 +157,7 @@
                 }
                 <div class="prodpagelist" id="prodPageList">
                     <div class="prodtab">
-                        @if (Model.winnerStatus == 1)
+                        @if (Model.winnerStatus == 1&&Model.winnerUserId.ToString()==User.Identity.Name)
                         {
                             <a href="javascript:;" title="">您当前参与购买 @Model.winnerUserBuyCount 份</a>
                         }
@@ -207,11 +207,11 @@
                                                         <img id="faceImg" width="100%" height="100%" src="@Model.winnerFaceImg" />
                                                     </a>
                                                     <ul>
-                                                        <li>获奖者：<span>@Model.winnerUserName</span></li>
+                                                        <li>获奖者：<span>@item.winnerUserName</span></li>
 
-                                                        <li>期号：@Model.licensingCode</li>
-                                                        <li>本期参与：@(Model.winnerUserBuyCount)人次</li>
-                                                        <li>揭晓时间：@Model.winnerTime.ConvertToPublicDate()</li>
+                                                        <li>期号：@item.licensingCode</li>
+                                                        <li>本期参与：@(item.winnerUserBuyCount)人次</li>
+                                                        <li>揭晓时间：@item.winnerBuyTime.ConvertToPublicDate()</li>
                                                     </ul>
                                                 </div>
                                                 <p class="luck">幸运号码：<em>@item.winnerBuyCode</em></p>
