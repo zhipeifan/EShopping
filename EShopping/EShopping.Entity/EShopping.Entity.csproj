@@ -56,6 +56,7 @@
     <Compile Include="Request\QueryProductListByPrivateRequest.cs" />
     <Compile Include="Request\QueryProductListByTypeRequest.cs" />
     <Compile Include="Request\QueryProductTypeRequest.cs" />
+    <Compile Include="Request\QueryPublishingHistoryListRequest.cs" />
     <Compile Include="Request\QueryPublishingListRequest.cs" />
     <Compile Include="Request\QueryRegionRequest.cs" />
     <Compile Include="Request\QueryShareInfoListRequest.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Response\QueryMyWinnersListResponse.cs" />
     <Compile Include="Response\QueryNewsDetailResponse.cs" />
     <Compile Include="Response\QueryProductListByPrivateResponse.cs" />
+    <Compile Include="Response\QueryPublishingHistoryListResponse.cs" />
     <Compile Include="Response\QueryRecommendListReponse.cs" />
     <Compile Include="Response\QueryShareInfoListResponse.cs" />
     <Compile Include="Response\DTO\RecommedVOs.cs" />

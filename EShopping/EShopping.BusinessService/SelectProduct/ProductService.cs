@@ -248,5 +248,33 @@ namespace EShopping.BusinessService.SelectProduct
                return new List<SearData>();
            return data.responseData;
        }
+
+       /// <summary>
+       /// 往期开奖
+       /// </summary>
+       /// <param name="productId"></param>
+       /// <param name="userId"></param>
+       /// <returns></returns>
+       public static List<WinnerItems> QueryPublishingHistoryList(int productId, int userId)
+       {
+           QueryPublishingHistoryListRequest request = new QueryPublishingHistoryListRequest
+           {
+               userId = userId,
+               productId = productId,
+           };
+           CommonRequest commonrequest = new CommonRequest
+           {
+               payload = request.ReplcaceRequest<QueryPublishingHistoryListRequest>()
+           };
+           var response = ServiceRequestClient.PostRquest(ServicesEnum.queryPublishingHistoryList, JsonConvert.SerializeObject(commonrequest));
+
+           if (response == null)
+               return new List<WinnerItems>();
+           var data = response.ToEntity<QueryPublishingHistoryListResponse>();
+           if (data == null || data.responseData == null
+               || data.responseData.productVOs == null || data.responseData.productVOs.Count == 0)
+               return new List<WinnerItems>();
+           return data.responseData.productVOs;
+       }
     }
 }

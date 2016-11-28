@@ -13,7 +13,7 @@
         <span class="prodtitle">@Model.productName</span>
         @*<span class="prodtitle">@Model.productPrice</span>*@
         <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(@Model.productLimit, @Model.spellbuyCount))</em></span>
-        <span class="pacet"><em></em></span>
+        <span class="pacet"><em style="width:@(ExtendUtility.ConvertProductspeed(@Model.productLimit, @Model.spellbuyCount))"></em></span>
         <a href="javascript:;" class="iaddcar" onclick="shoppingCarAnimation(this)" pid="@Model.Id" spellbuyproductid="@Model.spellbuyproductId"></a>
         <span class="prodns">
             <em>总需@(Model.productLimit)</em>

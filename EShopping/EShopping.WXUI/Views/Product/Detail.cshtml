@@ -1,5 +1,6 @@
 ﻿@using EShopping.Entity.Response.DTO;
 @using EShopping.Common;
+@using EShopping.Entity.Response;
 
 @{
     ViewBag.Title = "Detail";
@@ -52,8 +53,7 @@
         });
 
 
-        function productDesc(obj)
-        {
+        function productDesc(obj) {
             if ($(obj).next('.lr-pad').hasClass('show')) {
                 $(obj).find('h4').addClass('curr')
                 $(obj).next('.lr-pad').removeClass('show').addClass('hide');
@@ -119,7 +119,7 @@
                         <p>期号：@Model.licensingCode</p>
 
 
-                        <p class="line" ><em style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"></em></p>
+                        <p class="line"><em style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"></em></p>
                         <p class="nums"><span>总需@(Model.productLimit)</span><span>剩余<i>@((Model.productLimit - Model.spellbuyCount) < 0 ? 0 : Model.productLimit - Model.spellbuyCount)</i></span></p>
                     </div>
 
@@ -147,17 +147,17 @@
                             <ul>
                                 <li>获奖者：<span>@Model.winnerUserName</span></li>
                                 @*<li>用户ID：987654321<em>（唯一不变标识）</em></li>*@
-                                <li>期号：@Model.winnerBuyCode</li>
+                                <li>期号：@Model.licensingCode</li>
                                 <li>本期参与：@(Model.winnerUserBuyCount)人次</li>
                                 <li>揭晓时间：@Model.winnerTime.ConvertToPublicDate()</li>
                             </ul>
                         </div>
-                        <p class="luck">幸运号码：<em>8000008</em>@*<a href="javascript:;" title="">计算详情</a>*@</p>
+                        <p class="luck">幸运号码：<em>@Model.winnerBuyCode</em>@*<a href="javascript:;" title="">计算详情</a>*@</p>
                     </div>
                 }
                 <div class="prodpagelist" id="prodPageList">
                     <div class="prodtab">
-                        @if (Model.winnerStatus == 1 )
+                        @if (Model.winnerStatus == 1)
                         {
                             <a href="javascript:;" title="">您当前参与购买 @Model.winnerUserBuyCount 份</a>
                         }
@@ -186,10 +186,41 @@
                             <h4 class="wangqi">往期揭晓</h4>
                         </div>
                         <div class="lr-pad hide">
-                            <div class="pitem_inner">
-                                <img src="images/act_img.png" width="100%" />
-                                <p>同时，中方正在采取措施妥善管控有关海域的事态。我们强烈希望日方恪守双方有关原则共识精神，冷静看待目前事态，不要采取任何可能导致局势紧张和复杂化的行动，共同为有关海域的稳定作出建设性努力。</p>
-                            </div>
+                            @{
+                                if (ViewBag.QueryPublishingHistoryList == null)
+                                {
+                                    <div class="winner">
+
+                                        <p style="text-align:center;margin-top:10px;"><em>暂无开奖信息</em></p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    var winnerList = (List<WinnerItems>)ViewBag.QueryPublishingHistoryList;
+                                    if (winnerList != null && winnerList.Count > 0)
+                                    {
+                                        foreach (var item in winnerList)
+                                        {
+                                            <div class="winner">
+                                                <div class="winner-inner">
+                                                    <a class="winner-user" href="javascript:;" title="">
+                                                        <img id="faceImg" width="100%" height="100%" src="@Model.winnerFaceImg" />
+                                                    </a>
+                                                    <ul>
+                                                        <li>获奖者：<span>@Model.winnerUserName</span></li>
+
+                                                        <li>期号：@Model.licensingCode</li>
+                                                        <li>本期参与：@(Model.winnerUserBuyCount)人次</li>
+                                                        <li>揭晓时间：@Model.winnerTime.ConvertToPublicDate()</li>
+                                                    </ul>
+                                                </div>
+                                                <p class="luck">幸运号码：<em>@item.winnerBuyCode</em></p>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+
                         </div>
 
                     </div>
@@ -224,7 +255,8 @@
             <footer id="footer">
                 <div>
                     <p class="carry"></p>
-                    @if(Model.winnerStatus!=1){<a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>}
+                    @if (Model.winnerStatus != 1)
+                    {<a class="looks" href="@Url.Action("CreateShoppingToCar", "Product", new { id = @Model.Id, spellBuyProductId = @Model.spellbuyproductId })" title="">立即购买</a>}
                 </div>
                 <ul>
                     <li class="@(selectEnum == 1 ? "curr" : "")"><a href="@Url.Action("Index", "Home")" title="">Shopping</a></li>

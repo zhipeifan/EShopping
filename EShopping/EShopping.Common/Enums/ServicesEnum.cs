@@ -144,6 +144,10 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 搜索热门
         /// </summary>
-        queryTopSearch
+        queryTopSearch,
+        /// <summary>
+        /// 往期揭晓
+        /// </summary>
+        queryPublishingHistoryList
     }
 }
