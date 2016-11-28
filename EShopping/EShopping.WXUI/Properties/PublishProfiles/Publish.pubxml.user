@@ -10,16 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/EShopping.BusinessService.dll">
-      <publishTime>11/28/2016 21:14:58</publishTime>
+      <publishTime>11/28/2016 22:39:46</publishTime>
     </File>
     <File Include="bin/EShopping.Common.dll">
-      <publishTime>11/28/2016 21:14:58</publishTime>
+      <publishTime>11/28/2016 22:39:45</publishTime>
     </File>
     <File Include="bin/EShopping.Entity.dll">
-      <publishTime>11/28/2016 21:14:58</publishTime>
+      <publishTime>11/28/2016 22:39:45</publishTime>
     </File>
     <File Include="bin/EShopping.WXUI.dll">
-      <publishTime>11/28/2016 21:17:42</publishTime>
+      <publishTime>11/28/2016 22:39:46</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>05/13/2016 10:14:00</publishTime>
@@ -805,7 +805,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2016 16:48:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/28/2016 21:06:12</publishTime>
+      <publishTime>11/28/2016 21:23:50</publishTime>
     </File>
     <File Include="Views/Home/testIndex.cshtml">
       <publishTime>08/02/2016 20:40:51</publishTime>
@@ -880,13 +880,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/26/2016 03:46:04</publishTime>
     </File>
     <File Include="Views/Product/Detail.cshtml">
-      <publishTime>11/28/2016 20:16:49</publishTime>
+      <publishTime>11/28/2016 22:38:18</publishTime>
     </File>
     <File Include="Views/Product/List.cshtml">
       <publishTime>11/28/2016 21:12:56</publishTime>
     </File>
     <File Include="Views/Product/ProductItem.cshtml">
-      <publishTime>11/26/2016 03:44:11</publishTime>
+      <publishTime>11/28/2016 21:26:15</publishTime>
     </File>
     <File Include="Views/Product/ProductItems.cshtml">
       <publishTime>10/17/2016 19:01:35</publishTime>
