@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{674DE87A-D201-4B8B-89F2-3A48E88289AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeChatPayCommon</RootNamespace>
+    <AssemblyName>WeChatPayCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\EShopping.WXUI\dll\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CRegex.cs" />
+    <Compile Include="Entitys\ArticleEntity.cs" />
+    <Compile Include="Entitys\AuthJson.cs" />
+    <Compile Include="Entitys\BaseJsonResult.cs" />
+    <Compile Include="Entitys\BaseMessage.cs" />
+    <Compile Include="Entitys\CommonResult.cs" />
+    <Compile Include="Entitys\CreateGroupResult.cs" />
+    <Compile Include="Entitys\DateTimeUtil.cs" />
+    <Compile Include="Entitys\ErrorJsonResult.cs" />
+    <Compile Include="Entitys\GroupIdJsonResult.cs" />
+    <Compile Include="Entitys\GroupJson.cs" />
+    <Compile Include="Entitys\GroupListJsonResult.cs" />
+    <Compile Include="Entitys\MenuInfo.cs" />
+    <Compile Include="Entitys\MenuJson.cs" />
+    <Compile Include="Entitys\MenuListJson.cs" />
+    <Compile Include="Entitys\OpenIdListData.cs" />
+    <Compile Include="Entitys\ResponseMsgType.cs" />
+    <Compile Include="Entitys\ResponseNews .cs" />
+    <Compile Include="Entitys\ResponseText .cs" />
+    <Compile Include="Entitys\TemplateMessageJson.cs" />
+    <Compile Include="Entitys\TemplateMessageJsonData.cs" />
+    <Compile Include="Entitys\UserListJsonResult.cs" />
+    <Compile Include="Entitys\ValueColor.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="JsonHelper.cs" />
+    <Compile Include="Entitys\RequestEventClick.cs" />
+    <Compile Include="Entitys\RequestMsgType.cs" />
+    <Compile Include="HttpHelper.cs" />
+    <Compile Include="KeyValuePair.cs" />
+    <Compile Include="MD5Util.cs" />
+    <Compile Include="Entitys\OrderDetail.cs" />
+    <Compile Include="MemoryCacheHelper.cs" />
+    <Compile Include="MyXmlHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entitys\QueryOrder.cs" />
+    <Compile Include="SortedDictionary.cs" />
+    <Compile Include="Entitys\UnifiedOrder.cs" />
+    <Compile Include="Entitys\UserJson.cs" />
+    <Compile Include="WeixinApiDispatch.cs" />
+    <Compile Include="WXpayUtil.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
