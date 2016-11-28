@@ -18,8 +18,15 @@
     <script type="text/javascript" src="@Url.Content("~/js/libs/html5shiv.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/page.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/jquery.fly.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/LoadMoreData.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/jquery.lazyload.js")"></script>
+  <script type="text/javascript">
+        $(function () {
+        //顶部我的和手机弹出层效果
+         
+            $('img.lazy').lazyload({threshold: 200});
+        });
 
+        </script>
 
     
     @{
@@ -51,6 +58,11 @@
         var addurl = "@Url.Action("AddProductToCar", "Home")";
         var shppoingUrl="@Url.Action("AddProductNum", "ShoppingCar")";
         var changeProductUrl = "@Url.Action("ChangeShoppingList", "ShoppingCar")";
+
+    $(function () {
+        $('img.lazy').lazyload();
+    });
+ 
     </script>
 </body>
 </html>

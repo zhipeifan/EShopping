@@ -18,7 +18,7 @@
     <div class="swiper-container" id="secretContainar">
         <div class="swiper-wrapper">
 
-            <input type="hidden" value="1" id="pageIndex" />
+
 
             <div class="swiper-slide">
                 <div class="content-slide">
@@ -26,22 +26,46 @@
 
                         @if (Model != null && Model.Count > 0)
                         {
-                            @Html.Partial("ShoppingStartingListPartial", Model);
+                            foreach (var item in Model)
+                            {
+                                <div class="secret_pro">
+                                    <div class="secret_img">
+                                        <a class="pro_img" href="javascript:;" title=""><img class="lazy" src="/images/defaultloading.gif" data-original="@item.coverImg1" width="100%" /></a>
+                                        <h4 class="pro_name">@item.productName</h4>
+                                        @*<p class="pro_color" style="padding-bottom:1rem;">（粉色 黑色 白色）</p>*@
+                                        <p class="pro_money" style="font-size:1rem;font-weight:normal;color:#999;">
+                                            期号：@item.licensingCode
+                                            <a href="javascript:;" title="追加">追加</a>
+                                        </p>
+                                        <ul class="pro_num">
+                                            <li class="pro_deg"><span>总计：@item.spellbuyLimit</span><span>剩余：<em>@(item.spellbuyLimit - item.spellbuyCount)</em></span></li>
+                                            <li class="num_line"><span></span></li>
+                                        </ul>
+                                        <div class="inpcu">
+                                            <ul>
+                                                <li>本期参与：<span>@item.currentUserBuyCount</span>人次</li>
+                                                <li>查看我的号码:<span>@item.currentUserBuyCode</span></li>
+                                            </ul>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="g_tabs_list">
+                                <div class="lr-pad">
+                                    <div class="redpad">
+                                        <h5 style="text-align: center;">亲，您还没有购买过商品哦。</h5>
+                                        <h5 style="text-align:center;">快去挑选几件期待已久的宝贝吧！一元就可以实现你的愿望~</h5>
+                                        <h5 style="text-align:center;"><a href="@Url.Action("List", "Product")" title="" style="color:#EA0000;">立即夺宝</a></h5>
+                                    </div>
+                                </div>
+                            </div>
                         }
 
                     </div>
-                    @if (Model != null && Model.Count > 0)
-                    {
-                        <ul class="">
-
-                            <div class="pullUp" style="display: block; line-height: 40px; margin-top: -9% !important; margin-left: 20% !important; ">
-
-                                <div class="pullUpLabel" style="font-family: Arial, Microsoft YaHei; text-align: center; font-size: 14px; cursor: pointer; ">
-                                    <a style="color: #09a9ec !important; " onclick="ShoppingStartingListLoadMore()">查看更多</a>
-                                </div>
-                            </div>
-                        </ul>
-                    }
                 </div>
             </div>
 

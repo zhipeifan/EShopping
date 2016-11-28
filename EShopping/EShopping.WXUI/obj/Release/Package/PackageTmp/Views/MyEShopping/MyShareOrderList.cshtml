@@ -29,7 +29,7 @@
     <h2 style="background-color: #BF0000; color: #fff !important;">我的晒单</h2>
 </header>
 
-@if (Model != null && Model.Count != 0)
+@if (Model != null && Model.Count > 0)
 {
     foreach (var item in Model)
     {
@@ -38,7 +38,7 @@
             <div class="share_list">
                 <div class="share_title">
                     <div class="share_padd">
-                        <a class="sh_photo" href="javascript:;" title=""><img src="images/photo.jpg" /></a>
+                        <a class="sh_photo" href="javascript:;" title=""><img class="lazy" src="/images/defaultloading.gif" data-original="images/photo.jpg" /></a>
                         <ul class="sh_tit_inner">
                             <li class="namecol"><a href="javascript:;">@item.userInfoVO.nickName</a></li>
                             <li class="times">@item.shareDate.ConvertToPublicDate()</li>
@@ -55,7 +55,7 @@
                         {
                             foreach (var img in item.ShareImages)
                             {
-                                <li><a href="javascript:;" title=""><img src="@img" width="100%" /></a></li>
+                                <li><a href="javascript:;" title=""><img class="lazy" src="/images/defaultloading.gif" data-original="@img" width="100%" /></a></li>
                             }
                         }
                     </ul>
@@ -79,4 +79,15 @@
 
         </div>
     }
-}
+}else
+        {
+              <div class="share">
+                    <div class="lr-pad">
+                        <div class="redpad">
+                            <h5 style="text-align:center;">亲，您还没有晒过单哦。</h5> 
+                            <h5 style="text-align:center;">快去挑选几件期待已久的宝贝吧！一元就可以实现你的愿望~</h5>
+                            <h5 style="text-align:center;"><a href="@Url.Action("List", "Product")" title="" style="color:#EA0000;">立即夺宝</a></h5>
+                        </div>
+                    </div>
+                </div>
+        }

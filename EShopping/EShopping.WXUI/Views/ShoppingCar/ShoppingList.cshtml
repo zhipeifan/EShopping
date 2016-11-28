@@ -78,14 +78,14 @@
                                 </div>
                             </div>
                             <div class="item-inner">
-                                <a class="carlist-img" href="javascript:;" title=""><img width="100%" src="@Model[i].product.coverImg1" /></a>
+                                <a class="carlist-img" href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model[i].product.coverImg1" /></a>
                                 <ul class="carlist-inners">
                                     <li class="tit">剩余数量<em>@((Model[i].product.productLimit - Model[i].product.spellbuyCount) < 0 ? 0 : Model[i].product.productLimit - Model[i].product.spellbuyCount)</em></li>
                                     <li class="num">
                                         <span>购买数量</span>
                                         <span class="pans">
                                             <em  onclick="ChangebuyNum(this)" opt="-1">-</em>
-                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum" })
+                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum" ,style="width:60px !important;text-align:center !important;"})
                                             <em onclick="ChangebuyNum(this)" opt="1">+</em>
                                         </span>
                                         @if (Model[i].IsBuyAll)

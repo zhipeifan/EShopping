@@ -67,13 +67,13 @@ namespace EShopping.Common
         public static string ConvertProductspeed(int productLimit, int spellbuyCount)
         {
             string liWidth = "0%";
-            if (productLimit == 0)
+            if (spellbuyCount == 0)
                 return liWidth;
-            if (productLimit > spellbuyCount)
+            if (spellbuyCount > productLimit)
             { liWidth = "100%"; }
             else
             {
-                liWidth = ((Convert.ToDouble(productLimit) / Convert.ToDouble(spellbuyCount)) * 100).ToString("F2") + "%";
+                liWidth = ((Convert.ToDouble(spellbuyCount) / Convert.ToDouble(productLimit)) * 100).ToString("F2") + "%";
             }
             return liWidth;
         }

@@ -61,13 +61,13 @@
 <section id="page-content" class="shopcar-content">
     <div class="fullrank">
         <ul>
-            <li @((categoryId == 0 && tcategoryId == 0) ? "class=\"curr\"" : "")><a href="@Url.Action("List", "Product", new { categoryId = categoryId })" title="最新">最新</a></li>
-            <li class="curr"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 1 })" title="最快">最快</a></li>
-            <li><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 2 })" title="最热">最热</a></li>
+            <li class="@((areaId == 0) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId })" title="最新">最新</a></li>
+            <li class="@((areaId == 1) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 1 })" title="最快">最快</a></li>
+            <li class="@((areaId == 2) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 2 })" title="最热">最热</a></li>
 
-            <li><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 3, })" title="价格">价格↑</a></li>
+            <li class="@((areaId == 3) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 3, })" title="价格">价格↑</a></li>
 
-            <li><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 4 })" title="价格">价格↓</a></li>
+            <li class="@((areaId == 4) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 4 })" title="价格">价格↓</a></li>
 
         </ul>
     </div>

@@ -50,8 +50,8 @@
 <script type="text/javascript" src="@Url.Content("~/js/loadJs/pullToRefresh.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js")"></script>
 <script type="text/javascript">
-
-    var shppoingItemUrl = "@Url.Action("ProductItems", "Product")";
+    
+    var shppoingItemUrl="@Url.Action("ProductItems", "Product")";
 
 </script>
 
@@ -61,13 +61,13 @@
 <section id="page-content" class="shopcar-content">
     <div class="fullrank">
         <ul>
-            <li @((categoryId == 0 && tcategoryId == 0) ? "class=\"curr\"" : "")><a href="@Url.Action("List", "Product", new { categoryId = categoryId })" title="最新">最新</a></li>
-            <li class="curr"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 1 })" title="最快">最快</a></li>
-            <li><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 2 })" title="最热">最热</a></li>
+            <li class="@((areaId == 0) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId })" title="最新">最新</a></li>
+            <li class="@((areaId == 1) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 1 })" title="最快">最快</a></li>
+            <li class="@((areaId == 2) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 2 })" title="最热">最热</a></li>
 
-            <li><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 3, })" title="价格">价格↑</a></li>
+            <li class="@((areaId == 3) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 3, })" title="价格">价格↑</a></li>
 
-            <li><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 4 })" title="价格">价格↓</a></li>
+            <li class="@((areaId == 4) ? "curr" : "")"><a href="@Url.Action("List", "Product", new { categoryId = categoryId, areaId = 4 })" title="价格">价格↓</a></li>
 
         </ul>
     </div>
@@ -81,12 +81,12 @@
                 <li class="@(categoryId == 4 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 4, areaId = areaId })" title="限购专区">限购专区</a></li>
                 @*<li class="@(categoryId == 5 ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 5, areaId = areaId })" title="返现专区">返现专区</a></li>*@
                 @if (productTypes != null && productTypes.Count > 0)
-                {
-                    foreach (var item in productTypes)
-                    {
-                        <li class="@(tcategoryId ==item.id ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 0, areaId = 0, tcategoryId=@item.id })" title="商品分类">@item.typeName </a></li>
-                    }
-                }
+{
+    foreach (var item in productTypes)
+    {
+        <li class="@(tcategoryId ==item.id ? "currMenu" : "")"><a href="@Url.Action("List", "Product", new { categoryId = 0, areaId = 0, tcategoryId=@item.id })" title="商品分类">@item.typeName </a></li>
+    }
+}
 
             </ul>
         </div>
@@ -96,24 +96,24 @@
                 {
                     @Html.Partial("ProductItems", Model);
                     @*foreach (var item in Model)
-                        {
-
-
-                            <li>
-                                <a href="@Url.Action("Detail", "Product", new { id = item.Id, spellBuyProductId = item.spellbuyproductId })">
-                                    <img src="@(item.coverImg1)" />
-                                    <span class="prodtitle">@item.productName</span>
-                                    <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(item.productLimit, item.spellbuyCount))</em></span>
-                                    <span class="pacet"><em></em></span>
-                                    <a href="javascript:;" class="iaddcar" pid="@item.Id" spellbuyproductid="@item.spellbuyproductId"></a>
-                                    <span class="prodns">
-                                        <em>总需@(item.productLimit)</em>
-                                        <em>剩余<i>@((item.productLimit - item.spellbuyCount) < 0 ? 0 : item.productLimit - item.spellbuyCount)</i></em>
-                                    </span>
-                                </a>
-                                <span class="dzzqu"></span>
-                            </li>
-                        }*@
+                    {
+                        
+                        
+                        <li>
+                            <a href="@Url.Action("Detail", "Product", new { id = item.Id, spellBuyProductId = item.spellbuyproductId })">
+                                <img src="@(item.coverImg1)" />
+                                <span class="prodtitle">@item.productName</span>
+                                <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(item.productLimit, item.spellbuyCount))</em></span>
+                                <span class="pacet"><em></em></span>
+                                <a href="javascript:;" class="iaddcar" pid="@item.Id" spellbuyproductid="@item.spellbuyproductId"></a>
+                                <span class="prodns">
+                                    <em>总需@(item.productLimit)</em>
+                                    <em>剩余<i>@((item.productLimit - item.spellbuyCount) < 0 ? 0 : item.productLimit - item.spellbuyCount)</i></em>
+                                </span>
+                            </a>
+                            <span class="dzzqu"></span>
+                        </li>
+                    }*@
                 }
             </ul>
             @Html.HiddenFor(c => categoryId)
@@ -170,7 +170,8 @@
                         $('.products').append(response);
                         $("#pageIndex").val(parseInt(pageIndex) + 1);
                         $(".loader").hide();
-                        if ($.trim(response) == "") {
+                        if ($.trim(response) == "")
+                        {
                             $(".pullUpLabel").html("亲，以上就是全部商品哟。");
                         }
                     }

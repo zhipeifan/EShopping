@@ -9,7 +9,7 @@
 
 <li>
     <a href="@Url.Action("Detail", "Product", new { id = @Model.Id, spellBuyProductId =@Model.spellbuyproductId })">
-        <img src="@(Model.coverImg1)" />
+        <img class="lazy" src="/images/defaultloading.gif" data-original="@(Model.coverImg1)"/>
         <span class="prodtitle">@Model.productName</span>
         @*<span class="prodtitle">@Model.productPrice</span>*@
         <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(@Model.productLimit, @Model.spellbuyCount))</em></span>

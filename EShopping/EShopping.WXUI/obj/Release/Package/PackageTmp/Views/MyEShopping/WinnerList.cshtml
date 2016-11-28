@@ -18,7 +18,7 @@
             { 
             <div class="secret_pro">
                 <div class="secret_img">
-                    <a class="pro_img" href="javascript:;" title=""><img src="@item.productImg1" width="100%" /></a>
+                    <a class="pro_img" href="javascript:;" title=""><img class="lazy" src="/images/defaultloading.gif" data-original="@item.productImg1" width="100%" /></a>
                     <h4 class="pro_name">@item.productName</h4>
                     @*<p class="pro_color" style="padding-bottom:1rem;">（粉色 黑色 白色）</p>*@
                     <p class="pro_money" style="font-size:1.2rem">￥@item.productPrice</p>
@@ -43,6 +43,18 @@
                 </div>
             </div>
             }
+        }
+        else
+        {
+            <div class="g_tabs_list">
+                <div class="lr-pad">
+                    <div class="redpad">
+                        <h5 style="text-align: center;">亲，您还没有中奖哦。</h5>
+                        <h5 style="text-align:center;">快去挑选几件期待已久的宝贝吧！一元就可以实现你的愿望~</h5>
+                        <h5 style="text-align:center;"><a href="@Url.Action("List", "Product")" title="" style="color:#EA0000;">立即夺宝</a></h5>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 </section>

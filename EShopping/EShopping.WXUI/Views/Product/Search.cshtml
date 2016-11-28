@@ -1,42 +1,20 @@
-﻿@using EShopping.Entity.Response
+﻿
+  
 
-@model List<SearData>
-
-
-<header id="header" class="shopcar-top">
-    <h2>全部商品</h2>
-</header>
-<section id="page-content" class="shopcar-content">
-    <div class="search_input">
-        <div class="search_item">
-            @Html.BeginForm("SearchResult", "Product", FormMethod.Post)
-            {
-            <input type="text" placeholder="请输入商品名称" id="key" name="key" />
-            <input type="submit" value="搜索" />
-            }
-        </div>
-    </div>
-    <div class="search_rec">
-        <div class="lr-pad">
-            <div class="search_rec_top">
-                <span class="rec">热门搜索</span>
-                @*<span class="rec_del"></span>*@
-            </div>
-            <ul class="rec_list">
-
-                @if (Model != null && Model.Count > 0)
+    <header id="header" class="shopcar-top">
+        <h2>全部商品</h2>
+    </header>
+    <section id="page-content" class="shopcar-content">
+        <div class="search_input">
+            <div class="search_item">
+                @Html.BeginForm("SearchResult", "Product", FormMethod.Post)
                 {
-                    foreach (var item in Model)
-                    {
-                        <li><a href="@Url.Action("SearchResult", "Product", new { key = @item.keyword })" title="">@item.keyword</a></li>
-                    }
-
+                <input type="text" placeholder="请输入商品名称" id="key" name="key" />
+                <input type="submit" value="搜索" />
                 }
-
-            </ul>
+            </div>
         </div>
-
-</section>
+    </section>
 
 
 

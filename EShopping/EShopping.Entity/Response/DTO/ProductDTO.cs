@@ -14,6 +14,10 @@ namespace EShopping.Entity.Response.DTO
         public int Id { get; set; }
         public string productBrand { get; set; }
         public string productDetail { get; set; }
+
+        /// <summary>
+        /// 拼购上限
+        /// </summary>
         public int productLimit { get; set; }
         public string productName { get; set; }
         public decimal productPrice { get; set; }
@@ -29,6 +33,9 @@ namespace EShopping.Entity.Response.DTO
         public string detailImg { get; set; }
         public int prefecture { get; set; }
         public int spellbuyproductId { get; set; }
+        /// <summary>
+        /// 当前拼购数量
+        /// </summary>
         public int spellbuyCount { get; set; }
         public int spellbuyLimit { get; set; }
         public string licensingCode { get; set; }

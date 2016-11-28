@@ -5,13 +5,13 @@
 
 
 <header id="header" class="shopcar-top">
-    
+
     <h2 style="background-color: #BF0000; color: #fff !important;">购买记录</h2>
 </header>
 <section id="page-content" class="shopcar-content">
     <div class="secret_tabs" id="secretTab" style="margin:0px;">
         <ul>
-            <li ><a href="@Url.Action("ShoppingHistoryList", "MyEShopping")">全部</a><em></em></li>
+            <li><a href="@Url.Action("ShoppingHistoryList", "MyEShopping")">全部</a><em></em></li>
             <li><a href="@Url.Action("ShoppingStartingList", "MyEShopping")">进行中</a><em></em></li>
             <li class="curr">已开奖<em></em></li>
         </ul>
@@ -31,12 +31,12 @@
                             {
                                 <div class="secret_pro">
                                     <div class="secret_img">
-                                        <a class="pro_img" href="javascript:;" title=""><img src="@item.coverImg1" width="100%" /></a>
+                                        <a class="pro_img" href="javascript:;" title=""><img class="lazy" src="/images/defaultloading.gif" data-original="@item.coverImg1" width="100%" /></a>
                                         <h4 class="pro_name">@item.productName</h4>
                                         @*<p class="pro_color" style="padding-bottom:1rem;">（粉色 黑色 白色）</p>*@
                                         <p class="pro_money" style="font-size:1rem;font-weight:normal;color:#999;">
                                             期号：@item.licensingCode
-                                            <a href="@Url.Action("CreateShareProduct", "MyEShopping", new { id=@item.id,spellbuyId=@item.spellbuyproductId })" title="晒单">晒单</a> 
+                                            <a href="@Url.Action("CreateShareProduct", "MyEShopping", new { id=@item.id,spellbuyId=@item.spellbuyproductId })" title="晒单">晒单</a>
                                         </p>
                                         <ul class="pro_num">
                                             <li class="pro_deg"><span>总计：@item.spellbuyLimit</span><span>本期参与：<em>@item.currentUserBuyCount</em></span>人次</li>
@@ -59,6 +59,19 @@
                                 </div>
                             }
                         }
+                        else
+                        {
+                            <div class="g_tabs_list">
+                                <div class="lr-pad">
+                                    <div class="redpad">
+                                        <h5 style="text-align: center;">亲，您还没有中奖哦。</h5>
+                                        <h5 style="text-align:center;">快去挑选几件期待已久的宝贝吧！一元就可以实现你的愿望~</h5>
+                                        <h5 style="text-align:center;"><a href="@Url.Action("List", "Product")" title="" style="color:#EA0000;">立即夺宝</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
 
                     </div>
                 </div>

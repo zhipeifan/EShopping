@@ -58,3 +58,5 @@ D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\System.Web.Mvc.xml
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Release\EShopping.WXUI.csprojResolveAssemblyReference.cache
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Release\EShopping.WXUI.dll
 D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\obj\Release\EShopping.WXUI.pdb
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\WeChatPayCommon.dll
+D:\Pirvate\EShoppingNew\Source\EShopping\EShopping.WXUI\bin\WeChatPayCommon.pdb

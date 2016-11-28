@@ -50,6 +50,18 @@
             });
 
         });
+
+
+        function productDesc(obj)
+        {
+            if ($(obj).next('.lr-pad').hasClass('show')) {
+                $(obj).find('h4').addClass('curr')
+                $(obj).next('.lr-pad').removeClass('show').addClass('hide');
+            } else {
+                $(obj).find('h4').removeClass('curr')
+                $(obj).next('.lr-pad').removeClass('hide').addClass('show');
+            }
+        }
     </script>
 
 
@@ -76,23 +88,23 @@
                     <div class="swiper-wrapper">
                         @if (!string.IsNullOrWhiteSpace(Model.coverImg1))
                         {
-                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg1" /></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model.coverImg1" /></a></div>
                         }
                         @if (!string.IsNullOrWhiteSpace(Model.coverImg2))
                         {
-                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg2" /></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model.coverImg2" /></a></div>
                         }
                         @if (!string.IsNullOrWhiteSpace(Model.coverImg3))
                         {
-                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg3" /></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model.coverImg3" /></a></div>
                         }
                         @if (!string.IsNullOrWhiteSpace(Model.coverImg4))
                         {
-                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg4" /></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model.coverImg4" /></a></div>
                         }
                         @if (!string.IsNullOrWhiteSpace(Model.coverImg5))
                         {
-                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" src="@Model.coverImg5" /></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model.coverImg5" /></a></div>
                         }
                     </div>
                     <!-- 分页器 -->
@@ -107,7 +119,7 @@
                         <p>期号：@Model.licensingCode</p>
 
 
-                        <p class="line" style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"><em></em></p>
+                        <p class="line" ><em style="width:@(ExtendUtility.ConvertProductspeed(Model.productLimit, Model.spellbuyCount))"></em></p>
                         <p class="nums"><span>总需@(Model.productLimit)</span><span>剩余<i>@((Model.productLimit - Model.spellbuyCount) < 0 ? 0 : Model.productLimit - Model.spellbuyCount)</i></span></p>
                     </div>
 
@@ -145,7 +157,7 @@
                 }
                 <div class="prodpagelist" id="prodPageList">
                     <div class="prodtab">
-                        @if (Model.winnerUserBuyCount > 0)
+                        @if (Model.winnerStatus == 1 )
                         {
                             <a href="javascript:;" title="">您当前参与购买 @Model.winnerUserBuyCount 份</a>
                         }
@@ -155,7 +167,7 @@
                         }
                     </div>
                     <div class="pitem">
-                        <div class="pitem-list">
+                        <div class="pitem-list" onclick="productDesc(this)">
                             <h4 class="tuwen">图文详情</h4>
                         </div>
                         <div class="lr-pad show">
@@ -170,7 +182,7 @@
 
                     </div>
                     <div class="pitem">
-                        <div class="pitem-list">
+                        <div class="pitem-list" onclick="productDesc(this)">
                             <h4 class="wangqi">往期揭晓</h4>
                         </div>
                         <div class="lr-pad hide">
