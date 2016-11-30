@@ -80,13 +80,16 @@ namespace EShopping.BusinessService.ShoppingCar
         /// <param name="userId"></param>
         /// <param name="ip"></param>
         /// <param name="shoppingProducts"></param>
-        public static SubmitOrderDTO CreateOrder(int userId, string ip, List<BuyProductVOs> shoppingProducts)
+        public static SubmitOrderDTO CreateOrder(int userId, string ip, List<BuyProductVOs> shoppingProducts,string appId,TradeTypeEnum tradeType,string openId)
         {
             OrderRequest orderFilter = new OrderRequest()
             {
                 buyProductVOs = shoppingProducts,
                 ipAddress = ip,
-                userId = userId
+                userId = userId,
+                appId = appId,
+                openId = openId,
+                tradeType = tradeType.ToString()
             };
 
             CommonRequest request = new CommonRequest

@@ -36,7 +36,7 @@ namespace EShopping.WXUI.Controllers
             get
             {
                 string id = User.Identity.Name;
-                if (string.IsNullOrEmpty(id) || id=="0")
+                if (string.IsNullOrEmpty(id) || id == "0")
                 {
                     return UserInfo.userId;
                 }
@@ -49,23 +49,23 @@ namespace EShopping.WXUI.Controllers
         {
             get
             {
-                if(User.Identity.IsAuthenticated)
+                if (User.Identity.IsAuthenticated)
                 {
 
                     ApplicationLog.DebugInfo("UserInfo1");
-                string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
-                var _user= Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
+                    string strUserData = ((FormsIdentity)(System.Web.HttpContext.Current.User.Identity)).Ticket.UserData;
+                    var _user = Newtonsoft.Json.JsonConvert.DeserializeObject<UserDTO>(strUserData);
 
-                    if(_user==null||_user.userId==0)
+                    if (_user == null || _user.userId == 0)
                     {
                         _user = LoginService.LoginUser(new UserDTO
                         {
-                            faceImg =_user.faceImg,
+                            faceImg = _user.faceImg,
                             nickName = _user.nickName,
                             weixinOpenId = _user.weixinOpenId
                         });
                     }
-                return _user;
+                    return _user;
                 }
                 else
                 {
@@ -89,9 +89,9 @@ namespace EShopping.WXUI.Controllers
 
                 if (UserInfo != null && !string.IsNullOrEmpty(UserInfo.userName))
                 {
-                   var list = ShoppingCarService.LoadShoppingList(UserInfo.userName);
-                   //var list = ShoppingCarService.LoadShoppingList("15105149197");
-                    if(list!=null&&list.Count>0)
+                    var list = ShoppingCarService.LoadShoppingList(UserInfo.userName);
+                    //var list = ShoppingCarService.LoadShoppingList("15105149197");
+                    if (list != null && list.Count > 0)
                     {
                         list.ForEach(x =>
                         {
@@ -105,12 +105,12 @@ namespace EShopping.WXUI.Controllers
                         });
                     }
                 }
-                
+
                 Session["ShoppingCar"] = _ShoppingCar;
                 return _ShoppingCar;
             }
         }
-           
+
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
@@ -134,12 +134,12 @@ namespace EShopping.WXUI.Controllers
 
         public ShoppingCarDTO InitShoppingCarDTO(int id, int spellBuyProductId)
         {
-            var item = ProductService.LoadProductDetail(id,spellBuyProductId);
-            var pdto= new ShoppingCarDTO
+            var item = ProductService.LoadProductDetail(id, spellBuyProductId);
+            var pdto = new ShoppingCarDTO
                   {
                       product = item,
                       BuyNum = 1,
-                      IsChecked=true
+                      IsChecked = true
                   };
 
             pdto.product.spellbuyCount++;//已购数量+1
@@ -151,18 +151,18 @@ namespace EShopping.WXUI.Controllers
         {
             return string.Join("_", new List<int> { id, spellBuyProductId });
         }
-       
-        public void ChangeFlooterEnum(FloolterMenu enumType=FloolterMenu.Index)
+
+        public void ChangeFlooterEnum(FloolterMenu enumType = FloolterMenu.Index)
         {
             ViewBag.SelectEnum = (int)enumType;
         }
 
 
         #region "操作购物车，通知服务器"
-        public void OperatShoppingCar(int id, int spellBuyProductId,bool isDelete)
+        public void OperatShoppingCar(int id, int spellBuyProductId, bool isDelete)
         {
             var ShoppingCar = LoadShoppingCar();
-            var key = InintKey(id,spellBuyProductId);
+            var key = InintKey(id, spellBuyProductId);
             if (isDelete)
             {
                 //操作购物车，修改购买商品数量
@@ -272,30 +272,30 @@ namespace EShopping.WXUI.Controllers
         [AllowAnonymous]
         public ActionResult WeChatLogin(string code = "", string state = "")
         {
-            string url = Request.Url.OriginalString;
-            if (string.IsNullOrEmpty(code))
-                return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://www.kalezhe.com.cn/Base/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
+            //string url = Request.Url.OriginalString;
+            //if (string.IsNullOrEmpty(code))
+            //    return Redirect(OAuthApi.GetAuthorizeUrl(appId, "http://www.kalezhe.com.cn/Base/WeChatLogin", "LOGIN", OAuthScope.snsapi_userinfo));
 
-            var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
-            var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
+            //var openIdResponse = OAuthApi.GetAccessToken(appId, appSecret, code);
+            //var wechatUser = OAuthApi.GetUserInfo(openIdResponse.access_token, openIdResponse.openid);
 
-            ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(wechatUser));
-
-            var userinfo = new UserDTO
-            {
-                weixinOpenId = wechatUser.openid,
-                faceImg = wechatUser.headimgurl,
-                sex = wechatUser.sex.ToString(),
-                nickName = wechatUser.nickname
-            };
+            //ApplicationLog.DebugInfo(Newtonsoft.Json.JsonConvert.SerializeObject(wechatUser));
 
             //var userinfo = new UserDTO
             //{
-            //    faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
-            //    nickName = "樊智佩",
-            //    weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
-            //    userId = 35
+            //    weixinOpenId = wechatUser.openid,
+            //    faceImg = wechatUser.headimgurl,
+            //    sex = wechatUser.sex.ToString(),
+            //    nickName = wechatUser.nickname
             //};
+
+            var userinfo = new UserDTO
+            {
+                faceImg = "http://wx.qlogo.cn/mmopen/I3ObIAeO7DBPuAib3ZNESZrojvZ87CkiacT3T3tZeWheoL6q15x9ryhaia057gN9ToJk0ZEMsoSekCK6ibpLtacqmGTvII49sF92/0",
+                nickName = "樊智佩",
+                weixinOpenId = "o414vwGvXuBaLVh2NUPBNV32LjpE",
+                userId = 35
+            };
 
             var usre = LoginService.LoginUser(userinfo);
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(userinfo);
@@ -304,10 +304,10 @@ namespace EShopping.WXUI.Controllers
         }
 
 
-        public void ReloadCookie(int userId,string userData)
+        public void ReloadCookie(int userId, string userData)
         {
-            var oldCookie=System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-            if(oldCookie!=null)
+            var oldCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (oldCookie != null)
             {
                 oldCookie.Expires = DateTime.Now.AddHours(-1);
                 System.Web.HttpContext.Current.Response.Cookies.Add(oldCookie);
@@ -332,7 +332,7 @@ namespace EShopping.WXUI.Controllers
 
             System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
-           // ResetShoppingCarList(userId.ToString());
+            // ResetShoppingCarList(userId.ToString());
         }
 
 

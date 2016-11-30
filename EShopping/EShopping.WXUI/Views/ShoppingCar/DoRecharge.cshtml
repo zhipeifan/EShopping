@@ -1,4 +1,8 @@
 ﻿
+@using EShopping.Entity.Response
+
+
+@model WechatPayVO
 @{
     
     Layout = "";
@@ -17,11 +21,11 @@
 
     wx.ready(function () {
         wx.chooseWXPay({
-            timestamp: '@ViewBag.TimeStamp',
-            nonceStr: '@ViewBag.NonceStr',
-            package: 'prepay_id=@ViewBag.PrepayId',
+            timestamp: '@Model.timestamp',
+            nonceStr: '@Model.nonceStr',
+            package: 'prepay_id=@Model.partnerId',
             signType: 'MD5',
-            paySign: '@ViewBag.PaySign',
+            paySign: '@Model.prepayId',
             success: function (res) {
                 alert("ssssss"+JSON.stringify(res));
                 if (res.errMsg == "chooseWXPay:ok") {

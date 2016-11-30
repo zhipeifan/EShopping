@@ -17,6 +17,16 @@ namespace EShopping.Entity.Request
         public int userId;
         public string ipAddress { get; set; }
         public List<BuyProductVOs> buyProductVOs;
+
+        public string appId { get; set; }
+
+        /// <summary>
+        /// JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付
+        /// </summary>
+        public string tradeType{get;set;}
+
+        public string openId { get; set; }
+
     }
 
     public class BuyProductVOs

@@ -53,6 +53,7 @@
     <Compile Include="Enums\ProductCategoryEnum.cs" />
     <Compile Include="Enums\SearchActivityTypeEnum.cs" />
     <Compile Include="Enums\ServicesEnum.cs" />
+    <Compile Include="Enums\TradeTypeEnum.cs" />
     <Compile Include="ESCommonConfig.cs" />
     <Compile Include="ExtendUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

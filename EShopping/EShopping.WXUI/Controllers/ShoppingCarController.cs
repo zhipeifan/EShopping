@@ -99,7 +99,7 @@ namespace EShopping.WXUI.Controllers
 
                 if (shoppingProducts != null && shoppingProducts.Count>0)
                 {
-                   var responseData= ShoppingCarService.CreateOrder(UserId, GetAddressIP(), shoppingProducts);
+                   var responseData= ShoppingCarService.CreateOrder(UserId, GetAddressIP(), shoppingProducts,appId,TradeTypeEnum.JSAPI,UserInfo.weixinOpenId);
                    return View("RechargePayFor", responseData);
                 }
                 else

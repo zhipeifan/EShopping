@@ -10,6 +10,8 @@
 }
 
 
+<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js")"></script>
+
 <header id="header">
     <a class="searchtop" href="@Url.Action("Search", "Product")" title="搜索"></a>
     @*<a class="friendtop" href="javascript:;" title="搜索"></a>
@@ -123,7 +125,7 @@
                             @*<span class="prodcate">16G颜色随机</span>*@
                             <span class="prodlott">开奖进度<em>@(ExtendUtility.ConvertProductspeed(item.Product.productLimit, item.Product.spellbuyCount))</em></span>
                             <span class="pacet"><em style="width: @(ExtendUtility.ConvertProductspeed(item.Product.productLimit, item.Product.spellbuyCount))"></em></span>
-                            <a href="javascript:;" class="iaddcar" onclick="shoppingCarAnimation(this)" pid="@item.Id" spellbuyproductid="@item.Product.spellbuyproductId"></a>
+                            <a href="javascript:;" class="iaddcar" onclick="shoppingCarAnimation(this)" pid="@item.Product.Id" spellbuyproductid="@item.Product.spellbuyproductId"></a>
                         </a>
                     </li>
                 }
