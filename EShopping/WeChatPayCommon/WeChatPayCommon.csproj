@@ -37,6 +37,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,13 +78,21 @@
     <Compile Include="Entitys\OrderDetail.cs" />
     <Compile Include="MemoryCacheHelper.cs" />
     <Compile Include="MyXmlHelper.cs" />
+    <Compile Include="PayCommon\PayHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entitys\QueryOrder.cs" />
     <Compile Include="SortedDictionary.cs" />
     <Compile Include="Entitys\UnifiedOrder.cs" />
     <Compile Include="Entitys\UserJson.cs" />
     <Compile Include="WeixinApiDispatch.cs" />
+    <Compile Include="WXPayConfig.cs" />
     <Compile Include="WXpayUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EShopping.Entity\EShopping.Entity.csproj">
+      <Project>{81d3e9f0-5e1a-4f4e-a5f7-59786be0c508}</Project>
+      <Name>EShopping.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

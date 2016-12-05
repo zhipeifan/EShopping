@@ -17,6 +17,8 @@ using System.Xml.Linq;
 using Senparc.Weixin.MP.CommonAPIs;
 using WXPay;
 using WX_TennisAssociation.Common;
+using WeChatPayCommon;
+using WeChatPayCommon.PayCommon;
 
 namespace EShopping.WXUI.Controllers
 {
@@ -99,8 +101,10 @@ namespace EShopping.WXUI.Controllers
 
                 if (shoppingProducts != null && shoppingProducts.Count>0)
                 {
-                   var responseData= ShoppingCarService.CreateOrder(UserId, GetAddressIP(), shoppingProducts,appId,TradeTypeEnum.JSAPI,UserInfo.weixinOpenId);
-                   return View("RechargePayFor", responseData);
+                   var responseData= ShoppingCarService.CreateOrder(UserId, GetAddressIP(), shoppingProducts,appId,TradeTypeEnum.NATIVE,UserInfo.weixinOpenId);
+                   var prepayDto=PayHelper.UnifiedOrder(UserInfo.weixinOpenId,responseData.orderCode,GetAddressIP(),responseData.needPayMoney);
+
+                   return View("DoRecharge", prepayDto);
                 }
                 else
                 {
@@ -229,75 +233,76 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult DoRecharge(SubmitOrderDTO border, string code = "", string state = "")
         {
-            if (border != null && border.needPayMoney > 0)
-            {
-                // var userId = Guid.Parse(User.Identity.Name);
-                // var user = UserManager.GetUserById(userId);
+            //if (border != null && border.needPayMoney > 0)
+            //{
+            //    // var userId = Guid.Parse(User.Identity.Name);
+            //    // var user = UserManager.GetUserById(userId);
 
-                ViewBag.WechatPay = border.needPayMoney;
+            //    ViewBag.WechatPay = border.needPayMoney;
 
+            //    WechatPayVO payDto = new WechatPayVO();
 
-                string prepay_id = "";
-                string timeStamp = "";
-                string nonceStr = "";
-                string paySign = "";
+            //    string prepay_id = "";
+            //    string timeStamp = "";
+            //    string nonceStr = "";
+            //    string paySign = "";
 
-                try
-                {
-                    WXpayUtil wXpayUtil = new WXpayUtil();
-                    string paySignKey = ConfigurationManager.AppSettings["paySignKey"].ToString();
-                    string AppSecret = ConfigurationManager.AppSettings["secret"].ToString();
-                    string mch_id = ConfigurationManager.AppSettings["mch_id"].ToString();
-                    appId = ConfigurationManager.AppSettings["AppId"].ToString();
+            //    try
+            //    {
+            //        WXpayUtil wXpayUtil = new WXpayUtil();
+            //        string paySignKey = WXPayConfig.APIKEY;
+            //        string AppSecret = WXPayConfig.APPSECRET;
+            //        string mch_id = WXPayConfig.MCHID;
+            //        appId = WXPayConfig.APPID;
 
-                    WeixinApiDispatch wxApiDispatch = new WeixinApiDispatch();
-                    string accessToken = wxApiDispatch.GetAccessToken(appId, AppSecret);
+            //        WeixinApiDispatch wxApiDispatch = new WeixinApiDispatch();
+            //        string accessToken = wxApiDispatch.GetAccessToken(appId, AppSecret);
 
-                    System.Diagnostics.Debug.WriteLine("accessToken值: ");
-                    System.Diagnostics.Debug.WriteLine(accessToken);
+            //        System.Diagnostics.Debug.WriteLine("accessToken值: ");
+            //        System.Diagnostics.Debug.WriteLine(accessToken);
 
-                    string strOpenid = UserInfo.weixinOpenId;
-                    UserJson userJson = wxApiDispatch.GetUserDetail(accessToken, strOpenid, "zh_CN");
+            //        string strOpenid = UserInfo.weixinOpenId;
+            //        UserJson userJson = wxApiDispatch.GetUserDetail(accessToken, strOpenid, "zh_CN");
 
-                    UnifiedOrder order = new UnifiedOrder();
-                    order.appid = appId;
-                    order.attach = "vinson";
-                    order.body = "12" + "拍币";
-                    order.device_info = "";
-                    order.mch_id = mch_id;
-                    order.nonce_str = WXpayUtil.getNoncestr();
-                    order.notify_url = "http://abelxu19.imwork.net/jsapi/pay.aspx";
-                    order.openid = userJson.openid;
-                    order.out_trade_no = border.orderCode;
-                    order.trade_type = "JSAPI";
-                    order.spbill_create_ip = GetAddressIP();
-                    order.total_fee = Convert.ToInt32(border.needPayMoney * 100);
+            //        UnifiedOrder order = new UnifiedOrder();
+            //        order.appid = appId;
+            //        order.attach = "vinson";
+            //        order.body = "1" + "卡币";
+            //        order.device_info = "";
+            //        order.mch_id = mch_id;
+            //        order.nonce_str = WXpayUtil.getNoncestr();
+            //        order.notify_url = "http://www.kalezhe.com/ShoppingCar/pay";
+            //        order.openid = userJson.openid;
+            //        order.out_trade_no = border.orderCode;
+            //        order.trade_type = "JSAPI";
+            //        order.spbill_create_ip = GetAddressIP();
+            //        order.total_fee = Convert.ToInt32(border.needPayMoney * 100);
 
-                    prepay_id = wXpayUtil.getPrepay_id(order, paySignKey);
-                    timeStamp = WXpayUtil.getTimestamp();
-                    nonceStr = WXpayUtil.getNoncestr();
+            //        prepay_id = wXpayUtil.getPrepay_id(order, paySignKey);
+            //        timeStamp = WXpayUtil.getTimestamp();
+            //        nonceStr = WXpayUtil.getNoncestr();
 
-                    SortedDictionary<string, string> sParams = new SortedDictionary<string, string>();
-                    sParams.Add("appId", appId);
-                    sParams.Add("timeStamp", timeStamp);
-                    sParams.Add("nonceStr", nonceStr);
-                    sParams.Add("package", "prepay_id=" + prepay_id);
-                    sParams.Add("signType", "MD5");
-                    paySign = wXpayUtil.getsign(sParams, paySignKey);
-                }
-                catch (Exception ex)
-                {
-                    Response.Write(ex.ToString());
-                    return View();
-                }
+            //        //SortedDictionary<string, string> sParams = new SortedDictionary<string, string>();
+            //        //sParams.Add("appId", appId);
+            //        //sParams.Add("timeStamp", timeStamp);
+            //        //sParams.Add("nonceStr", nonceStr);
+            //        //sParams.Add("package", "prepay_id=" + prepay_id);
+            //        //sParams.Add("signType", "MD5");
+            //        //paySign = wXpayUtil.getsign(sParams, paySignKey);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Response.Write(ex.ToString());
+            //        return View();
+            //    }
 
-                Response.Redirect("http://abelxu19.imwork.net/jsapi/pay.aspx?showwxpaytitle=1&appId=" + appId +
-                    "&timeStamp=" + timeStamp +
-                    "&nonceStr=" + nonceStr +
-                    "&prepay_id=" + prepay_id +
-                    "&signType=MD5&paySign=" + paySign +
-                    "&OrderID=" + border.orderCode);
-            }
+            //    //Response.Redirect("http://abelxu19.imwork.net/jsapi/pay.aspx?showwxpaytitle=1&appId=" + appId +
+            //    //    "&timeStamp=" + timeStamp +
+            //    //    "&nonceStr=" + nonceStr +
+            //    //    "&prepay_id=" + prepay_id +
+            //    //    "&signType=MD5&paySign=" + paySign +
+            //    //    "&OrderID=" + border.orderCode);
+            //}
             return View();
         }
         

@@ -47,6 +47,10 @@ namespace EShopping.Entity.Response
         /// </summary>
         public string nonceStr { get; set; }
 
+        public string AppId { get; set; }
+
+        public string OrderCode { get; set; }
+
     }
 }
 
