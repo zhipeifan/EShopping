@@ -7,69 +7,41 @@
     
     Layout = "";
 }
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" />
-<script type="text/javascript">
-    var appId ="@(Model.AppId)";
-    var timeStamp = "@(Model.timestamp)";
-    var nonceStr = "@Model.nonceStr";
-    var prepay_id = "@Model.prepayId";
-    var paySign = "@Model.sign";
-    var OrderID = "@Model.OrderCode";
-    alert("appId:" + appId + ",timeStamp:" + timeStamp + ",nonceStr:" + nonceStr + ",prepay_id:" + prepay_id + ",paySign:" + paySign);
-    //return;
+ 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+
+    $(function () {
+        if (typeof WeixinJSBridge == "undefined") {
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        } else {
+            onBridgeReady();
+        }
+    });
+
+    //调用微信支付模块
     function onBridgeReady() {
         WeixinJSBridge.invoke(
        'getBrandWCPayRequest', {
-           "appId": appId,     //公众号名称，由商户传入
-           "timeStamp": timeStamp,         //时间戳，自1970年以来的秒数
-           "nonceStr": nonceStr, //随机串
-           "package": "prepay_id=" + prepay_id,
+           "appId": "@Model.AppId",     //公众号名称，由商户传入
+           "timeStamp": "@Model.timestamp",         //时间戳，自1970年以来的秒数
+           "nonceStr": "@Model.nonceStr", //随机串
+           "package": "@Model.Package",
            "signType": "MD5",         //微信签名方式:
-           "paySign": paySign //微信签名
+           "paySign": "@Model.sign" //微信签名
        },
        function (res) {
-           alert(res.err_msg);
            if (res.err_msg == "get_brand_wcpay_request:ok") {
-               $(function () {
-                   $.ajax({
-                       contentType: "application/json",
-                       url: "/WS/vinson.asmx/payWeiXin",
-                       data: "{OrderID:'" + OrderID + "'}",
-                       type: "POST",
-                       dataType: "json",
-                       success: function (json) {
-                           json = eval("(" + json.d + ")");
-                           if (json.success == "success") {
-                               $("#tip").text("支付成功，正在跳转......");
-                               window.location = "http://www.kalezhe.com.cn/ShoppingCar/PaySuccess";
-                           }
-                           else {
-                               $("#tip").text(json.msg);
-                               alert(json.msg);
-                               window.location = "http://www.kalezhe.com.cn/ShoppingCar/PaySuccess";
-                           }
-                       },
-                       error: function (err, ex) {
-                           alert(err.responseText);
-                       }
-                   });
-               })
+               //alert("支付成功,请稍后查询余额,如有疑问,请联系管理员.");
+               fAlreadyPay();
            }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
-           else {
-               alert("交易取消");
-               window.location = "http://www.kalezhe.com.cn/ShoppingCar/ShoppingList";
-           }
        }
-   );
+        );
     }
-    if (typeof WeixinJSBridge == "undefined") {
-        if (document.addEventListener) {
-            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-        } else if (document.attachEvent) {
-            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-        }
-    } else {
-        onBridgeReady();
-    }
+
 </script>

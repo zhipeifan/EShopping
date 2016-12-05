@@ -69,9 +69,16 @@ namespace WeChatPayCommon.PayCommon
                 payDto.sign = wXpayUtil.getsign(sParams, paySignKey);
                 payDto.timestamp = timeStamp;
                 payDto.prepayId = prepay_id;
+                payDto.Package = "prepay_id=" + prepay_id;
 
                 payDto.AppId = appId;
                 payDto.OrderCode = orderCode;
+
+
+                //var ticket = AccessTokenContainer.GetJsApiTicket(prepayDto.AppId);
+                //var signature = JSSDKHelper.GetSignature(ticket, prepayDto.nonceStr, prepayDto.timestamp, Request.Url.AbsoluteUri);
+                //prepayDto.Signature = signature;
+
 
                 return payDto;
             }

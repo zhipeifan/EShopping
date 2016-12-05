@@ -10,16 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/EShopping.BusinessService.dll">
-      <publishTime>12/05/2016 20:56:39</publishTime>
+      <publishTime>12/05/2016 22:11:21</publishTime>
     </File>
     <File Include="bin/EShopping.Common.dll">
-      <publishTime>12/05/2016 20:56:39</publishTime>
+      <publishTime>12/05/2016 22:11:20</publishTime>
     </File>
     <File Include="bin/EShopping.Entity.dll">
-      <publishTime>12/05/2016 20:56:39</publishTime>
+      <publishTime>12/05/2016 22:11:20</publishTime>
     </File>
     <File Include="bin/EShopping.WXUI.dll">
-      <publishTime>12/05/2016 21:06:28</publishTime>
+      <publishTime>12/05/2016 22:11:21</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>05/13/2016 10:14:00</publishTime>
@@ -49,7 +49,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2016 19:48:30</publishTime>
     </File>
     <File Include="bin/WeChatPayCommon.dll">
-      <publishTime>12/05/2016 21:06:28</publishTime>
+      <publishTime>12/05/2016 22:11:21</publishTime>
     </File>
     <File Include="css/base.css">
       <publishTime>10/21/2016 17:44:34</publishTime>
@@ -934,7 +934,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/26/2016 04:52:02</publishTime>
     </File>
     <File Include="Views/ShoppingCar/DoRecharge.cshtml">
-      <publishTime>12/05/2016 21:05:20</publishTime>
+      <publishTime>12/05/2016 22:10:24</publishTime>
     </File>
     <File Include="Views/ShoppingCar/PayFor.cshtml">
       <publishTime>11/02/2016 18:38:51</publishTime>

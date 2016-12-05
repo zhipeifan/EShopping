@@ -51,6 +51,8 @@ namespace EShopping.Entity.Response
 
         public string OrderCode { get; set; }
 
+        public string Package { get; set; }
+
     }
 }
 
