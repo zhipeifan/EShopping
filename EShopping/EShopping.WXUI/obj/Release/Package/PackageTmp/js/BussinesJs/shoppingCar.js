@@ -125,6 +125,80 @@ function ChangebuyNum(obj)
 }
 
 
+//function ChangeBuyNumNew(obj,id, spellBuyProductId)
+//{
+//    var stockNumObj = $(obj).parents(".car-inner-item").find(".stockNum");
+//    var buyNumObj = $(obj).parents(".car-inner-item").find(".buyNum");
+//    var priceObj = $(obj).parents(".car-inner-item").find(".singlePrice");
+
+//    var operterType = parseInt($(obj).attr("opt"));
+//    var buyNum = $(buyNumObj).val();
+//    var stockNum = $(stockNumObj).text();
+//    var signprice = $(priceObj).val();
+    
+//    //var newResult = 0;
+//    //var newStockNum = 0;
+
+//    //switch (operterType)
+//    //{
+//    //    case -1://减少
+//    //        newResult = buyNum - 1; 
+//    //        newStockNum = stockNum + 1;
+//    //        break;
+
+//    //    case 1://增加
+//    //        var newResult = buyNum + 1; 
+//    //        newStockNum = stockNum - 1;
+//    //        break;
+//    //    case 2:
+//    //        newResult = stockNum;
+//    //        newStockNum = 0;
+//    //        break;
+//    //    case -2:
+//    //        newResult = 0;
+//    //        newStockNum = buyNum;
+//    //        break;
+//    //    default:
+//    //        if (buyNum > stockNum)
+//    //        {
+//    //            newResult = stockNum;
+//    //        } else {
+//    //            newResult = buyNum;
+//    //        }
+//    //        newStockNum = stockNum - newResult;
+//    //        break;
+//    //}
+//    //$(obj).parents(".car-inner-item").find(".totalPrice").val(newResult * signprice);
+//    //$(stockNumObj).val(newStockNum);
+//    //$(buyNumObj).val(newResult);
+
+//    var data = {
+//        id: id,
+//        spellBuyProductId: spellBuyProductId,
+//        BuyNum: buyNum,
+//        stockNum: stockNum,
+//        operateTpye: operterType
+//    };
+//    $.ajax({
+//        type: "post",
+//        url: shppoingUrl,
+//        data: data,
+//        dataType: "json",
+//        success: function (response) {
+//        }
+//    });
+
+//}
+
+
+///只允许输入数字
+function onlyNum() {
+    if (!(event.keyCode == 46) && !(event.keyCode == 8) && !(event.keyCode == 37) && !(event.keyCode == 39))
+        if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)))
+            event.returnValue = false;
+}
+
+
 
 function AddProductNum(obj)
 {

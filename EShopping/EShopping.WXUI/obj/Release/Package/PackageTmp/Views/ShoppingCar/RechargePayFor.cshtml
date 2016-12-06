@@ -1,0 +1,36 @@
+﻿@using EShopping.Entity.Response
+
+
+@model SubmitOrderDTO
+
+
+@using (Html.BeginForm("DoRecharge", "ShoppingCar",FormMethod.Post))
+{
+
+<header id="header" class="shopcar-top">
+
+    <h2>在线充值</h2>
+</header>
+<div class="search_content">
+    <div class="pay_inner">
+        <div class="lr-pad">
+            订单总价：@Model.needPayMoney
+        </div>
+        <div class="lr-pad">
+            订单号：@Model.orderCode
+        </div>
+        <ul class="pay_channel">
+            <li class="curr"><a href="javascript:;" title=""><img src="../images/b1.jpg" /></a>微信支付</li>
+            <li><a href="javascript:;" title=""><img src="../images/b2.jpg" /></a>支付宝支付</li>
+            <li><a href="javascript:;" title=""><img src="../images/b3.jpg" /></a>招商银行支付</li>
+            <li><a href="javascript:;" title=""><img src="../images/b4.jpg" /></a>工商银行支付</li>
+        </ul>
+
+        @Html.HiddenFor(c=>c.needPayMoney)
+        @Html.HiddenFor(c => c.orderCode)
+        <div class="lr-pad">
+            <input id="pahSub" class="paySub" type="submit" value="确认支付" />
+        </div>
+    </div>
+</div>
+}

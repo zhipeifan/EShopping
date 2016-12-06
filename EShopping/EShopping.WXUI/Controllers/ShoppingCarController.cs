@@ -80,6 +80,7 @@ namespace EShopping.WXUI.Controllers
 
                 return View("ShoppingList", dto);
             }
+            string content = "";
             if(selectedProduct!=null&&selectedProduct.Count>0)
             {
                 List<BuyProductVOs> shoppingProducts = new List<BuyProductVOs>();
@@ -90,6 +91,11 @@ namespace EShopping.WXUI.Controllers
                         return;
 
                     var item=products[key];
+
+                    if(string.IsNullOrEmpty(content))
+                    {
+                        content=item.product.productName;
+                    }
                     BuyProductVOs _productdto = new BuyProductVOs
                     {
                         buyCount = x.BuyNum,
@@ -103,8 +109,8 @@ namespace EShopping.WXUI.Controllers
                 if (shoppingProducts != null && shoppingProducts.Count>0)
                 {
                    var responseData= ShoppingCarService.CreateOrder(UserId, GetAddressIP(), shoppingProducts,appId,TradeTypeEnum.NATIVE,UserInfo.weixinOpenId);
-                   var prepayDto=PayHelper.UnifiedOrder(UserInfo.weixinOpenId,responseData.orderCode,GetAddressIP(),responseData.needPayMoney);
-
+                   var prepayDto = PayHelper.UnifiedOrder(UserInfo.weixinOpenId, responseData.orderCode, GetAddressIP(), responseData.needPayMoney, content);
+                   prepayDto.PayType = 2;
                    return View("DoRecharge", prepayDto);
                 }
                 else
@@ -117,6 +123,29 @@ namespace EShopping.WXUI.Controllers
 
            return null;
         }
+
+        public ActionResult PayOrder()
+        {
+            decimal money = decimal.MinValue;
+            if(!string.IsNullOrEmpty(Request.Form["inum"]))
+            {
+               decimal.TryParse(Request.Form["inum"],out money);
+            }
+
+            if (!string.IsNullOrEmpty(Request.Form["moneyTxt"]))
+            {
+                decimal.TryParse(Request.Form["moneyTxt"], out money);
+            }
+
+            if (money <= 0)
+                return View("PayFor");
+
+            var prepayDto = PayHelper.UnifiedOrder(UserInfo.weixinOpenId, "KLZ"+DateTime.Now.ToString("yyyyMMddHHmmss"), GetAddressIP(), money,"充值卡乐哲"+money+"元");
+            prepayDto.PayType = 1;
+            return View("DoRecharge", prepayDto);
+        }
+
+        
 
         [HttpPost]
         public ActionResult ChangeShoppingList(List<ShoppingCarDTO> dto)

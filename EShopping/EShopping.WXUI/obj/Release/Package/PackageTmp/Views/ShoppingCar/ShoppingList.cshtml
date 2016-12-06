@@ -44,8 +44,11 @@
         @if (Model != null && Model.Count > 0)
         {
             <ul class="lr-pad sel_all">
-                <li style="overflow:hidden"><a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;">
-                    <input type="checkbox" id="ckAll" style="margin-right:10px;"  opt="7">全选</a></li>
+                <li style="overflow:hidden">
+                    <a href="javascript:;" title="" style="float:left; margin-left:-1.5rem;">
+                        <input type="checkbox" id="ckAll" style="margin-right:10px;" opt="7">全选
+                    </a>
+                </li>
             </ul>
         }
 
@@ -58,6 +61,8 @@
 
                     @for (var i = 0; i < Model.Count; i++)
                     {
+                        var datarest = (Model[i].product.spellbuyLimit - Model[i].product.spellbuyCount) < 0 ? 0 : Model[i].product.spellbuyLimit - Model[i].product.spellbuyCount;
+
                         if (Model[i].IsChecked)
                         {
                             price += Model[i].TotalPrice;
@@ -68,7 +73,7 @@
                                 <div class="lr-pad">
                                     @*<span class="select"></span>*@
                                     <span style="float:left; margin-left:-1.5rem;" class="ckspan">
-                                    @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect" , opt="7"})
+                                        @Html.CheckBoxFor(c => Model[i].IsChecked, new { @class = "checkSelect", opt = "7" })
                                     </span>
                                     @Html.HiddenFor(c => Model[i].product.Id)
                                     @Html.HiddenFor(c => Model[i].product.spellbuyproductId)
@@ -79,35 +84,36 @@
                             </div>
                             <div class="item-inner">
                                 <a class="carlist-img" href="javascript:;" title=""><img width="100%" class="lazy" src="/images/defaultloading.gif" data-original="@Model[i].product.coverImg1" /></a>
-                                <ul class="carlist-inners">
-                                    <li class="tit">剩余数量<em>@((Model[i].product.productLimit - Model[i].product.spellbuyCount) < 0 ? 0 : Model[i].product.productLimit - Model[i].product.spellbuyCount)</em></li>
+                                <ul class="carlist-inners" data-price="@Model[i].product.singlePrice" data-rest="@datarest" data-id="@Model[i].product.Id" data-spellbuyproductid="@Model[i].product.spellbuyproductId">
+                                    <li class="tit">剩余数量<em class="stockNum">@(datarest)</em></li>
                                     <li class="num">
                                         <span>购买数量</span>
                                         <span class="pans">
-                                            <em  onclick="ChangebuyNum(this)" opt="-1">-</em>
-                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum" ,style="width:60px !important;text-align:center !important;"})
-                                            <em onclick="ChangebuyNum(this)" opt="1">+</em>
+                                            <em data-rest="@datarest">-</em>
+                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum", maxlength = "4", onkeydown = "onlyNum()", style = "width:60px !important;text-align:center !important;" })
+                                            <em>+</em>
                                         </span>
                                         @if (Model[i].IsBuyAll)
                                         {
-                                              <span class="carend"  onclick="ChangebuyNum(this)" opt="-2">
-                                            包尾
-                                        </span>
-                                        }
-                                        else
-                                        {
-                                            <span class="carend" style="background:#999;" onclick="ChangebuyNum(this)" opt="2">
+                                            <span class="carend"  >
                                                 包尾
                                             </span>
                                         }
-                                      
+                                        else
+                                        {
+                                            <span class="carend baowei" style="background:#999;"  >
+                                                包尾
+                                            </span>
+                                        }
+
                                         @Html.HiddenFor(c => Model[i].IsBuyAll)
+                                        @Html.HiddenFor(c => Model[i].TotalPrice, new { @class = "totalPrice" })
                                     </li>
-                                    <li class="mon">
-                                        <span class="@(Model[i].BuyNum == 10 ? "curr" : "")" num="10" opt="0" onclick="ChangebuyNum(this)">10</span>
-                                        <span class="@(Model[i].BuyNum == 30 ? "curr" : "")" num="30" opt="0" onclick="ChangebuyNum(this)">30</span>
-                                        <span class="@(Model[i].BuyNum == 50 ? "curr" : "")" num="50" opt="0" onclick="ChangebuyNum(this)">50</span>
-                                        <span class="@(Model[i].BuyNum == 100 ? "curr" : "")" num="100" opt="0" onclick="ChangebuyNum(this)">100</span>
+                                    <li class="mon" data-rest="@datarest">
+                                        <span class="@(Model[i].BuyNum == 10 ? "curr" : "")">10</span>
+                                        <span class="@(Model[i].BuyNum == 30 ? "curr" : "")">30</span>
+                                        <span class="@(Model[i].BuyNum == 50 ? "curr" : "")">50</span>
+                                        <span class="@(Model[i].BuyNum == 100 ? "curr" : "")">100</span>
                                     </li>
                                 </ul>
                             </div>
@@ -118,8 +124,8 @@
 
                 </div>
                 <div class="settle">
-                    <p>共@(totalCount)件商品，总计：<em>@(price)</em>易购币</p>
-                    <input type="submit" value="结算" class="orderSub" onclick="javascript: $('form').attr('action', '/ShoppingCar/CreateShoppingOrder');"/>
+                    <p id="set-price">共@(totalCount)件商品，总计：<em>@(price)</em>易购币</p>
+                    <input type="submit" value="结算" class="orderSub" onclick="javascript: $('form').attr('action', '/ShoppingCar/CreateShoppingOrder');" />
                 </div>
             }
             else

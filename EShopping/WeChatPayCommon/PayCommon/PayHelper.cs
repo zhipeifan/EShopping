@@ -12,10 +12,10 @@ namespace WeChatPayCommon.PayCommon
 {
     public class PayHelper
     {
-        public static WechatPayVO UnifiedOrder(string openId, string orderCode, string ip, decimal money)
+        public static WechatPayVO UnifiedOrder(string openId, string orderCode, string ip, decimal money,string content)
         {
 
-            money = 1;
+            money = 10;
 
             string prepay_id = "";
             try
@@ -38,7 +38,7 @@ namespace WeChatPayCommon.PayCommon
                 UnifiedOrder order = new UnifiedOrder();
                 order.appid = appId;
                 order.attach = "vinson";
-                order.body = "1" + "卡币";
+                order.body = content;
                 order.device_info = "";
                 order.mch_id = mch_id;
                 order.nonce_str = WXpayUtil.getNoncestr();
@@ -47,7 +47,8 @@ namespace WeChatPayCommon.PayCommon
                 order.out_trade_no = orderCode;
                 order.trade_type = "JSAPI";
                 order.spbill_create_ip = ip;
-                order.total_fee =Convert.ToInt32(money * 100);
+                //order.total_fee =Convert.ToInt32(money * 100);
+                order.total_fee = Convert.ToInt32(money);
 
                 prepay_id = wXpayUtil.getPrepay_id(order, paySignKey);
 

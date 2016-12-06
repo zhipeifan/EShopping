@@ -53,6 +53,8 @@ namespace EShopping.Entity.Response
 
         public string Package { get; set; }
 
+        public int PayType { get; set; }
+
     }
 }
 

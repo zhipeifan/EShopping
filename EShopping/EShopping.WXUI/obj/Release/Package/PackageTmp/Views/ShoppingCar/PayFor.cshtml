@@ -4,9 +4,25 @@
 @model SubmitOrderDTO
 
 
-@using(Html.BeginForm("DoRecharge","ShoppingCar",FormMethod.Post))
+@using (Html.BeginForm("PayOrder", "ShoppingCar", FormMethod.Post))
 { 
+    <script type="text/javascript">
 
+        ///只允许输入数字
+        function onlyNum() {
+            if (!(event.keyCode == 46) && !(event.keyCode == 8) && !(event.keyCode == 37) && !(event.keyCode == 39))
+                if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)))
+                    event.returnValue = false;
+        }
+
+        function chagneMoney(obj)
+        {
+            $(".money_list").find("li").removeClass("curr");
+            $("#inum").val($(obj).html());
+            $(obj).parent("li").addClass("curr");
+        }
+
+    </script>
             <header id="header" class="shopcar-top">
                 
                 <h2>在线充值</h2>
@@ -15,22 +31,23 @@
                 <div class="pay_inner">
                     <ul class="money_list">
                         <li class="curr"><em>10</em></li>
-                        <li><em>30</em></li>
-                        <li><em>50</em></li>
-                        <li><em>100</em></li>
-                        <li><em>300</em></li>
-                        <li><em>500</em></li>
-                        <li><em>1000</em></li>
-                        <li><em>2000</em></li>
+                        <li><em onclick="chagneMoney(this)">30</em></li>
+                        <li><em onclick="chagneMoney(this)">50</em></li>
+                        <li><em onclick="chagneMoney(this)">100</em></li>
+                        <li><em onclick="chagneMoney(this)">300</em></li>
+                        <li><em onclick="chagneMoney(this)">500</em></li>
+                        <li><em onclick="chagneMoney(this)">1000</em></li>
+                        <li><em onclick="chagneMoney(this)">2000</em></li>
                     </ul>
+                    <input type="hidden" id="inum" name="inum" value="0" />
                     <div class="lr-pad">
-                        <input id="moneyTxt" class="moneyTxt" type="text" placeholder="充值金额" />
+                        <input id="moneyTxt" name="moneyTxt" class="moneyTxt" type="text" placeholder="充值金额" onkeydown="onlyNum()" maxlength="9"/>
                     </div>
                     <ul class="pay_channel">
                         <li class="curr"><a href="javascript:;" title=""><img src="../images/b1.jpg" /></a>微信支付</li>
-                        <li><a href="javascript:;" title=""><img src="../images/b2.jpg" /></a>支付宝支付</li>
+                        @*<li><a href="javascript:;" title=""><img src="../images/b2.jpg" /></a>支付宝支付</li>
                         <li><a href="javascript:;" title=""><img src="../images/b3.jpg" /></a>招商银行支付</li>
-                        <li><a href="javascript:;" title=""><img src="../images/b4.jpg" /></a>工商银行支付</li>
+                        <li><a href="javascript:;" title=""><img src="../images/b4.jpg" /></a>工商银行支付</li>*@
                     </ul>
                     <div class="lr-pad">
                         <input id="pahSub" class="paySub" type="submit" value="确认支付" />
