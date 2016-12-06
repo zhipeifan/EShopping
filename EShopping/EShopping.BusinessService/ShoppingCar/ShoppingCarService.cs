@@ -22,7 +22,7 @@ namespace EShopping.BusinessService.ShoppingCar
         /// </summary>
         /// <param name="product"></param>
         /// <param name="userName"></param>
-        public static void OperatShoppingProduct(ShoppingUIDTO product,string userName)
+        public static void OperatShoppingProduct(ShoppingUIDTO product, string userName)
         {
 
             ShoppingProduct sproduct = new ShoppingProduct
@@ -38,6 +38,36 @@ namespace EShopping.BusinessService.ShoppingCar
             };
 
             var payload=operat.ReplcaceRequest<ShoppingProductOperat>();
+            HandleShoppingCartRequest rquest = new HandleShoppingCartRequest()
+            {
+                payload = payload,
+                token = "2560c444-f025-4800-a477-b52d75b62ede"
+            };
+
+            ServiceRequestClient.PostRquest(ServicesEnum.handleShoppingCart, JsonConvert.SerializeObject(rquest));
+        }
+
+        /// <summary>
+        /// 操作购物车
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="userName"></param>
+        public static void BatchModifyShoppingCar(List<ShoppingUIDTO> products, string userName,ShoppingOperatTypeEnum operateType)
+        {
+            var shoppingItems = products.Select(x => new ShoppingProduct
+            {
+                buyCount = x.BuyCount,
+                spellbuyproductId = x.SpellbuyproductId
+            }).ToList();
+
+            ShoppingProductOperat operat = new ShoppingProductOperat
+            {
+                handleShoppingCartVOs = shoppingItems,
+                updateOrDelete = (int)operateType,
+                userName = userName
+            };
+
+            var payload = operat.ReplcaceRequest<ShoppingProductOperat>();
             HandleShoppingCartRequest rquest = new HandleShoppingCartRequest()
             {
                 payload = payload,

@@ -17,10 +17,12 @@ $(function(){
 	var oHour=$('.andtime').find('li.hour').html();
 	var oMinu=$('.andtime').find('li.minu').html();
 	var oSec=$('.andtime').find('li.sero').html();
-	var infoTime={
-			updateTime:function(){
-				var andTime=$('.andtime');
-				var oDateEnd=new Date();
+	var fullTime = $(".fullTime").html();
+	var infoTime = {
+	    updateTime: function () {
+
+	        var andTime = $('.andtime');
+	        var oDateEnd = new Date(fullTime);
 				var oDateNow=new Date();
 				var iRemain=0;
 				var iDay=0;
@@ -75,69 +77,24 @@ $(function(){
 	$.each($('.car-inner-list .car-inner-item'), function(i, ele){
 		$(ele).delegate('span.pans em:eq(0)', 'click', function(){
 			var iVal=$(this).next('input').val();
-			var iPrice = $(this).parents('ul.carlist-inners').attr('data-price');
-			var iRest = parseInt($(this).parents('ul.carlist-inners').attr('data-rest'));
-			iVal--
 			if(iVal <= 0){
 				return;
 			};
+			iVal--
 			$(this).next('input').val(iVal);
-			var iSum = parseFloat(iPrice * iVal);
-			$(this).parents('ul.carlist-inners').find('em.stockNum').html(iRest - iVal);
-			$('#set-price').html('总计：<em>' + iSum + '</em>易购币')
-
-			var id = $(this).parents('ul.carlist-inners').attr('data-id');
-			var spellbuyproductid = $(this).parents('ul.carlist-inners').attr('data-spellbuyproductid');
-
-			ChangeBuyNumNew(id, spellbuyproductid, iVal, -1);
 		});
 	});
 	$.each($('.car-inner-list .car-inner-item'), function(i, ele){
 		$(ele).delegate('span.pans em:eq(1)', 'click', function(){
 			var iVal=parseInt($(this).prev('input').val());
-		    //var iRest=parseInt($(this).attr('data-rest'));
-			var iRest = parseInt($(this).parents('ul.carlist-inners').attr('data-rest'));
-			var iPrice=$(this).parents('ul.carlist-inners').attr('data-price');
 			iVal++;
-			if(iVal>iRest){
-				return;
-			};
 			$(this).prev('input').val(iVal);
-			var iSum = parseFloat(iPrice * iVal);
-			$('#set-price').html('总计：<em>' + iSum + '</em>易购币');
-			$(this).parents('ul.carlist-inners').find('em.stockNum').html(iRest - iVal);
-
-			var id = $(this).parents('ul.carlist-inners').attr('data-id');
-			var spellbuyproductid = $(this).parents('ul.carlist-inners').attr('data-spellbuyproductid');
-
-			ChangeBuyNumNew(id, spellbuyproductid, iVal, 1);
 		});
 	});
 	$('.car-inner-list').find('li.mon span').each(function(i, ele){
 		$(ele).bind('click', function(){
-			var iRests=$(this).parent('li.mon').attr('data-rest');
-			var iNum=parseInt($(this).text());
-			var liNum=$(this).parent('li.mon').prev('li.num').find('input.buyNum');
-			var iPrice=$(this).parents('ul.carlist-inners').attr('data-price');
 			$('.car-inner-list').find('li.mon span').removeClass('curr');
 			$(ele).addClass('curr');
-			if(!iPrice)return;
-			var iSum;
-			if(iRests >= iNum){
-				liNum.val(iNum);
-				iSum=parseFloat(iPrice*iNum);
-			}else{
-				liNum.val(iRests);
-				iSum=parseFloat(iPrice*iRests);
-			};
-			$('#set-price').html('总计：<em>' + iSum + '</em>易购币');
-			$(this).parents('ul.carlist-inners').find('em.stockNum').html(iRests - liNum.val());
-
-
-			var id = $(this).parents('ul.carlist-inners').attr('data-id');
-			var spellbuyproductid = $(this).parents('ul.carlist-inners').attr('data-spellbuyproductid');
-
-			ChangeBuyNumNew(id, spellbuyproductid, liNum.val(), 0);
 		});
 	});
 	$('.car-inner-list').find('a.del').bind('click', function(){
@@ -146,25 +103,3 @@ $(function(){
 	});
 	
 });
-
-
-
-
-function ChangeBuyNumNew(id, spellBuyProductId, buyNum, operterType) {
-
-    var data = {
-        id: id,
-        spellBuyProductId: spellBuyProductId,
-        BuyNum: buyNum,
-        operateTpye: operterType
-    };
-    $.ajax({
-        type: "post",
-        url: shppoingUrl,
-        data: data,
-        dataType: "json",
-        success: function (response) {
-        }
-    });
-
-}

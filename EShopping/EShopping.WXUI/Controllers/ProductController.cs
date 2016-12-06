@@ -92,7 +92,7 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult CreateShoppingToCar(int id, int spellBuyProductId)
         {
-             ShoppingCarList(id, spellBuyProductId);
+             //ShoppingCarList(id, spellBuyProductId);
 
              return RedirectToAction("ShoppingList", "ShoppingCar");
         }

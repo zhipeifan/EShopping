@@ -19,6 +19,7 @@ using WXPay;
 using WX_TennisAssociation.Common;
 using WeChatPayCommon;
 using WeChatPayCommon.PayCommon;
+using EShopping.BusinessService.SelectProduct;
 
 namespace EShopping.WXUI.Controllers
 {
@@ -41,12 +42,12 @@ namespace EShopping.WXUI.Controllers
             if (products.Values != null && products.Values.Count > 0)
             {
                 list = products.Values.ToList();
-                foreach (var item in list)
-                {
-                    item.TotalPrice = item.product.productPrice * item.BuyNum;
-                    if (item.product.Id == id && item.product.spellbuyproductId == spellbuyProductId)
-                        item.IsChecked = true;
-                }
+                //foreach (var item in list)
+                //{
+                //    item.TotalPrice = item.product.productPrice * item.BuyNum;
+                //    if (item.product.Id == id && item.product.spellbuyproductId == spellbuyProductId)
+                //        item.IsChecked = true;
+                //}
             }
 
             ViewBag.ShoppingCarCount = products.Count();
@@ -71,9 +72,9 @@ namespace EShopping.WXUI.Controllers
 
                 dto.ForEach(x =>
                 {
-                    if(products.ContainsKey(InintKey(x.product.Id, x.product.spellbuyproductId)))
+                    if (products.ContainsKey(InitKey(x.product.Id, x.product.spellbuyproductId)))
                     {
-                        x.product = products[InintKey(x.product.Id, x.product.spellbuyproductId)].product;
+                        x.product = products[InitKey(x.product.Id, x.product.spellbuyproductId)].product;
                     }
                 });
 
@@ -84,7 +85,7 @@ namespace EShopping.WXUI.Controllers
                 List<BuyProductVOs> shoppingProducts = new List<BuyProductVOs>();
                 selectedProduct.ForEach(x =>
                 {
-                    string key=InintKey(x.product.Id,x.product.spellbuyproductId);
+                    string key=InitKey(x.product.Id,x.product.spellbuyproductId);
                     if(!products.ContainsKey(key))
                         return;
 
@@ -130,7 +131,7 @@ namespace EShopping.WXUI.Controllers
             {
                 dto.ForEach(x =>
                 {
-                    string key = InintKey(x.product.Id, x.product.spellbuyproductId);
+                    string key = InitKey(x.product.Id, x.product.spellbuyproductId);
                     if (!products.ContainsKey(key))
                         return;
 
@@ -191,7 +192,7 @@ namespace EShopping.WXUI.Controllers
         public ActionResult AddProductNum(int id,int spellBuyProductId,int num)
         {
             var products = LoadShoppingCar();
-            string key = InintKey(id,spellBuyProductId);
+            string key = InitKey(id, spellBuyProductId);
             if (products.ContainsKey(key))
             { 
                 switch(num)
@@ -213,7 +214,7 @@ namespace EShopping.WXUI.Controllers
 
             Session["ShoppingCar"] = products;
 
-            OperatShoppingCar(id,spellBuyProductId,true);
+          //  OperatShoppingCar(id,spellBuyProductId,true);
 
             return RedirectToAction("ShoppingList", "ShoppingCar");
         }
@@ -233,76 +234,7 @@ namespace EShopping.WXUI.Controllers
 
         public ActionResult DoRecharge(SubmitOrderDTO border, string code = "", string state = "")
         {
-            //if (border != null && border.needPayMoney > 0)
-            //{
-            //    // var userId = Guid.Parse(User.Identity.Name);
-            //    // var user = UserManager.GetUserById(userId);
-
-            //    ViewBag.WechatPay = border.needPayMoney;
-
-            //    WechatPayVO payDto = new WechatPayVO();
-
-            //    string prepay_id = "";
-            //    string timeStamp = "";
-            //    string nonceStr = "";
-            //    string paySign = "";
-
-            //    try
-            //    {
-            //        WXpayUtil wXpayUtil = new WXpayUtil();
-            //        string paySignKey = WXPayConfig.APIKEY;
-            //        string AppSecret = WXPayConfig.APPSECRET;
-            //        string mch_id = WXPayConfig.MCHID;
-            //        appId = WXPayConfig.APPID;
-
-            //        WeixinApiDispatch wxApiDispatch = new WeixinApiDispatch();
-            //        string accessToken = wxApiDispatch.GetAccessToken(appId, AppSecret);
-
-            //        System.Diagnostics.Debug.WriteLine("accessToken值: ");
-            //        System.Diagnostics.Debug.WriteLine(accessToken);
-
-            //        string strOpenid = UserInfo.weixinOpenId;
-            //        UserJson userJson = wxApiDispatch.GetUserDetail(accessToken, strOpenid, "zh_CN");
-
-            //        UnifiedOrder order = new UnifiedOrder();
-            //        order.appid = appId;
-            //        order.attach = "vinson";
-            //        order.body = "1" + "卡币";
-            //        order.device_info = "";
-            //        order.mch_id = mch_id;
-            //        order.nonce_str = WXpayUtil.getNoncestr();
-            //        order.notify_url = "http://www.kalezhe.com/ShoppingCar/pay";
-            //        order.openid = userJson.openid;
-            //        order.out_trade_no = border.orderCode;
-            //        order.trade_type = "JSAPI";
-            //        order.spbill_create_ip = GetAddressIP();
-            //        order.total_fee = Convert.ToInt32(border.needPayMoney * 100);
-
-            //        prepay_id = wXpayUtil.getPrepay_id(order, paySignKey);
-            //        timeStamp = WXpayUtil.getTimestamp();
-            //        nonceStr = WXpayUtil.getNoncestr();
-
-            //        //SortedDictionary<string, string> sParams = new SortedDictionary<string, string>();
-            //        //sParams.Add("appId", appId);
-            //        //sParams.Add("timeStamp", timeStamp);
-            //        //sParams.Add("nonceStr", nonceStr);
-            //        //sParams.Add("package", "prepay_id=" + prepay_id);
-            //        //sParams.Add("signType", "MD5");
-            //        //paySign = wXpayUtil.getsign(sParams, paySignKey);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Response.Write(ex.ToString());
-            //        return View();
-            //    }
-
-            //    //Response.Redirect("http://abelxu19.imwork.net/jsapi/pay.aspx?showwxpaytitle=1&appId=" + appId +
-            //    //    "&timeStamp=" + timeStamp +
-            //    //    "&nonceStr=" + nonceStr +
-            //    //    "&prepay_id=" + prepay_id +
-            //    //    "&signType=MD5&paySign=" + paySign +
-            //    //    "&OrderID=" + border.orderCode);
-            //}
+            
             return View();
         }
         
@@ -317,5 +249,111 @@ namespace EShopping.WXUI.Controllers
         {
             return View();
         }
-	}
+
+
+
+        #region "购物车相关"
+
+        /// <summary>
+        ///  添加商品到购物车
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="spellBuyProductId"></param>
+        public int AddProductItemToCar(int id, int spellBuyProductId)
+        {
+            string key = InitKey(id, spellBuyProductId);
+            var carDicItems = LoadShoppingCar();
+            if (carDicItems.ContainsKey(key))
+            {
+                carDicItems[key].BuyNum++;
+                carDicItems[key].TotalPrice = carDicItems[key].product.singlePrice * carDicItems[key].BuyNum;
+            }
+            else
+            {
+                var item = ProductService.LoadProductDetail(id, spellBuyProductId);
+                if (item != null)
+                {
+                    carDicItems.Add(key, new ShoppingCarDTO
+                    {
+                        IsChecked = true,
+                        BuyNum = 1,
+                        product = item,
+                        TotalPrice = item.singlePrice,
+                        UserName = UserInfo.userName
+                    });
+                }
+            }
+
+            return carDicItems.Keys.Count;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="spellBuyProductId"></param>
+        /// <param name="BuyNum"></param>
+        /// <param name="operateTpye"></param>
+        public void SetProuctItemNum(int id, int spellBuyProductId,int BuyNum,int operateTpye)
+        {
+            string key = InitKey(id,spellBuyProductId);
+
+            var carDics = LoadShoppingCar();
+
+            if(carDics.ContainsKey(key))
+            {
+                var item = carDics[key];
+                
+                int stockNum=item.product.spellbuyLimit-item.product.spellbuyCount;
+                switch (operateTpye)
+                {
+                    case -1://减少一件
+                        if (item.BuyNum - 1 >= 0)
+                        {
+                            item.BuyNum--;
+                        }
+                        break;
+                    case 1://增加一件
+                        if (item.BuyNum + 1 <= stockNum)
+                        {
+                            item.BuyNum++;
+                        }
+                        break;
+                    case 2://包尾
+                        item.BuyNum = stockNum;
+                        item.IsBuyAll = true;
+                        break;
+                    case -2://不包尾
+                        item.BuyNum = 1;
+                        item.IsBuyAll = false;
+                        break;
+                    default:
+
+                        if(BuyNum>stockNum)
+                        {
+                            item.BuyNum = stockNum;
+                        }
+                        else
+                        {
+                            item.BuyNum = BuyNum;
+                        }
+                        break;
+                }
+
+                item.TotalPrice = item.product.singlePrice * item.BuyNum;
+                item.product.spellbuyCount = item.product.spellbuyCount + item.BuyNum;
+
+                carDics[key] = item;
+            }           
+        }
+
+
+
+
+
+       
+
+     
+        #endregion
+    }
 }

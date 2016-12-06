@@ -33,7 +33,13 @@ namespace EShopping.Entity.Response.DTO
 
         public string Signature{get;set;}
 
-        public string userName{get;set;}
+        public string userName
+        {
+            get
+            {
+                return weixinOpenId;
+            }
+        }
 
         public string nickName{get;set;}
  

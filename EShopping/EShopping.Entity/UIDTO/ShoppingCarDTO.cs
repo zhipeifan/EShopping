@@ -11,6 +11,8 @@ namespace EShopping.Entity.UIDTO
     {
         public ProductDTO product { get; set; }
 
+        public string UserName { get; set; }
+
         public int BuyNum { get; set; }
 
         public decimal TotalPrice { get; set; }

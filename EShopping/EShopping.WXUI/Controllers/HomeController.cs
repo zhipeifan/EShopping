@@ -55,7 +55,8 @@ namespace EShopping.WXUI.Controllers
         [HttpPost]
         public int AddProductToCar(int id, int spellBuyProductId)
         {
-            return ShoppingCarList(id,spellBuyProductId);
+            //return ShoppingCarList(id,spellBuyProductId);
+            return 0;
         }
 
          /// <summary>
