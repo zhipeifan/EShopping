@@ -348,7 +348,8 @@ namespace EShopping.WXUI.Controllers
                             {
                                 BuyNum = x.buyCount,
                                 product = x.productVO,
-                                TotalPrice = x.buyCount * x.productVO.singlePrice
+                                TotalPrice = x.buyCount * x.productVO.singlePrice,
+                                IsChecked = true
                             };
                             _ShoppingCar.Add(InitKey(x.productVO.Id, x.productVO.spellbuyproductId), dto);
                         });
