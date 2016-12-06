@@ -346,7 +346,7 @@ namespace EShopping.WXUI.Controllers
                         {
                             ShoppingCarDTO dto = new ShoppingCarDTO
                             {
-                                BuyNum = x.buyCount,
+                                BuyNum = (x.buyCount > 0 ? x.buyCount : 0),
                                 product = x.productVO,
                                 TotalPrice = x.buyCount * x.productVO.singlePrice,
                                 IsChecked = true

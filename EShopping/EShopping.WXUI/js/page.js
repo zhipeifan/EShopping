@@ -147,7 +147,48 @@ $(function () {
             ChangeBuyNumNew(id, spellbuyproductid, liNum.val(), 0);
         });
     });
+
+
+    $('.car-inner-list').find('span.carend').each(function (i, ele) {
+        $(ele).bind('click', function () {
+            
+
+            var iRests = $(this).parents('ul.carlist-inners').attr('data-rest');
+            var iPrice = $(this).parents('ul.carlist-inners').attr('data-price');
+
+            var operateType = 0;
+            if (!$(this).hasClass("baowei"))
+            {
+                $(this).removeClass("baowei").attr("style", "");;
+                operateType = -2;
+                $(this).parents('ul.carlist-inners').find('input.buyNum').val(0);
+                $(this).parents('ul.carlist-inners').find('em.stockNum').html(iRests);
+
+            } else {
+                $(this).addClass("baowei").attr("style","background:#999;");
+                operateType = 2;
+                $(this).parents('ul.carlist-inners').find('input.buyNum').val(iRests);
+                $(this).parents('ul.carlist-inners').find('em.stockNum').html(0);
+            }
+
+            if (!iPrice) return;
+             
+            productSumPrice();
+
+
+            var id = $(this).parents('ul.carlist-inners').attr('data-id');
+            var spellbuyproductid = $(this).parents('ul.carlist-inners').attr('data-spellbuyproductid');
+
+            ChangeBuyNumNew(id, spellbuyproductid, iRests, operateType);
+        });
+    });
+
+
     $('.car-inner-list').find('a.del').bind('click', function () {
+
+        var id = $(this).parents('ul.carlist-inners').attr('data-id');
+        var spellbuyproductid = $(this).parents('ul.carlist-inners').attr('data-spellbuyproductid');
+
         $(this).parent().parent().parent($('.car-inner-item')).empty();
 
     });
