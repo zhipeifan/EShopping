@@ -27,6 +27,7 @@ namespace EShopping.WXUI
             ApplicationLog.Error("system error", Server.GetLastError()
                                       .GetBaseException().Message);
 
+
         }
 
         protected void Session_End(object sender, EventArgs e)

@@ -249,7 +249,7 @@ namespace EShopping.WXUI.Controllers
             var usre = LoginService.LoginUser(userinfo);
             string _userInfo = Newtonsoft.Json.JsonConvert.SerializeObject(usre);
             ReloadCookie(usre.userId, _userInfo);//载入cookie
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { rand=new Random().Next() });
         }
 
 

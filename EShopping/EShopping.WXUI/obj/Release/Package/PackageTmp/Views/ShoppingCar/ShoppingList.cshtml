@@ -11,7 +11,7 @@
     int totalCount = 0;
 }
 
-<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js?rand="+new Random().Next())"></script>
 <script type="text/javascript">
     var ourl = "@Url.Action("CreateShoppingOrder", "ShoppingCar")";
 </script>
@@ -90,7 +90,7 @@
                                         <span>购买数量</span>
                                         <span class="pans">
                                             <em data-rest="@datarest">-</em>
-                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum", maxlength = "4", onkeydown = "onlyNum()", style = "width:60px !important;text-align:center !important;" })
+                                            @Html.TextBoxFor(c => Model[i].BuyNum, new { id = "carCount", @class = "buyNum", oninput = "onlyNum(this)", type = "number", style = "width:60px !important;text-align:center !important;" })
                                             <em>+</em>
                                         </span>
                                         @if (Model[i].IsBuyAll)

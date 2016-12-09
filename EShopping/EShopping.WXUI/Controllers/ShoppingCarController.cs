@@ -370,7 +370,7 @@ namespace EShopping.WXUI.Controllers
                 }
 
                 item.TotalPrice = item.product.singlePrice * item.BuyNum;
-                item.product.spellbuyCount = item.product.spellbuyCount + item.BuyNum;
+                //item.product.spellbuyCount = item.product.spellbuyCount + item.BuyNum;
 
                 carDics[key] = item;
             }           
