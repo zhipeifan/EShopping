@@ -30,11 +30,13 @@
     <script type="text/javascript" src="@Url.Content("~/js/libs/html5shiv.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/page.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/shoppingCar.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/BussinesJs/jquery.lazyload.js")"></script>
 
     <script type="text/javascript">
 
         var addurl = "@Url.Action("AddProductToCar", "Home")";
         var shppoingUrl = "@Url.Action("AddProductNum", "ShoppingCar")";
+        var changeProductUrl = "@Url.Action("ChangeShoppingList", "ShoppingCar")";
 
         $(function () {
             $.each($('#prodPageList').find('.pitem .pitem-list'), function (i, ele) {
@@ -49,6 +51,8 @@
 
                 })
             });
+
+            $('img.lazy').lazyload({ threshold: 200 });
 
         });
 
