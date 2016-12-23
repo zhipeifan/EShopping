@@ -148,6 +148,14 @@ namespace EShopping.Common.Enums
         /// <summary>
         /// 往期揭晓
         /// </summary>
-        queryPublishingHistoryList
+        queryPublishingHistoryList,
+        /// <summary>
+        /// 更新订单状态
+        /// </summary>
+        handleOrder,
+        /// <summary>
+        /// 充值
+        /// </summary>
+        recharge
     }
 }

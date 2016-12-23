@@ -165,5 +165,59 @@ namespace EShopping.BusinessService.ShoppingCar
            return data.responseData.productVOs;
 
         }
+
+        /// <summary>
+        /// 更新订单状态
+        /// </summary>
+        /// <param name="orderNO"></param>
+        /// <param name="issucess"></param>
+        /// <returns></returns>
+        public static void UpdateOrderState(string orderNO, bool issucess)
+        {
+            var payload = new handleOrder
+            {
+                orderCode = orderNO,
+                isSuccess = issucess
+            };
+
+            string _payload = JsonConvert.SerializeObject(payload);
+            _payload = _payload.Replace("\"", "'");
+            _payload = _payload.Replace("\\", "");
+            HandleOrderRequest request = new HandleOrderRequest();
+
+            request.payload = _payload;
+            var response = ServiceRequestClient.PostRquest(ServicesEnum.handleOrder, JsonConvert.SerializeObject(request));
+            //if (response == null)
+            //    return null;
+            //var data = response.ToEntity<Message>();
+            //return data;
+        }
+
+        /// <summary>
+        /// 充值
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="money"></param>
+        /// <returns></returns>
+
+        public static SubmitOrderResponse Addmoney(int userID ,decimal money)
+        {
+            var payload = new Recharge
+            {
+                userId = userID,
+                money = money,
+            };
+            string _payload = JsonConvert.SerializeObject(payload);
+            _payload = _payload.Replace("\"", "'");
+            _payload = _payload.Replace("\\", "");
+            RechargeRequest request = new RechargeRequest();
+            request.payload = _payload;
+            var response = ServiceRequestClient.PostRquest(ServicesEnum.recharge, JsonConvert.SerializeObject(request));
+            if (response == null)
+                return null;
+            var data = response.ToEntity<SubmitOrderResponse>();
+            return data;
+        }
+
     }
 }

@@ -47,6 +47,8 @@
     <Compile Include="Request\AddSignRequest.cs" />
     <Compile Include="Request\CommonRequest.cs" />
     <Compile Include="Request\ExchangeIntegralRequest.cs" />
+    <Compile Include="Request\handleOrder.cs" />
+    <Compile Include="Request\HandleOrderRequest.cs" />
     <Compile Include="Request\HandleShoppingCartRequest.cs" />
     <Compile Include="Request\QueryLevelConfigRequest.cs" />
     <Compile Include="Request\QueryMyBuyListRequest.cs" />
@@ -67,6 +69,8 @@
     <Compile Include="Request\QueryUserAddressListRequest.cs" />
     <Compile Include="Request\QueryUserInfoRequest.cs" />
     <Compile Include="Request\QueryWalletRequest.cs" />
+    <Compile Include="Request\Recharge.cs" />
+    <Compile Include="Request\RechargeRequest.cs" />
     <Compile Include="Request\SearchProductListRequest.cs" />
     <Compile Include="Request\SendUpCountRequest.cs" />
     <Compile Include="Request\SubmitOrderRequest.cs" />

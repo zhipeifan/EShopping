@@ -20,6 +20,7 @@ using WX_TennisAssociation.Common;
 using WeChatPayCommon;
 using WeChatPayCommon.PayCommon;
 using EShopping.BusinessService.SelectProduct;
+using EShopping.Common;
 
 namespace EShopping.WXUI.Controllers
 {
@@ -109,9 +110,20 @@ namespace EShopping.WXUI.Controllers
                 if (shoppingProducts != null && shoppingProducts.Count>0)
                 {
                    var responseData= ShoppingCarService.CreateOrder(UserId, GetAddressIP(), shoppingProducts,appId,TradeTypeEnum.NATIVE,UserInfo.weixinOpenId);
-                   var prepayDto = PayHelper.UnifiedOrder(UserInfo.weixinOpenId, responseData.orderCode, GetAddressIP(), responseData.needPayMoney, content);
-                   prepayDto.PayType = 2;
-                   return View("DoRecharge", prepayDto);
+                  // responseData.needPayMoney = 0;
+                   if (responseData.needPayMoney > 0)
+                   {
+                       var prepayDto = PayHelper.UnifiedOrder(UserInfo.weixinOpenId, responseData.orderCode, GetAddressIP(), responseData.needPayMoney, content);
+                       prepayDto.PayType = 2;
+                       ApplicationLog.DebugInfo(" 支付Request" + Newtonsoft.Json.JsonConvert.SerializeObject(prepayDto));
+                       return View("DoRecharge", prepayDto);
+                   }
+                   else
+                   {
+                       //更新订单状态
+                       ShoppingCarService.UpdateOrderState(responseData.orderCode,true);
+                       return RedirectToAction("Index", "MyEShopping");
+                   }
                 }
                 else
                 {
@@ -139,9 +151,19 @@ namespace EShopping.WXUI.Controllers
 
             if (money <= 0)
                 return View("PayFor");
+            SubmitOrderResponse response = ShoppingCarService.Addmoney(UserId, money);
+
+            if (response == null || response.responseData == null || string.IsNullOrEmpty(response.responseData.orderCode))
+            {
+                var products = LoadShoppingCar();
+                var dto = products.Select(x => x.Value).ToList();
+                ModelState.AddModelError("ShoppingCarErro", "结算失败！");
+                return View("ShoppingList", dto);
+            }
 
             var prepayDto = PayHelper.UnifiedOrder(UserInfo.weixinOpenId, "KLZ"+DateTime.Now.ToString("yyyyMMddHHmmss"), GetAddressIP(), money,"充值卡乐哲"+money+"元");
             prepayDto.PayType = 1;
+            prepayDto.OrderCode = response.responseData.orderCode;
             return View("DoRecharge", prepayDto);
         }
 

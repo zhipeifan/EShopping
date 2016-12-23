@@ -168,6 +168,7 @@
                     dataType: "html",
                     success: function (response) {
                         $('.products').append(response);
+                        $('img.lazy').lazyload({ threshold: 200 });
                         $("#pageIndex").val(parseInt(pageIndex) + 1);
                         $(".loader").hide();
                         if ($.trim(response) == "")

@@ -25,8 +25,14 @@ namespace EShopping.WXUI.Controllers
         }
         //
         // GET: /MyEShopping/
-        public ActionResult Index()
+        public ActionResult Index(string code="")
         {
+            if(!string.IsNullOrEmpty(code))
+            {
+                //更新订单状态
+                ShoppingCarService.UpdateOrderState(code, true);
+            }
+
             if(!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("WeChatLogin","Base");

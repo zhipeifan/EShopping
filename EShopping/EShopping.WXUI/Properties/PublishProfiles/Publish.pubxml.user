@@ -10,16 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/EShopping.BusinessService.dll">
-      <publishTime>12/07/2016 01:36:13</publishTime>
+      <publishTime>12/23/2016 14:49:11</publishTime>
     </File>
     <File Include="bin/EShopping.Common.dll">
-      <publishTime>12/07/2016 01:36:13</publishTime>
+      <publishTime>12/23/2016 14:49:10</publishTime>
     </File>
     <File Include="bin/EShopping.Entity.dll">
-      <publishTime>12/07/2016 01:36:12</publishTime>
+      <publishTime>12/23/2016 14:49:10</publishTime>
     </File>
     <File Include="bin/EShopping.WXUI.dll">
-      <publishTime>12/09/2016 19:17:46</publishTime>
+      <publishTime>12/23/2016 14:49:11</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>05/13/2016 10:14:00</publishTime>
@@ -49,7 +49,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2016 19:48:30</publishTime>
     </File>
     <File Include="bin/WeChatPayCommon.dll">
-      <publishTime>12/07/2016 01:50:36</publishTime>
+      <publishTime>12/23/2016 14:49:10</publishTime>
     </File>
     <File Include="css/base.css">
       <publishTime>10/21/2016 17:44:34</publishTime>
@@ -162,6 +162,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/closer_img.png">
       <publishTime>08/05/2016 07:40:10</publishTime>
     </File>
+    <File Include="Images/defaultloading.gif">
+      <publishTime>08/30/2016 17:34:58</publishTime>
+    </File>
     <File Include="Images/del.png">
       <publishTime>06/05/2016 11:04:43</publishTime>
     </File>
@@ -206,6 +209,54 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/hot-prod.png">
       <publishTime>10/19/2016 11:09:04</publishTime>
+    </File>
+    <File Include="Images/hvip1.png">
+      <publishTime>10/17/2016 16:31:17</publishTime>
+    </File>
+    <File Include="Images/hvip10.png">
+      <publishTime>10/17/2016 16:34:52</publishTime>
+    </File>
+    <File Include="Images/hvip11.png">
+      <publishTime>10/17/2016 16:35:01</publishTime>
+    </File>
+    <File Include="Images/hvip12.png">
+      <publishTime>10/17/2016 16:35:09</publishTime>
+    </File>
+    <File Include="Images/hvip13.png">
+      <publishTime>10/17/2016 16:35:19</publishTime>
+    </File>
+    <File Include="Images/hvip14.png">
+      <publishTime>10/17/2016 16:35:33</publishTime>
+    </File>
+    <File Include="Images/hvip15.png">
+      <publishTime>10/17/2016 16:35:41</publishTime>
+    </File>
+    <File Include="Images/hvip16.png">
+      <publishTime>10/17/2016 16:35:50</publishTime>
+    </File>
+    <File Include="Images/hvip2.png">
+      <publishTime>10/17/2016 16:31:34</publishTime>
+    </File>
+    <File Include="Images/hvip3.png">
+      <publishTime>10/17/2016 16:32:55</publishTime>
+    </File>
+    <File Include="Images/hvip4.png">
+      <publishTime>10/17/2016 16:33:14</publishTime>
+    </File>
+    <File Include="Images/hvip5.png">
+      <publishTime>10/17/2016 16:33:21</publishTime>
+    </File>
+    <File Include="Images/hvip6.png">
+      <publishTime>10/17/2016 16:33:43</publishTime>
+    </File>
+    <File Include="Images/hvip7.png">
+      <publishTime>10/17/2016 16:33:53</publishTime>
+    </File>
+    <File Include="Images/hvip8.png">
+      <publishTime>10/17/2016 16:34:17</publishTime>
+    </File>
+    <File Include="Images/hvip9.png">
+      <publishTime>10/17/2016 16:34:30</publishTime>
     </File>
     <File Include="Images/index-icon.jpg">
       <publishTime>07/17/2016 08:20:36</publishTime>
@@ -272,6 +323,54 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/other_login.jpg">
       <publishTime>07/16/2016 07:31:51</publishTime>
+    </File>
+    <File Include="Images/ovip1.png">
+      <publishTime>10/21/2016 17:21:29</publishTime>
+    </File>
+    <File Include="Images/ovip10.png">
+      <publishTime>10/21/2016 17:20:10</publishTime>
+    </File>
+    <File Include="Images/ovip11.png">
+      <publishTime>10/21/2016 17:20:02</publishTime>
+    </File>
+    <File Include="Images/ovip12.png">
+      <publishTime>10/21/2016 17:19:55</publishTime>
+    </File>
+    <File Include="Images/ovip13.png">
+      <publishTime>10/21/2016 17:19:44</publishTime>
+    </File>
+    <File Include="Images/ovip14.png">
+      <publishTime>10/21/2016 17:19:36</publishTime>
+    </File>
+    <File Include="Images/ovip15.png">
+      <publishTime>10/21/2016 17:19:26</publishTime>
+    </File>
+    <File Include="Images/ovip16.png">
+      <publishTime>10/21/2016 17:19:17</publishTime>
+    </File>
+    <File Include="Images/ovip2.png">
+      <publishTime>10/21/2016 17:21:21</publishTime>
+    </File>
+    <File Include="Images/ovip3.png">
+      <publishTime>10/21/2016 17:21:13</publishTime>
+    </File>
+    <File Include="Images/ovip4.png">
+      <publishTime>10/21/2016 17:21:07</publishTime>
+    </File>
+    <File Include="Images/ovip5.png">
+      <publishTime>10/21/2016 17:20:57</publishTime>
+    </File>
+    <File Include="Images/ovip6.png">
+      <publishTime>10/21/2016 17:20:49</publishTime>
+    </File>
+    <File Include="Images/ovip7.png">
+      <publishTime>10/21/2016 17:20:42</publishTime>
+    </File>
+    <File Include="Images/ovip8.png">
+      <publishTime>10/21/2016 17:20:33</publishTime>
+    </File>
+    <File Include="Images/ovip9.png">
+      <publishTime>10/21/2016 17:20:26</publishTime>
     </File>
     <File Include="Images/p.png">
       <publishTime>06/02/2016 21:52:38</publishTime>
@@ -354,6 +453,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/red.png">
       <publishTime>07/16/2016 22:28:24</publishTime>
     </File>
+    <File Include="Images/redReg.png">
+      <publishTime>10/19/2016 15:42:25</publishTime>
+    </File>
     <File Include="Images/red_time.png">
       <publishTime>07/25/2016 07:55:26</publishTime>
     </File>
@@ -368,6 +470,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/serect_img.png">
       <publishTime>07/17/2016 07:22:26</publishTime>
+    </File>
+    <File Include="Images/setImg.png">
+      <publishTime>10/08/2016 10:26:23</publishTime>
     </File>
     <File Include="Images/shaidan.png">
       <publishTime>06/05/2016 23:27:06</publishTime>
@@ -408,6 +513,54 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/us_logo.jpg">
       <publishTime>07/28/2016 07:57:38</publishTime>
     </File>
+    <File Include="Images/vip1.png">
+      <publishTime>10/17/2016 17:15:57</publishTime>
+    </File>
+    <File Include="Images/vip10.png">
+      <publishTime>10/17/2016 17:17:51</publishTime>
+    </File>
+    <File Include="Images/vip11.png">
+      <publishTime>10/17/2016 17:18:01</publishTime>
+    </File>
+    <File Include="Images/vip12.png">
+      <publishTime>10/17/2016 17:18:11</publishTime>
+    </File>
+    <File Include="Images/vip13.png">
+      <publishTime>10/17/2016 17:18:21</publishTime>
+    </File>
+    <File Include="Images/vip14.png">
+      <publishTime>10/17/2016 17:18:33</publishTime>
+    </File>
+    <File Include="Images/vip15.png">
+      <publishTime>10/17/2016 17:18:43</publishTime>
+    </File>
+    <File Include="Images/vip16.png">
+      <publishTime>10/17/2016 17:18:51</publishTime>
+    </File>
+    <File Include="Images/vip2.png">
+      <publishTime>10/17/2016 17:16:11</publishTime>
+    </File>
+    <File Include="Images/vip3.png">
+      <publishTime>10/17/2016 17:16:22</publishTime>
+    </File>
+    <File Include="Images/vip4.png">
+      <publishTime>10/17/2016 17:16:44</publishTime>
+    </File>
+    <File Include="Images/vip5.png">
+      <publishTime>10/17/2016 17:16:54</publishTime>
+    </File>
+    <File Include="Images/vip6.png">
+      <publishTime>10/17/2016 17:17:04</publishTime>
+    </File>
+    <File Include="Images/vip7.png">
+      <publishTime>10/17/2016 17:17:17</publishTime>
+    </File>
+    <File Include="Images/vip8.png">
+      <publishTime>10/17/2016 17:17:27</publishTime>
+    </File>
+    <File Include="Images/vip9.png">
+      <publishTime>10/17/2016 17:17:38</publishTime>
+    </File>
     <File Include="Images/vipIcon.jpg">
       <publishTime>07/24/2016 22:21:14</publishTime>
     </File>
@@ -429,6 +582,24 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/winnerimg.png">
       <publishTime>06/07/2016 08:20:20</publishTime>
     </File>
+    <File Include="Images/yg_btn_dhs.png">
+      <publishTime>10/17/2016 11:58:15</publishTime>
+    </File>
+    <File Include="Images/yg_btn_hs.png">
+      <publishTime>10/17/2016 11:58:16</publishTime>
+    </File>
+    <File Include="Images/yg_btn_jh.png">
+      <publishTime>10/17/2016 11:58:17</publishTime>
+    </File>
+    <File Include="Images/yg_btn_jh_o.png">
+      <publishTime>10/17/2016 11:58:19</publishTime>
+    </File>
+    <File Include="Images/yg_btn_mgh.png">
+      <publishTime>10/17/2016 11:58:20</publishTime>
+    </File>
+    <File Include="Images/yg_btn_zs.png">
+      <publishTime>10/17/2016 11:58:25</publishTime>
+    </File>
     <File Include="Images/zhan.png">
       <publishTime>06/26/2016 18:25:32</publishTime>
     </File>
@@ -437,6 +608,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="js/BussinesJs/jquery.fly.min.js">
       <publishTime>10/31/2016 19:18:04</publishTime>
+    </File>
+    <File Include="js/BussinesJs/jquery.lazyload.js">
+      <publishTime>08/08/2016 19:43:36</publishTime>
     </File>
     <File Include="js/BussinesJs/LoadMoreData.js">
       <publishTime>11/10/2016 20:42:41</publishTime>
@@ -880,10 +1054,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/26/2016 03:46:04</publishTime>
     </File>
     <File Include="Views/Product/Detail.cshtml">
-      <publishTime>11/28/2016 22:46:59</publishTime>
+      <publishTime>12/20/2016 18:14:39</publishTime>
     </File>
     <File Include="Views/Product/List.cshtml">
-      <publishTime>11/28/2016 21:12:56</publishTime>
+      <publishTime>12/20/2016 17:48:02</publishTime>
     </File>
     <File Include="Views/Product/ProductItem.cshtml">
       <publishTime>11/28/2016 21:26:15</publishTime>
@@ -934,10 +1108,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/26/2016 04:52:02</publishTime>
     </File>
     <File Include="Views/ShoppingCar/DoRecharge.cshtml">
-      <publishTime>12/07/2016 01:35:16</publishTime>
+      <publishTime>12/21/2016 18:38:26</publishTime>
     </File>
     <File Include="Views/ShoppingCar/PayFor.cshtml">
-      <publishTime>12/07/2016 01:50:10</publishTime>
+      <publishTime>12/21/2016 17:42:03</publishTime>
     </File>
     <File Include="Views/ShoppingCar/PaySuccess.cshtml">
       <publishTime>09/20/2016 14:50:03</publishTime>
