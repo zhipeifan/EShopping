@@ -267,7 +267,7 @@ namespace EShopping.WXUI.Controllers
               1,
               userId.ToString(),
               DateTime.Now,
-              DateTime.Now.AddMonths(1),
+              DateTime.Now.AddMinutes(30),
               false,
               userData
               );

@@ -187,6 +187,8 @@ namespace EShopping.BusinessService.ShoppingCar
 
             request.payload = _payload;
             var response = ServiceRequestClient.PostRquest(ServicesEnum.handleOrder, JsonConvert.SerializeObject(request));
+
+            ApplicationLog.DebugInfo("更新订单状态","订单号："+orderNO+",更新后response："+Newtonsoft.Json.JsonConvert.SerializeObject(response));
             //if (response == null)
             //    return null;
             //var data = response.ToEntity<Message>();

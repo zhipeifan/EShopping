@@ -31,13 +31,15 @@ namespace EShopping.WXUI.Controllers
             {
                 //更新订单状态
                 ShoppingCarService.UpdateOrderState(code, true);
+              //  ReloadCookie(usre.userId, _userInfo);//载入cookie
             }
 
             if(!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("WeChatLogin","Base");
             }
-            UserDTO user=LoadUserInfo();
+            //UserDTO user=LoadUserInfo();
+            UserDTO user =LoginService.LoadUserInfo(Convert.ToInt32(User.Identity.Name));
             ApplicationLog.DebugInfo("回调结束",Newtonsoft.Json.JsonConvert.SerializeObject(user));
             var levelConfig = LoginService.QueryPrivateLevelConfig(UserId);
             if(levelConfig!=null)
